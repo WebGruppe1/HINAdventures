@@ -29,5 +29,7 @@ namespace HINAdventures.Models
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<Description> Descriptions { get; set; }
     }
 }

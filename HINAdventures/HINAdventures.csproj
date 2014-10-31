@@ -201,8 +201,13 @@
     <Compile Include="Migrations\201410271352065_first.Designer.cs">
       <DependentUpon>201410271352065_first.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201410311043413_AddedDescriptionModel.cs" />
+    <Compile Include="Migrations\201410311043413_AddedDescriptionModel.Designer.cs">
+      <DependentUpon>201410311043413_AddedDescriptionModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Description.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -283,6 +288,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201410271352065_first.resx">
       <DependentUpon>201410271352065_first.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201410311043413_AddedDescriptionModel.resx">
+      <DependentUpon>201410311043413_AddedDescriptionModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
