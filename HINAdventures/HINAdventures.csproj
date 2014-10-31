@@ -209,6 +209,10 @@
     <Compile Include="Migrations\201410311059393_AddedRoomModel.Designer.cs">
       <DependentUpon>201410311059393_AddedRoomModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201410311325452_updateUserRegister.cs" />
+    <Compile Include="Migrations\201410311325452_updateUserRegister.Designer.cs">
+      <DependentUpon>201410311325452_updateUserRegister.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Description.cs" />
@@ -299,6 +303,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201410311059393_AddedRoomModel.resx">
       <DependentUpon>201410311059393_AddedRoomModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201410311325452_updateUserRegister.resx">
+      <DependentUpon>201410311325452_updateUserRegister.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
