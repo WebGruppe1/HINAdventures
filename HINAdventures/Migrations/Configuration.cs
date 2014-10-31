@@ -89,6 +89,9 @@ namespace HINAdventures.Migrations
             SetRole(userTommy, userRole);
             SetRole(userEivind, userRole);
             SetRole(userFrederik, userRole);
+
+            //Seed Descriptions
+
         }
     }
 }

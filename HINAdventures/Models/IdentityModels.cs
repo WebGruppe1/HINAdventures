@@ -31,5 +31,6 @@ namespace HINAdventures.Models
         }
 
         public DbSet<Description> Descriptions { get; set; }
+        public DbSet<Room> Rooms { get; set; }
     }
 }
