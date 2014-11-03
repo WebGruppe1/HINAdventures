@@ -113,9 +113,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
-    <Content Include="Scripts\jquery-1.6.4-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.6.4.js" />
-    <Content Include="Scripts\jquery-1.6.4.min.js" />
     <Content Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery-2.1.1.min.js" />
@@ -128,6 +125,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HINAdventures\HINAdventures.csproj">
+      <Properties>SkipValidatePackageReferences=true</Properties>
       <Project>{0FE9FC86-1148-4ED0-8A0A-54D8762342E9}</Project>
       <Name>HINAdventures</Name>
     </ProjectReference>
