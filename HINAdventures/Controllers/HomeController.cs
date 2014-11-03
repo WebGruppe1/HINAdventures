@@ -36,5 +36,10 @@ namespace HINAdventures.Controllers
         {
             return View();
         }
+
+        public ActionResult FirstPage()
+        {
+            return View();
+        }
     }
 }

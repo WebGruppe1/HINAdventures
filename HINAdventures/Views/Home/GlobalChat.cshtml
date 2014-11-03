@@ -13,14 +13,12 @@
 </div>
 
 <script type="text/javascript" src="/Scripts/jquery-2.1.1.min.js"></script>
-<script src="~/Scripts/jquery.signalR-2.1.2.min.js"></script>
-<script src="~/signalr/hubs"></script>
 
 <script>
 
         function startChat() {
             var chat = $.connection.globalChatHub;
-            var username = "Donald Duck";
+            var username = "Donald Duck"; //skal bruke username
 
             chat.client.addNewMessageToPage = function (message) {
                 $("#chatbox").append(username + ": " + message + "\n");
