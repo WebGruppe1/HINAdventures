@@ -31,5 +31,10 @@ namespace HINAdventures.Controllers
 
             return View();
         }
+
+        public ActionResult GlobalChat()
+        {
+            return View();
+        }
     }
 }
