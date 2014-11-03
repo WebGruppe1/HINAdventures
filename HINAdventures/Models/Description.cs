@@ -11,6 +11,8 @@ namespace HINAdventures.Models
     {
         public int Id { get; set; }
         public string Text { get; set; }
+        public virtual List<Item> Items { get; set; }
+        public virtual List<ApplicationUser> Users { get; set; }
 
     }
 

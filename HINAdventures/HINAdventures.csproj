@@ -213,10 +213,15 @@
     <Compile Include="Migrations\201410311325452_updateUserRegister.Designer.cs">
       <DependentUpon>201410311325452_updateUserRegister.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411030952134_ItemAndUserDB.cs" />
+    <Compile Include="Migrations\201411030952134_ItemAndUserDB.Designer.cs">
+      <DependentUpon>201411030952134_ItemAndUserDB.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Description.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Item.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Room.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -283,7 +288,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Home\Game.cshtml" />
+    <Content Include="Views\Home\FirstPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -307,6 +312,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201410311325452_updateUserRegister.resx">
       <DependentUpon>201410311325452_updateUserRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411030952134_ItemAndUserDB.resx">
+      <DependentUpon>201411030952134_ItemAndUserDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
