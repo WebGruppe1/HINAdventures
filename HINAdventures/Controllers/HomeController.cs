@@ -13,6 +13,11 @@ namespace HINAdventures.Controllers
             return View();
         }
 
+        public ActionResult FirstPage()
+        {
+            return View();
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
