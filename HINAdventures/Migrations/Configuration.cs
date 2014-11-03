@@ -198,6 +198,12 @@ namespace HINAdventures.Migrations
 
                 },
                 new Room {
+                    Name = "C3020",
+                    OutsideDescription = "You see a door labeled 'C3020'",
+                    Description = "you enter the main hallway"
+
+                },
+                new Room {
                     Name = "D3310",
                     OutsideDescription = "You see a door labeled 'D3310'",
                     Description = "an small empty hallway that leads to 3 room, in one door is to the main hallway C3020, or to the the class room for EL engineers D3340 or for comunter engineers D3320."
@@ -399,8 +405,20 @@ namespace HINAdventures.Migrations
                 },
             };
             rooms.ForEach(element => context.Rooms.AddOrUpdate(room => room.Name, element));
-
             context.SaveChanges();
+
+            // Setter opp rom plasseringen
+            Room C3021 = context.Rooms.Where(room => room.Name == "C3021").FirstOrDefault();
+            Room C3020 = context.Rooms.Where(room => room.Name == "C3020").FirstOrDefault();
+            Room C3150 = context.Rooms.Where(room => room.Name == "C3150").FirstOrDefault();
+
+
+            C3021.South = C3020;
+            C3021.North = C3150;
+            C3150.South = C3021;
+            C3020.North = C3021;
+            context.SaveChanges();
+
         }
     }
 }
