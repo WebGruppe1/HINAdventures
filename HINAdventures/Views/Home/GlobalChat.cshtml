@@ -18,7 +18,7 @@
 
         function startChat() {
             var chat = $.connection.globalChatHub;
-            var username = "Donald Duck";
+            var username = "Donald Duck"; //skal bruke username
 
             chat.client.addNewMessageToPage = function (message) {
                 $("#chatbox").append(username + ": " + message + "\n");
