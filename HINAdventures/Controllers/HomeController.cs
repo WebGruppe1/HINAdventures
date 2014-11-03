@@ -13,7 +13,7 @@ namespace HINAdventures.Controllers
             return View();
         }
 
-        public ActionResult FirstPage()
+        public ActionResult Game()
         {
             return View();
         }
