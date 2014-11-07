@@ -8,9 +8,9 @@ namespace HINAdventures.Hubs
 {
     public class GlobalChatHub : Hub
     {
-        public void Send(string message)
+        public void Send(string name, string message)
         {
-            Clients.All.addNewMessageToPage(message);
+            Clients.All.addNewMessageToPage(name, message);
         }
     }
 }
