@@ -10,7 +10,7 @@ namespace HINAdventures.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return View("FirstPage");
         }
 
         public ActionResult Game()
@@ -32,6 +32,7 @@ namespace HINAdventures.Controllers
             return View();
         }
 
+        [Authorize]
         public ActionResult GlobalChat()
         {
             return View();
