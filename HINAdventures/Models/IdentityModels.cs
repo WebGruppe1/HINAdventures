@@ -36,5 +36,24 @@ namespace HINAdventures.Models
 
         public DbSet<Description> Descriptions { get; set; }
         public DbSet<Room> Rooms { get; set; }
+
+        public DbSet<Item> Items { get; set; }
+
+        /*
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            // Mange til mange forhold Rooms <=> Rooms
+            modelBuilder.Entity<Room>()
+                .HasMany(t => t.Exits)
+                .WithMany(t => t.Exits)
+                .Map(m =>
+                {
+                    m.MapLeftKey("id");
+                    m.MapRightKey("id");
+                    m.ToTable("RoomToRoom");
+                });
+            base.OnModelCreating(modelBuilder);
+        }
+         * */
     }
 }

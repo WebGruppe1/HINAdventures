@@ -218,33 +218,9 @@
     </Compile>
     <Compile Include="Hubs\CommandHub.cs" />
     <Compile Include="Hubs\GlobalChatHub.cs" />
-    <Compile Include="Migrations\201410271352065_first.cs" />
-    <Compile Include="Migrations\201410271352065_first.Designer.cs">
-      <DependentUpon>201410271352065_first.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201410311043413_AddedDescriptionModel.cs" />
-    <Compile Include="Migrations\201410311043413_AddedDescriptionModel.Designer.cs">
-      <DependentUpon>201410311043413_AddedDescriptionModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201410311059393_AddedRoomModel.cs" />
-    <Compile Include="Migrations\201410311059393_AddedRoomModel.Designer.cs">
-      <DependentUpon>201410311059393_AddedRoomModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201410311325452_updateUserRegister.cs" />
-    <Compile Include="Migrations\201410311325452_updateUserRegister.Designer.cs">
-      <DependentUpon>201410311325452_updateUserRegister.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201411030952134_ItemAndUserDB.cs" />
-    <Compile Include="Migrations\201411030952134_ItemAndUserDB.Designer.cs">
-      <DependentUpon>201411030952134_ItemAndUserDB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201411031606551_user.cs" />
-    <Compile Include="Migrations\201411031606551_user.Designer.cs">
-      <DependentUpon>201411031606551_user.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201411032044242_RoomDescriptions.cs" />
-    <Compile Include="Migrations\201411032044242_RoomDescriptions.Designer.cs">
-      <DependentUpon>201411032044242_RoomDescriptions.cs</DependentUpon>
+    <Compile Include="Migrations\201411101507404_first.cs" />
+    <Compile Include="Migrations\201411101507404_first.Designer.cs">
+      <DependentUpon>201411101507404_first.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -336,26 +312,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201410271352065_first.resx">
-      <DependentUpon>201410271352065_first.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201410311043413_AddedDescriptionModel.resx">
-      <DependentUpon>201410311043413_AddedDescriptionModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201410311059393_AddedRoomModel.resx">
-      <DependentUpon>201410311059393_AddedRoomModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201410311325452_updateUserRegister.resx">
-      <DependentUpon>201410311325452_updateUserRegister.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201411030952134_ItemAndUserDB.resx">
-      <DependentUpon>201411030952134_ItemAndUserDB.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201411031606551_user.resx">
-      <DependentUpon>201411031606551_user.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201411032044242_RoomDescriptions.resx">
-      <DependentUpon>201411032044242_RoomDescriptions.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201411101507404_first.resx">
+      <DependentUpon>201411101507404_first.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -7,13 +7,13 @@ namespace HINAdventures.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class updateUserRegister : IMigrationMetadata
+    public sealed partial class first : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(updateUserRegister));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(first));
         
         string IMigrationMetadata.Id
         {
-            get { return "201410311325452_updateUserRegister"; }
+            get { return "201411101507404_first"; }
         }
         
         string IMigrationMetadata.Source

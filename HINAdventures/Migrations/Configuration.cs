@@ -173,6 +173,7 @@ namespace HINAdventures.Migrations
                 new Room {
                     Name = "D3040",
                     OutsideDescription = "You see a door labeled 'D3040'",
+                    Description = "The room is totaly empty. It looks like it is being redorated, as the paint on the walls is still damp"
                 },
                 new Room {
                     Name = "C3150",
@@ -310,7 +311,7 @@ namespace HINAdventures.Migrations
                 },
                 new Room {
                     Name = "D2350",
-                    OutsideDescription = "You see a door labeled 'D3040'",
+                    OutsideDescription = "You see a door labeled 'D2350'",
                     Description = "In this room you see a tv, mic, and a lot of chairs and tables. This is possibly the meeting room for the teachers, but maybe you are free to use it when they are not using it."
                 },
                 new Room {
@@ -403,22 +404,201 @@ namespace HINAdventures.Migrations
                     OutsideDescription = "You see a door labeled 'D2230'",
                     Description = "A chill wind blows against you as you open the door. The Window is open, computer is on, theres books on the shelf. Frode is turning around and are asking if you need any help."
                 },
+                new Room {
+                    Name = "C3040",
+                    OutsideDescription = "You see a door labeled 'C3040'",
+                    Description = "You have entered the Male toilets"
+                },
+                new Room {
+                    Name = "D3060",
+                    OutsideDescription = "You see a door labeled 'D3060'",
+                    Description = "You have entered the Female toilets"
+                },
+                new Room {
+                    Name = "D2230",
+                    OutsideDescription = "You see a door labeled 'D2230'",
+                    Description = "A chill wind blows against you as you open the door. The Window is open, computer is on, theres books on the shelf. Frode is turning around and are asking if you need any help."
+                },
+                new Room{
+                    Name = "D3500",
+                    OutsideDescription = "You see a door labeled 'D3500'",
+                    Description = "The room is totaly empty. It looks like it is being redorated, as the paint on the walls is still damp"
+                },                
+                new Room{
+                    Name = "D3480",
+                    OutsideDescription = "You see a door labeled 'D3480'",
+                    Description = "The room is totaly empty. It looks like it is being redorated, as the paint on the walls is still damp"
+                },
+                new Room{
+                    Name = "D3530",
+                    OutsideDescription = "You see a door labeled 'D3530'",
+                    Description = "The room is totaly empty. It looks like it is being redorated, as the paint on the walls is still damp"
+                },
+                new Room{
+                    Name = "D3540",
+                    OutsideDescription = "You see a door labeled 'D3540'",
+                    Description = "The room is totaly empty. It looks like it is being redorated, as the paint on the walls is still damp"
+                },
+                new Room{
+                    Name = "D3520",
+                    OutsideDescription = "You see a door labeled 'D3520'",
+                    Description = "The room is totaly empty. It looks like it is being redorated, as the paint on the walls is still damp"
+                },
+                new Room{
+                    Name = "Corridor",
+                    OutsideDescription = "You see a door labeled 'Corridor'",
+                    Description = "You are in a long corridor with lots of dors on one side."
+                }
             };
             rooms.ForEach(element => context.Rooms.AddOrUpdate(room => room.Name, element));
             context.SaveChanges();
 
             // Setter opp rom plasseringen
-            Room C3021 = context.Rooms.Where(room => room.Name == "C3021").FirstOrDefault();
             Room C3020 = context.Rooms.Where(room => room.Name == "C3020").FirstOrDefault();
+            Room B3200 = context.Rooms.Where(room => room.Name == "B3200").FirstOrDefault();
+            Room C2070 = context.Rooms.Where(room => room.Name == "C2070").FirstOrDefault();
+            Room D3330 = context.Rooms.Where(room => room.Name == "D3330").FirstOrDefault();
+            Room C2090 = context.Rooms.Where(room => room.Name == "C2090").FirstOrDefault();
+            Room C2000 = context.Rooms.Where(room => room.Name == "C2000").FirstOrDefault();
+            Room D3320 = context.Rooms.Where(room => room.Name == "D3320").FirstOrDefault();
+            Room C2100 = context.Rooms.Where(room => room.Name == "C2100").FirstOrDefault();
+            Room C2080 = context.Rooms.Where(room => room.Name == "C2080").FirstOrDefault();
+            Room D3340 = context.Rooms.Where(room => room.Name == "D3340").FirstOrDefault();
+            Room D3350 = context.Rooms.Where(room => room.Name == "D3350").FirstOrDefault();
+            Room D3050 = context.Rooms.Where(room => room.Name == "D3050").FirstOrDefault();
+            Room D3040 = context.Rooms.Where(room => room.Name == "D3040").FirstOrDefault();
             Room C3150 = context.Rooms.Where(room => room.Name == "C3150").FirstOrDefault();
+            Room D3360 = context.Rooms.Where(room => room.Name == "D3360").FirstOrDefault();
+            Room C3015 = context.Rooms.Where(room => room.Name == "C3015").FirstOrDefault();
+            Room C3021 = context.Rooms.Where(room => room.Name == "C3021").FirstOrDefault();
+            Room D3310 = context.Rooms.Where(room => room.Name == "D3310").FirstOrDefault();
+            Room C3000 = context.Rooms.Where(room => room.Name == "C3000").FirstOrDefault();
+            Room C2060 = context.Rooms.Where(room => room.Name == "C2060").FirstOrDefault();
+            Room D2330 = context.Rooms.Where(room => room.Name == "D2330").FirstOrDefault();
+            Room D2320 = context.Rooms.Where(room => room.Name == "D2320").FirstOrDefault();
+            Room D2310 = context.Rooms.Where(room => room.Name == "D2310").FirstOrDefault();
+            Room D2300 = context.Rooms.Where(room => room.Name == "D2300").FirstOrDefault();
+            Room D2370 = context.Rooms.Where(room => room.Name == "D2370").FirstOrDefault();
+            Room Gangbro = context.Rooms.Where(room => room.Name == "Gangbro").FirstOrDefault();
+            Room Corridor = context.Rooms.Where(room => room.Name == "Corridor").FirstOrDefault();
+            Room C3191 = context.Rooms.Where(room => room.Name == "C3191").FirstOrDefault();
+            Room C3190 = context.Rooms.Where(room => room.Name == "C3190").FirstOrDefault();
+            Room D3510 = context.Rooms.Where(room => room.Name == "D3510").FirstOrDefault();
+            Room D3490 = context.Rooms.Where(room => room.Name == "D3490").FirstOrDefault();
+            Room D3470 = context.Rooms.Where(room => room.Name == "D3470").FirstOrDefault();
+            Room D2290 = context.Rooms.Where(room => room.Name == "D2290").FirstOrDefault();
+            Room D2380 = context.Rooms.Where(room => room.Name == "D2380").FirstOrDefault();
+            Room D2390 = context.Rooms.Where(room => room.Name == "D2390").FirstOrDefault();
+            Room D2400 = context.Rooms.Where(room => room.Name == "D2400").FirstOrDefault();
+            Room D2280 = context.Rooms.Where(room => room.Name == "D2280").FirstOrDefault();
+            Room D2270 = context.Rooms.Where(room => room.Name == "D2270").FirstOrDefault();
+            Room D2340 = context.Rooms.Where(room => room.Name == "D2340").FirstOrDefault();
+            Room D2350 = context.Rooms.Where(room => room.Name == "D2350").FirstOrDefault();
+            Room D2360 = context.Rooms.Where(room => room.Name == "D2360").FirstOrDefault();
+            Room D2250 = context.Rooms.Where(room => room.Name == "D2250").FirstOrDefault();
+            Room D3460 = context.Rooms.Where(room => room.Name == "D3460").FirstOrDefault();
+            Room D3450 = context.Rooms.Where(room => room.Name == "D3450").FirstOrDefault();
+            Room D3440 = context.Rooms.Where(room => room.Name == "D3440").FirstOrDefault();
+            Room D3430 = context.Rooms.Where(room => room.Name == "D3430").FirstOrDefault();
+            Room D3420 = context.Rooms.Where(room => room.Name == "D3420").FirstOrDefault();
+            Room D3410 = context.Rooms.Where(room => room.Name == "D3410").FirstOrDefault();
+            Room D3400 = context.Rooms.Where(room => room.Name == "D3400").FirstOrDefault();
+            Room D3390 = context.Rooms.Where(room => room.Name == "D3390").FirstOrDefault();
+            Room D3380 = context.Rooms.Where(room => room.Name == "D3380").FirstOrDefault();
+            Room D3370 = context.Rooms.Where(room => room.Name == "D3370").FirstOrDefault();
+            Room D2260 = context.Rooms.Where(room => room.Name == "D2260").FirstOrDefault();
+            Room D2200 = context.Rooms.Where(room => room.Name == "D2200").FirstOrDefault();
+            Room D2240 = context.Rooms.Where(room => room.Name == "D2240").FirstOrDefault();
+            Room D2220 = context.Rooms.Where(room => room.Name == "D2220").FirstOrDefault();
+            Room D2210 = context.Rooms.Where(room => room.Name == "D2210").FirstOrDefault();
+            Room D2230 = context.Rooms.Where(room => room.Name == "D2230").FirstOrDefault();
+            Room C3040 = context.Rooms.Where(room => room.Name == "C3040").FirstOrDefault();
+            Room C3050 = context.Rooms.Where(room => room.Name == "C3050").FirstOrDefault();
+            Room D3500 = context.Rooms.Where(room => room.Name == "C3500").FirstOrDefault();
+            Room D3480 = context.Rooms.Where(room => room.Name == "D3480").FirstOrDefault();
+            Room D3530 = context.Rooms.Where(room => room.Name == "D3530").FirstOrDefault();
+            Room D3520 = context.Rooms.Where(room => room.Name == "D3520").FirstOrDefault();
+            Room D3540 = context.Rooms.Where(room => room.Name == "D3540").FirstOrDefault();
 
+            /*
 
-            C3021.South = C3020;
-            C3021.North = C3150;
-            C3150.South = C3021;
-            C3020.North = C3021;
+            // Mapping av Tredje etasje
+            D3310.Exits.Add(D3340);
+            D3310.Exits.Add(D3320);
+            D3310.Exits.Add(C3020);
+            D3340.Exits.Add(D3310);
+            D3320.Exits.Add(D3310);
+            C3020.Exits.Add(D3310);
+
+            C3020.Exits.Add(D3350);
+            C3020.Exits.Add(D3360);
+            C3020.Exits.Add(C3040);
+            C3020.Exits.Add(C3050);
+            C3020.Exits.Add(C3191);
+            C3020.Exits.Add(C3000);
+            C3020.Exits.Add(C3021);
+
+            D3350.Exits.Add(C3020);
+            D3330.Exits.Add(C3020);
+            D3360.Exits.Add(C3020);
+            C3040.Exits.Add(C3020);
+            C3050.Exits.Add(C3020);
+            C3191.Exits.Add(C3020);
+            C3021.Exits.Add(C3020);
+
+            C3021.Exits.Add(C3150);
+            C3150.Exits.Add(C3021);
+
+            C3191.Exits.Add(C3190);
+            C3191.Exits.Add(D3510);
+            C3191.Exits.Add(D3500);
+            C3191.Exits.Add(D3490);
+            C3191.Exits.Add(D3480);
+            C3191.Exits.Add(D3480);
+            C3191.Exits.Add(D3470);
+            C3191.Exits.Add(D3460);
+            C3191.Exits.Add(D3450);
+            C3191.Exits.Add(D3440);
+            C3191.Exits.Add(D3530);
+            C3191.Exits.Add(D3540);
+            C3191.Exits.Add(D3520);
+
+            C3190.Exits.Add(C3191);
+            D3510.Exits.Add(C3191);
+            D3500.Exits.Add(C3191);
+            D3490.Exits.Add(C3191);
+            D3480.Exits.Add(C3191);
+            D3470.Exits.Add(C3191);
+            D3460.Exits.Add(C3191);
+            D3450.Exits.Add(C3191);
+            D3440.Exits.Add(C3191);
+            D3530.Exits.Add(C3191);
+            D3540.Exits.Add(C3191);
+            D3520.Exits.Add(C3191);
+
+            D3520.Exits.Add(Corridor);
+
+            Corridor.Exits.Add(D3520);
+            Corridor.Exits.Add(D3370);
+            Corridor.Exits.Add(D3380);
+            Corridor.Exits.Add(D3390);
+            Corridor.Exits.Add(D3400);
+            Corridor.Exits.Add(D3410);
+            Corridor.Exits.Add(D3420);
+            Corridor.Exits.Add(D3430);
+
+            D3430.Exits.Add(Corridor);
+            D3420.Exits.Add(Corridor);
+            D3410.Exits.Add(Corridor);
+            D3400.Exits.Add(Corridor);
+            D3390.Exits.Add(Corridor);
+            D3380.Exits.Add(Corridor);
+            D3370.Exits.Add(Corridor);
+            D3430.Exits.Add(Corridor);
+            D3430.Exits.Add(Corridor);
+
             context.SaveChanges();
-
+            */
         }
     }
 }
