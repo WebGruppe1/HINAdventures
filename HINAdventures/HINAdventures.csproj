@@ -214,6 +214,7 @@
     <Compile Include="classes\Eat.cs" />
     <Compile Include="classes\Enter.cs" />
     <Compile Include="classes\Hit.cs" />
+    <Compile Include="classes\Inventory.cs" />
     <Compile Include="classes\Open.cs" />
     <Compile Include="classes\Pick.cs" />
     <Compile Include="Controllers\AccountController.cs" />
