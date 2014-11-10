@@ -210,7 +210,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="classes\CommandRouter.cs" />
+    <Compile Include="classes\Drink.cs" />
     <Compile Include="classes\Eat.cs" />
+    <Compile Include="classes\Open.cs" />
     <Compile Include="classes\Pick.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
