@@ -31,6 +31,8 @@ namespace HINAdventures.classes
 				command = commandToBeInterpreted;
 			}
 
+            string returnString = "-> " + command + " [" + argument + "] \n";
+
 			switch (command.ToLower())
 			{
 				case "inventory":
@@ -43,6 +45,9 @@ namespace HINAdventures.classes
 					break;
 				case "kiss":
 					break;
+                case "enter":
+                    returnString += Enter.EnterCommand(argument);
+                    break;
 				case "eat":
                     return Eat.EatCommand(argument);
 				case "drink":
@@ -60,7 +65,6 @@ namespace HINAdventures.classes
 				default:
 					return "The command is not recognised";
 			}
-			string returnString = command + " [" + argument + "]";
 			return returnString;
 		}
 	}
