@@ -44,7 +44,7 @@ namespace HINAdventures.classes
 				case "kill":
 					break;
 				case "kiss":
-					break;
+					return Kiss.KissCommand(argument);
                 case "enter":
                     returnString += Enter.EnterCommand(argument);
                     break;
