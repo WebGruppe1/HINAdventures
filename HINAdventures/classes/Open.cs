@@ -9,7 +9,7 @@ namespace HINAdventures.classes
     {
         public static string OpenCommand(String item)
         {
-            return "You opened " + item;
+            return item + " is open";
         }
     }
 }

@@ -9,7 +9,7 @@ namespace HINAdventures.classes
     {
         public static string DrinkCommand(String item)
         {
-            return "You drank " + item;
+            return "You drank " + item + ". It was delicious! Mmm..";
         }
     }
 }
