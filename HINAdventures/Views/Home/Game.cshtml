@@ -3,18 +3,18 @@
 }
 
 <form id="game">
-    <div>
-        <textarea class=form-control rows="12" cols="100" style="resize:none"></textarea>
-        <div class="input-group">
-            <input type="text" class="form-control">
+    <div class="row">
+    <div class="col-sm-6" id="command-console">
+            <textarea id="gameOutput" name="gameOutput" class=form-control rows="12" style="resize:none"></textarea>
+            <input type="text" id="gameInput" class="form-control" name="gameInput">
         </div>
     </div>
     <br />
-    <div class="allExceptConsole">
+    <div class="clearfix">
         <div class="chat" style="float:left; width:45%">
-            <textarea class=form-control rows="6" style="resize:none"></textarea>
+            <textarea class=form-control rows="6" style="resize:none" id="chatOutput" name="chatOutput"></textarea>
             <div class="input-group">
-                <input type="text" class="form-control">
+                <input type="text" id="chatInput" name="chatInput" class="form-control">
             </div>
         </div> <!--end of chat-->
         <div class="west" style="float:left">
@@ -37,3 +37,33 @@
     </div><!-- end of allExceptConsole-->
 </form>
 <div class="clearfix"></div>
+<script>
+    $(document).ready(function () {
+        console.log("GameJquery loaded and ready to be used");
+        var hub = $.connection.Command;
+        var username = "@User.Identity.Name";
+        var id = "test";
+
+        //Define Command response function
+        hub.client.CommandResponse = function (message) {
+            console.log("Message sent from server and written in #gameOutput");
+            $('#gameOutput').append(message);
+        };
+
+        $.connection.hub
+            .start()
+            .done(function () {
+                console.log("CommandHub started");
+                $('#gameInput').on("keydown", function (event) {
+                    if (event.which == 13) {
+                        console.log("User just pressed enter in 'GameInput' box")
+                        hub.server.command($('#gameInput').val());
+                        $("#gameInput").val('');
+                    }
+
+                });
+        });
+
+
+    });
+</script>
