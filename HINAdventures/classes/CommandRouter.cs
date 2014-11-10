@@ -47,6 +47,9 @@ namespace HINAdventures.classes
 					break;
 				case "drink":
 					break;
+                case "pick":
+                    Pick.PickCommand(argument);
+                    break;
 				case "get":
 					break;
 				case "throw":
