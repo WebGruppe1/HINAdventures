@@ -57,7 +57,7 @@ namespace HINAdventures.classes
 				case "give":
 					break;
 				case "help":
-					break;
+					return Help.GetCommands();
 				default:
 					return "The command is not recognised";
 			}
