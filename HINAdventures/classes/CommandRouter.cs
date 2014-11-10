@@ -44,12 +44,11 @@ namespace HINAdventures.classes
 				case "kiss":
 					break;
 				case "eat":
-					break;
+                    return Eat.EatCommand(argument);
 				case "drink":
 					break;
                 case "pick":
-                    Pick.PickCommand(argument);
-                    break;
+                   return Pick.PickCommand(argument);
 				case "get":
 					break;
 				case "throw":
