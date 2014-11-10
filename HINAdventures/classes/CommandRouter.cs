@@ -51,15 +51,13 @@ namespace HINAdventures.classes
 				case "eat":
                     return Eat.EatCommand(argument);
 				case "drink":
-					return Drink.DrinkCommand(argument);
+					break;
                 case "pick":
                    return Pick.PickCommand(argument);
 				case "get":
 					break;
 				case "throw":
-					break;
-                case "open":
-                    return Open.OpenCommand(argument);
+					break;              
 				case "give":
 					break;
 				case "help":
