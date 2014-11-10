@@ -3,14 +3,14 @@
 }
 
 <form id="game">
-    <div>
-        <textarea id="gameOutput" name="gameOutput" class=form-control rows="12" style="resize:none"></textarea>
-        <div class="input-group">
+    <div class="row">
+    <div class="col-sm-6" id="command-console">
+            <textarea id="gameOutput" name="gameOutput" class=form-control rows="12" style="resize:none"></textarea>
             <input type="text" id="gameInput" class="form-control" name="gameInput">
         </div>
     </div>
     <br />
-    <div class="allExceptConsole">
+    <div class="clearfix">
         <div class="chat" style="float:left; width:45%">
             <textarea class=form-control rows="6" style="resize:none" id="chatOutput" name="chatOutput"></textarea>
             <div class="input-group">

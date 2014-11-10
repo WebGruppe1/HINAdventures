@@ -5,11 +5,17 @@
 
 <h2>GlobalChat</h2>
 
-<div>
-    <textarea id="chatbox" cols="100" rows="10" readonly></textarea>
+<div id="chat">
+    <textarea id="chatbox" cols="130" rows="10" readonly></textarea>
+    <div id="users">
+        <b>Online Users</b>
+    </div>
     <br />
     <input type="text" id="message" />
     <input type="button" id="sendmessage" value="Send" />
+    <select id="userlist">
+        <option value="All">All</option>
+    </select>
 </div>
 
 <!-- Jeg har flyttet inkludering av alle javascriptene til Head, så du skal ikke trenge å importere jquery her
@@ -26,11 +32,30 @@
             };
 
             $.connection.hub.start().done(function () {
+                chat.server.join(username, $.connection.hub.id);
                 $("#sendmessage").click(function () {
-                    chat.server.send(username, $("#message").val());
+                    if ($("#userlist").val() == "All") {
+                        chat.server.send(username, $("#message").val());
+                    }
+                    else {
+                        chat.server.sendToSpecific(username, $("#message").val(), $("#userlist").val());
+                    }
+
                     $('#message').val('').focus();
                 });
             });
+
+            chat.client.showConnected = function (name) {
+                //$("#users").empty();
+                //$.each(name, function (index, value) {
+                $("#users").append("<div>" + name + "</div>");
+                $("#userlist").append('<option value="' + name + '">' + name + '</option>');
+                //});
+            }
+
+            chat.client.disconnected = function (name) {
+                $("#users").remove(":contains('" + name + "')");
+            }
         }
 
         $(document).ready(function () {
