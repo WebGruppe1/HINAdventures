@@ -8,56 +8,56 @@ namespace HINAdventures.classes
 {
 	public static class CommandRouter
 	{
-        private static string commandRegex = @"(\S*) (.*)"; // Regex that splits the command from the argument
+		private static string commandRegex = @"(\S*) (.*)"; // Regex that splits the command from the argument
 
-        /***
-         * Finds the command in a string and routes it
-         ***/
+		/***
+		 * Finds the command in a string and routes it
+		 ***/
 		public static string RouteCommand(string commandToBeInterpreted)
 		{
-            string command = string.Empty;
-            string argument = string.Empty;
+			string command = string.Empty;
+			string argument = string.Empty;
 
 			Match match = Regex.Match(commandToBeInterpreted, commandRegex);
-            
-            if (match.Success)
+			
+			if (match.Success)
 			{
-                command = match.Groups[1].Value;
-                argument = match.Groups[2].Value;
-            }
+				command = match.Groups[1].Value;
+				argument = match.Groups[2].Value;
+			}
 
-            else
-            {
-                command = commandToBeInterpreted;
-            }
+			else
+			{
+				command = commandToBeInterpreted;
+			}
 
-            switch (command.ToLower())
-            {
-                case "inventory":
-                    break;
-                case "turn":
-                    break;
-                case "hit":
-                    break;
-                case "kill":
-                    break;
-                case "kiss":
-                    break;
-                case "eat":
-                    break;
-                case "drink":
-                    break;
-                case "get":
-                    break;
-                case "throw":
-                    break;
-                case "give":
-                    break;
-                case "help":
-                    break;
-                default:
-                    return "The command is not recognised";
-            }
+			switch (command.ToLower())
+			{
+				case "inventory":
+					break;
+				case "turn":
+					break;
+				case "hit":
+					break;
+				case "kill":
+					break;
+				case "kiss":
+					break;
+				case "eat":
+					break;
+				case "drink":
+					break;
+				case "get":
+					break;
+				case "throw":
+					break;
+				case "give":
+					break;
+				case "help":
+					break;
+				default:
+					return "The command is not recognised";
+			}
 			string returnString = command + " [" + argument + "]";
 			return returnString;
 		}
