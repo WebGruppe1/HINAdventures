@@ -22,30 +22,37 @@
 <script type="text/javascript" src="/Scripts/jquery-2.1.1.min.js"></script>
 -->
 <script>
-
+    //Script that deals with the chat functions.
+    //Kristian Alm 10.11.2014
     function startChat() {
-        var chat = $.connection.globalChatHub;
-        var username = "@User.Identity.Name";
+        var chat = $.connection.globalChatHub;              
+        var username = "@User.Identity.Name";               //Gets the players username
 
+        //Print messages received in this function
         chat.client.addNewMessageToPage = function (username, message) {
             $("#chatbox").append(username + ": " + message + "\n");
         };
 
+        //Starts the connection with the hub
         $.connection.hub.start().done(function () {
-            chat.server.join(username, $.connection.hub.id);
+            chat.server.join(username, $.connection.hub.id);            //Register the player with a list containing all online players
+
+            //On pressing send it checks if you want to send the message to all or just one player.
             $("#sendmessage").click(function () {
                 if ($("#userlist").val() == "All") {
                     chat.server.send(username, $("#message").val());
                 }
+                //Sends with the name of the player you want to send a private message to
                 else {
                     chat.server.sendToSpecific(username, "[Private] -> " + $("#userlist").val() + ": " + $("#message").val(), $("#userlist").val());
                 }
-
-                $('#message').val('').focus();
+                $('#message').val('').focus();          //Clears the textbox after sending a message
             });
         });
 
+        //Gives a list of all online players
         chat.client.showConnected = function (name) {
+            //Excludes yourself from the dropdownlist
             if (name == username) {
                 $("#users").append("<div>" + name + "</div>");
             }
@@ -55,12 +62,15 @@
             }
         }
 
+        //Gets called from OnDisconnect in GlobalChathub when a player disconnects.
+        //A fault causes all players to be removed from everyone upon one player exiting
         chat.client.disconnected = function (name) {
             $("#users").remove(":contains('" + name + "')");
             $("#userlist option").remove(":contains('" + name + "')");
         }
     }
 
+    //Starts the function when document is ready
     $(document).ready(function () {
         startChat();
     });
