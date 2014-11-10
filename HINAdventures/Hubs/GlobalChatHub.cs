@@ -10,7 +10,6 @@ namespace HINAdventures.Hubs
 {
     public class GlobalChatHub : Hub
     {
-        //public static List<OnlineUser> userList = new List<OnlineUser>();
         static ConcurrentDictionary<string, string> userList = new ConcurrentDictionary<string, string>();
 
         public void Send(string name, string message)
@@ -22,39 +21,20 @@ namespace HINAdventures.Hubs
         {
             if (userList.ContainsKey(userName))
             {
-                
+
             }
 
             else
             {
                 userList.TryAdd(userName, id);
                 foreach (KeyValuePair<String, String> entry in userList)
-                    Clients.All.showConnected(entry.Key);
+                    Clients.Caller.showConnected(entry.Key);
             }
-            /*
-            bool isOnList = false;
-
-            foreach (OnlineUser u in userList)
-            {
-                if (u.userName.Equals(userName))
-                {
-                    isOnList = true;
-                    Clients.All.showConnected(userList);
-                }
-            }
-
-            if (!isOnList)
-            {
-                OnlineUser user = new OnlineUser();
-                user.id = Context.ConnectionId;
-                user.userName = userName;
-                userList.Add(user);
-                Clients.All.showConnected(userList);
-            }
-             * */
+            Clients.Others.showConnected(userName);
         }
 
-        public void SendToSpecific(string name, string message, string to) {
+        public void SendToSpecific(string name, string message, string to)
+        {
             Clients.Caller.addNewMessageToPage(name, message);
             Clients.Client(userList[to]).addNewMessageToPage(name, message);
         }
@@ -64,15 +44,7 @@ namespace HINAdventures.Hubs
             var name = userList.FirstOrDefault(x => x.Value == Context.ConnectionId.ToString());
             string s;
             userList.TryRemove(name.Key, out s);
-            //return base.OnDisconnected(stopCalled);
             return Clients.All.disconnected(name.Key);
         }
     }
-    /*
-    public class OnlineUser
-    {
-        public string userName { get; set; }
-        public string id { get; set; }
-    }
-    */
 }
