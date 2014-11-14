@@ -33,6 +33,8 @@ namespace HINAdventures.classes
 
             string returnString = "-> " + command + " [" + argument + "] \n";
 
+            ICommand com = null;
+
 			switch (command.ToLower())
 			{
 				case "inventory":
@@ -40,7 +42,9 @@ namespace HINAdventures.classes
 				case "turn":
 					break;
 				case "hit":
-                    returnString += Hit.HitCommand(argument);
+                    com = new Hit();
+                    returnString += com.RunCommand(argument);
+                    //returnString += Hit.RunCommand(argument);
                     break;
 				case "kill":
 					break;
