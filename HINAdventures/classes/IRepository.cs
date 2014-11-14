@@ -11,5 +11,6 @@ namespace HINAdventures.classes
         String[] getAvailableRooms();
         List<Item> GetDrinkableItems();
         List<Item> GetAllItems();
+        List<Item> GetInventory(string userId);
     }
 }

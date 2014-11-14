@@ -39,7 +39,8 @@ namespace HINAdventures.classes
 			switch (command.ToLower())
 			{
 				case "inventory":
-					break;
+					runCommand = new Inventory();
+                    return runCommand.RunCommand("");
 				case "turn":
                     returnString += Turn.TurnCommand(argument);
                     break;

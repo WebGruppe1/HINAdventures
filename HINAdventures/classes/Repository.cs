@@ -49,5 +49,12 @@ namespace HINAdventures.classes
             var desc = from a in db.Rooms where a.Name == input select a.Description;
             return desc.FirstOrDefault();
         }
+
+        //utestet
+        public List<Item> GetInventory(string userId)
+        {
+            var itemList = db.Items.Where(items => items.ApplicationUser.Id.Equals(userId)).ToList();
+            return itemList;
+        }
     }
 }
