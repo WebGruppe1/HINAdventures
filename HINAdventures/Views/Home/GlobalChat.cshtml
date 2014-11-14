@@ -54,18 +54,17 @@
         chat.client.showConnected = function (name) {
             //Excludes yourself from the dropdownlist
             if (name == username) {
-                $("#users").append("<div>" + name + "</div>");
+                $("#users").append("<div class=\"players\">" + name + "</div>");
             }
             else {
-                $("#users").append("<div>" + name + "</div>");
+                $("#users").append("<div class=\"players\">" + name + "</div>");
                 $("#userlist").append('<option value="' + name + '">' + name + '</option>');
             }
         }
 
         //Gets called from OnDisconnect in GlobalChathub when a player disconnects.
-        //A fault causes all players to be removed from everyone upon one player exiting
         chat.client.disconnected = function (name) {
-            $("#users").remove(":contains('" + name + "')");
+            $(".players").remove(":contains('" + name + "')");
             $("#userlist option").remove(":contains('" + name + "')");
         }
     }
