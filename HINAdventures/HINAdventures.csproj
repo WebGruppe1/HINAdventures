@@ -273,6 +273,9 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\abstract-balls-blue-1341.jpg" />
+    <Content Include="Content\images\abstract-lights-motion-1954.jpg" />
+    <Content Include="Content\images\clouds-cloudy-dawn-2330.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
