@@ -15,6 +15,9 @@ namespace HINAdventures.classes
 		 ***/
 		public static string RouteCommand(string commandToBeInterpreted)
 		{
+            ICommand runCommand = null;
+            ICommandNoArgs runCommandNoArgs = null;
+
 			string command = string.Empty;
 			string argument = string.Empty;
 
@@ -32,8 +35,6 @@ namespace HINAdventures.classes
 			}
 
             string returnString = "-> " + command + " [" + argument + "] \n";
-
-            ICommand runCommand = null;
 
 			switch (command.ToLower())
 			{
@@ -66,13 +67,18 @@ namespace HINAdventures.classes
 					break;
 				case "throw":
 					break; 
+                case "scout":
+                    runCommandNoArgs = new Scout();
+                    returnString += runCommandNoArgs.RunCommand();
+                    break;
                 case "open":
                     runCommand = new Open();
                     return runCommand.RunCommand(argument);
 				case "give":
 					break;
 				case "help":
-					return Help.GetCommand();
+                    runCommandNoArgs = new Help();
+					return runCommandNoArgs.RunCommand();
 				default:
 					return "The command is not recognised";
 			}

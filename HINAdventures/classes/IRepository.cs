@@ -8,7 +8,7 @@ namespace HINAdventures.classes
     {
         String RoomDescription(String input);
 
-        List<String> getAvailableRooms();
+        String[] getAvailableRooms();
         List<Item> GetAllItems();
     }
 }
