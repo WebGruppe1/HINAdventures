@@ -15,6 +15,9 @@ namespace HINAdventures.classes
 		 ***/
 		public static string RouteCommand(string commandToBeInterpreted)
 		{
+            ICommand runCommand = null;
+            ICommandNoArgs runCommandNoArgs = null;
+
 			string command = string.Empty;
 			string argument = string.Empty;
 
@@ -33,14 +36,13 @@ namespace HINAdventures.classes
 
             string returnString = "-> " + command + " [" + argument + "] \n";
 
-            ICommand runCommand = null;
-
 			switch (command.ToLower())
 			{
 				case "inventory":
 					break;
 				case "turn":
-                    return Turn.TurnCommand(argument);
+                    returnString += Turn.TurnCommand(argument);
+                    break;
 				case "hit":
                     runCommand = new Hit();
                     returnString += runCommand.RunCommand(argument);
@@ -49,31 +51,42 @@ namespace HINAdventures.classes
 					break;
 				case "kiss":
                     runCommand = new Kiss();
-                    return runCommand.RunCommand(argument);
+                    returnString += runCommand.RunCommand(argument);
+                    break;
                 case "enter":
                     runCommand = new Enter();
                     returnString += runCommand.RunCommand(argument);
                     break;
 				case "eat":
                     runCommand = new Eat();
-                    return runCommand.RunCommand(argument);
+                    returnString += runCommand.RunCommand(argument);
+                    break;
 				case "drink":
                     runCommand = new Drink();
-                    return runCommand.RunCommand(argument);
+                    returnString += runCommand.RunCommand(argument);
+                    break;
                 case "pick":
                     runCommand = new Pick();
-                    return runCommand.RunCommand(argument);
+                    returnString += runCommand.RunCommand(argument);
+                    break;
 				case "get":
 					break;
 				case "throw":
 					break; 
+                case "scout":
+                    runCommandNoArgs = new Scout();
+                    String returnStr = "-> " + command + "\n";
+                    return returnStr += runCommandNoArgs.RunCommand();
                 case "open":
                     runCommand = new Open();
-                    return runCommand.RunCommand(argument);
+                    returnString += runCommand.RunCommand(argument);
+                    break;
 				case "give":
 					break;
-				case "help":
-					return Help.GetCommand();
+                case "help":
+                    runCommandNoArgs = new Help();
+                    returnStr = "-> " + command + "\n";
+                    return returnStr += runCommandNoArgs.RunCommand();
 				default:
 					return "The command is not recognised";
 			}

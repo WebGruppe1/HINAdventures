@@ -216,10 +216,13 @@
     <Compile Include="classes\Enter.cs" />
     <Compile Include="classes\Hit.cs" />
     <Compile Include="classes\ICommand.cs" />
+    <Compile Include="classes\ICommandNoArgs.cs" />
     <Compile Include="classes\Inventory.cs" />
     <Compile Include="classes\Kiss.cs" />
     <Compile Include="classes\Open.cs" />
     <Compile Include="classes\Pick.cs" />
+    <Compile Include="classes\Scout.cs" />
+    <Compile Include="classes\Throw.cs" />
     <Compile Include="classes\Turn.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -244,6 +247,10 @@
     <Compile Include="Migrations\201411141153022_NameAddedToDescription.cs" />
     <Compile Include="Migrations\201411141153022_NameAddedToDescription.Designer.cs">
       <DependentUpon>201411141153022_NameAddedToDescription.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411141255251_VirtualUsers.cs" />
+    <Compile Include="Migrations\201411141255251_VirtualUsers.Designer.cs">
+      <DependentUpon>201411141255251_VirtualUsers.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -350,6 +357,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411141153022_NameAddedToDescription.resx">
       <DependentUpon>201411141153022_NameAddedToDescription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411141255251_VirtualUsers.resx">
+      <DependentUpon>201411141255251_VirtualUsers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

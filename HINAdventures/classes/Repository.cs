@@ -10,16 +10,11 @@ namespace HINAdventures.classes
     {
         ApplicationDbContext db = new ApplicationDbContext();
 
-        public List<String> getAvailableRooms()
-        {
-            List<String> list = new List<String>();
-            
-            var rooms = from a in db.Rooms select a;
+        public String[] getAvailableRooms()
+        {            
+            var rooms = from a in db.Rooms select a.Name;
 
-            foreach (Room r in rooms)
-            {
-                list.Add(r.Name);
-            }
+            String[] list = rooms.ToArray();            
             
             return list;
         }
