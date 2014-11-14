@@ -13,7 +13,7 @@ namespace HINAdventures.classes
         public Drink()
         {
             repos = new Repository();
-            items = repos.GetAllItems();
+            items = repos.GetDrinkableItems();
         }
         public string RunCommand(string item)
         {
@@ -22,10 +22,14 @@ namespace HINAdventures.classes
                 for (int i = 0; i < items.Count; i++)
                 {
                     Item it = items[i];
-                    if (it.isDrinkable)
+                    if (it.Name == item || it.Name.ToLower() == item)
+                    {
                         item = "You drank " + item;
+                    }
                     else
+                    {
                         item = "You can't drink this";
+                    }
                 }
             }
             return item;

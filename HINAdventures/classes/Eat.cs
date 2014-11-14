@@ -15,22 +15,25 @@ namespace HINAdventures.classes
         }
         public string RunCommand(string food)
         {
-            string eat = "";
             
-            List<Item> items = repos.GetAllItems();
+            List<Item> items = repos.GetEatableItems();
             if (items != null)
             {
                 for (int i = 0; i < items.Count; i++)
                 {
                     Item it = items[i];
-                   
-                    if (food == it.Name || food == it.Name.ToLower() && it.isEatable)
-                        eat = "You just ate " + food;
+
+                    if (it.Name == food || it.Name.ToLower() == food)
+                    {
+                        food = "You just ate " + it.Name;
+                    }
                     else
-                        eat = "You can't eat that";
+                    {
+                        food = "You can't eat that";
+                    }
                 }
             }
-            return eat;
+            return food;
         }      
 
     }

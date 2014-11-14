@@ -7,8 +7,9 @@ namespace HINAdventures.classes
     public interface IRepository
     {
         String RoomDescription(String input);
-
+        List<Item> GetEatableItems();
         String[] getAvailableRooms();
+        List<Item> GetDrinkableItems();
         List<Item> GetAllItems();
     }
 }

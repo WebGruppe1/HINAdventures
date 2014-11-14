@@ -18,12 +18,29 @@ namespace HINAdventures.classes
             
             return list;
         }
+        public List<Item> GetEatableItems()
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var eatItems = context.Items.Where(i => i.isEatable == true).ToList();
+                return eatItems;
+            }
+        }
         public List<Item> GetAllItems()
         {
             using (var context = new ApplicationDbContext())
             {
                 var itemListe = context.Items.ToList();
                 return itemListe;
+
+            }
+        }
+        public List<Item> GetDrinkableItems()
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var drinkListe = context.Items.Where(i=> i.isDrinkable == true).ToList();
+                return drinkListe;
 
             }
         }
