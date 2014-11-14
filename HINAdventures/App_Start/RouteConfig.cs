@@ -16,7 +16,7 @@ namespace HINAdventures
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "FirstPage", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Game", id = UrlParameter.Optional }
             );
         }
     }

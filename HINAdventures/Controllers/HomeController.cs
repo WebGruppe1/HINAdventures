@@ -12,7 +12,7 @@ namespace HINAdventures.Controllers
         {
             return View("FirstPage");
         }
-
+        [Authorize]
         public ActionResult Game()
         {
             return View();
