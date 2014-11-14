@@ -6,17 +6,17 @@ using System.Web;
 
 namespace HINAdventures.classes
 {
-    public class Hit
+    public class Hit :ICommand
     {
-        private static IRepository repos;
+        private IRepository repos;
         public Hit()
         {
             repos = new Repository();
         }
-        public static string HitCommand(string item)
+        public string RunCommand(string item)
         {
                   string hit = "";
-                  List<Item> items = getItems();
+                  List<Item> items = repos.GetAllItems();
                   for (int i = 0; i < items.Count; i++)
                   {
                       Item it = items[i];
@@ -32,10 +32,5 @@ namespace HINAdventures.classes
                   return hit;
            
         }
-        static List<Item> getItems()
-        {
-            return repos.GetAllItems();
-        }
-        
     }
 }

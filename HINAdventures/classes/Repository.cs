@@ -32,5 +32,10 @@ namespace HINAdventures.classes
 
             }
         }
+        public String RoomDescription(String input)
+        {
+            var desc = from a in db.Rooms where a.Name == input select a.Description;
+            return desc.FirstOrDefault();
+        }
     }
 }

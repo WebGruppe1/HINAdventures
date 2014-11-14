@@ -5,9 +5,9 @@ using System.Web;
 
 namespace HINAdventures.classes
 {
-    public class Drink
+    public class Drink : ICommand
     {    
-        public static string DrinkCommand(string item)
+        public string RunCommand(string item)
         {
             return "You drank " + item;
         }

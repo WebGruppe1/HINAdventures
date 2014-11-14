@@ -90,22 +90,9 @@ namespace HINAdventures.Migrations
             SetRole(userTommy, userRole);
             SetRole(userEivind, userRole);
             SetRole(userFrederik, userRole);
-            context.SaveChanges();
-
-            //Seed Descriptions
-
-            var descriptions = new List<Description>
-            {
-                new Description {
-                    Text = "Test description"
-               },
-               new Description {
-                   Text = "Test description 2"
-                }
-            };
-            descriptions.ForEach(element => context.Descriptions.AddOrUpdate(description => description.Text, element));
 
             context.SaveChanges();
+
             
             //Seed Rooms
             var rooms = new List<Room>
@@ -125,7 +112,7 @@ namespace HINAdventures.Migrations
                     Description = "You enter a big room with a lot computers where there is a dark person sitting in the back staring intensingly at the screen with quick moment inside his clothes, and a couple of students fighting over which is best between apple and android/Windows."
 
                 },
-                /*
+                
                 new Room {
                     Name = "D2090",
                     OutsideDescription = "You see a door labeled 'D2090'",
@@ -401,18 +388,13 @@ namespace HINAdventures.Migrations
                     Description = "You entered a very awesome office and a handsome teacher. You see a kick ass computer and kickass books. The teacher is called The Hans."
                 },
                 new Room {
-                    Name = "D2230",
-                    OutsideDescription = "You see a door labeled 'D2230'",
-                    Description = "A chill wind blows against you as you open the door. The Window is open, computer is on, theres books on the shelf. Frode is turning around and are asking if you need any help."
-                },
-                new Room {
                     Name = "C3040",
                     OutsideDescription = "You see a door labeled 'C3040'",
                     Description = "You have entered the Male toilets"
                 },
                 new Room {
-                    Name = "D3060",
-                    OutsideDescription = "You see a door labeled 'D3060'",
+                    Name = "C3050",
+                    OutsideDescription = "You see a door labeled 'C3050'",
                     Description = "You have entered the Female toilets"
                 },
                 new Room {
@@ -450,11 +432,11 @@ namespace HINAdventures.Migrations
                     OutsideDescription = "You see a door labeled 'Corridor'",
                     Description = "You are in a long corridor with lots of dors on one side."
                 }
-        */
+        
             };
             rooms.ForEach(element => context.Rooms.AddOrUpdate(x => x.Name, element));
             context.SaveChanges();
-            /*
+            
             // Setter opp rom plasseringen
             Room C3020 = context.Rooms.Where(room => room.Name == "C3020").FirstOrDefault();
             Room B3200 = context.Rooms.Where(room => room.Name == "B3200").FirstOrDefault();
@@ -516,91 +498,141 @@ namespace HINAdventures.Migrations
             Room D2230 = context.Rooms.Where(room => room.Name == "D2230").FirstOrDefault();
             Room C3040 = context.Rooms.Where(room => room.Name == "C3040").FirstOrDefault();
             Room C3050 = context.Rooms.Where(room => room.Name == "C3050").FirstOrDefault();
-            Room D3500 = context.Rooms.Where(room => room.Name == "C3500").FirstOrDefault();
+            Room D3500 = context.Rooms.Where(room => room.Name == "D3500").FirstOrDefault();
             Room D3480 = context.Rooms.Where(room => room.Name == "D3480").FirstOrDefault();
             Room D3530 = context.Rooms.Where(room => room.Name == "D3530").FirstOrDefault();
             Room D3520 = context.Rooms.Where(room => room.Name == "D3520").FirstOrDefault();
-            Room D3540 = context.Rooms.Where(room => room.Name == "D3540").FirstOrDefault();
-
-            /*
+            Room D3540 = context.Rooms.Where(room => room.Name == "D3540").FirstOrDefault();         
 
             // Mapping av Tredje etasje
-            D3310.Exits.Add(D3340);
-            D3310.Exits.Add(D3320);
-            D3310.Exits.Add(C3020);
-            D3340.Exits.Add(D3310);
-            D3320.Exits.Add(D3310);
-            C3020.Exits.Add(D3310);
+            D3310.ConnectedRooms.Add(D3340);
+            D3310.ConnectedRooms.Add(D3320);
+            D3310.ConnectedRooms.Add(C3020);
+            D3340.ConnectedRooms.Add(D3310);
+            D3320.ConnectedRooms.Add(D3310);
+            C3020.ConnectedRooms.Add(D3310);
 
-            C3020.Exits.Add(D3350);
-            C3020.Exits.Add(D3360);
-            C3020.Exits.Add(C3040);
-            C3020.Exits.Add(C3050);
-            C3020.Exits.Add(C3191);
-            C3020.Exits.Add(C3000);
-            C3020.Exits.Add(C3021);
+            C3020.ConnectedRooms.Add(D3350);
+            C3020.ConnectedRooms.Add(D3360);
+            C3020.ConnectedRooms.Add(C3040);
+            C3020.ConnectedRooms.Add(C3050);
+            C3020.ConnectedRooms.Add(C3191);
+            C3020.ConnectedRooms.Add(C3000);
+            C3020.ConnectedRooms.Add(C3021);
 
-            D3350.Exits.Add(C3020);
-            D3330.Exits.Add(C3020);
-            D3360.Exits.Add(C3020);
-            C3040.Exits.Add(C3020);
-            C3050.Exits.Add(C3020);
-            C3191.Exits.Add(C3020);
-            C3021.Exits.Add(C3020);
+            D3350.ConnectedRooms.Add(C3020);
+            D3330.ConnectedRooms.Add(C3020);
+            D3360.ConnectedRooms.Add(C3020);
+            C3040.ConnectedRooms.Add(C3020);
+            C3050.ConnectedRooms.Add(C3020);
+            C3191.ConnectedRooms.Add(C3020);
+            C3021.ConnectedRooms.Add(C3020);
 
-            C3021.Exits.Add(C3150);
-            C3150.Exits.Add(C3021);
+            C3021.ConnectedRooms.Add(C3150);
+            C3150.ConnectedRooms.Add(C3021);
 
-            C3191.Exits.Add(C3190);
-            C3191.Exits.Add(D3510);
-            C3191.Exits.Add(D3500);
-            C3191.Exits.Add(D3490);
-            C3191.Exits.Add(D3480);
-            C3191.Exits.Add(D3480);
-            C3191.Exits.Add(D3470);
-            C3191.Exits.Add(D3460);
-            C3191.Exits.Add(D3450);
-            C3191.Exits.Add(D3440);
-            C3191.Exits.Add(D3530);
-            C3191.Exits.Add(D3540);
-            C3191.Exits.Add(D3520);
+            C3191.ConnectedRooms.Add(C3190);
+            C3191.ConnectedRooms.Add(D3510);
+            C3191.ConnectedRooms.Add(D3500);
+            C3191.ConnectedRooms.Add(D3490);
+            C3191.ConnectedRooms.Add(D3480);
+            C3191.ConnectedRooms.Add(D3480);
+            C3191.ConnectedRooms.Add(D3470);
+            C3191.ConnectedRooms.Add(D3460);
+            C3191.ConnectedRooms.Add(D3450);
+            C3191.ConnectedRooms.Add(D3440);
+            C3191.ConnectedRooms.Add(D3530);
+            C3191.ConnectedRooms.Add(D3540);
+            C3191.ConnectedRooms.Add(D3520);
 
-            C3190.Exits.Add(C3191);
-            D3510.Exits.Add(C3191);
-            D3500.Exits.Add(C3191);
-            D3490.Exits.Add(C3191);
-            D3480.Exits.Add(C3191);
-            D3470.Exits.Add(C3191);
-            D3460.Exits.Add(C3191);
-            D3450.Exits.Add(C3191);
-            D3440.Exits.Add(C3191);
-            D3530.Exits.Add(C3191);
-            D3540.Exits.Add(C3191);
-            D3520.Exits.Add(C3191);
+            C3190.ConnectedRooms.Add(C3191);
+            D3510.ConnectedRooms.Add(C3191);
+            D3500.ConnectedRooms.Add(C3191);
+            D3490.ConnectedRooms.Add(C3191);
+            D3480.ConnectedRooms.Add(C3191);
+            D3470.ConnectedRooms.Add(C3191);
+            D3460.ConnectedRooms.Add(C3191);
+            D3450.ConnectedRooms.Add(C3191);
+            D3440.ConnectedRooms.Add(C3191);
+            D3530.ConnectedRooms.Add(C3191);
+            D3540.ConnectedRooms.Add(C3191);
+            D3520.ConnectedRooms.Add(C3191);
 
-            D3520.Exits.Add(Corridor);
+            D3520.ConnectedRooms.Add(Corridor);
 
-            Corridor.Exits.Add(D3520);
-            Corridor.Exits.Add(D3370);
-            Corridor.Exits.Add(D3380);
-            Corridor.Exits.Add(D3390);
-            Corridor.Exits.Add(D3400);
-            Corridor.Exits.Add(D3410);
-            Corridor.Exits.Add(D3420);
-            Corridor.Exits.Add(D3430);
+            Corridor.ConnectedRooms.Add(D3520);
+            Corridor.ConnectedRooms.Add(D3370);
+            Corridor.ConnectedRooms.Add(D3380);
+            Corridor.ConnectedRooms.Add(D3390);
+            Corridor.ConnectedRooms.Add(D3400);
+            Corridor.ConnectedRooms.Add(D3410);
+            Corridor.ConnectedRooms.Add(D3420);
+            Corridor.ConnectedRooms.Add(D3430);
 
-            D3430.Exits.Add(Corridor);
-            D3420.Exits.Add(Corridor);
-            D3410.Exits.Add(Corridor);
-            D3400.Exits.Add(Corridor);
-            D3390.Exits.Add(Corridor);
-            D3380.Exits.Add(Corridor);
-            D3370.Exits.Add(Corridor);
-            D3430.Exits.Add(Corridor);
-            D3430.Exits.Add(Corridor);
+            D3430.ConnectedRooms.Add(Corridor);
+            D3420.ConnectedRooms.Add(Corridor);
+            D3410.ConnectedRooms.Add(Corridor);
+            D3400.ConnectedRooms.Add(Corridor);
+            D3390.ConnectedRooms.Add(Corridor);
+            D3380.ConnectedRooms.Add(Corridor);
+            D3370.ConnectedRooms.Add(Corridor);
+            D3430.ConnectedRooms.Add(Corridor);
+            D3430.ConnectedRooms.Add(Corridor);
 
             context.SaveChanges();
-            */
+
+            //Seed Descriptions
+
+            var descriptions = new List<Description>
+            {
+               new Description {
+                   Name = "Soap1",
+                   Text = "The soap is contained in a blue container with a pump at the top. It's half full."
+                },
+                new Description {
+                    Name = "Soap2",
+                    Text = "There is a white soap bar on the sink. It's well used."
+               },
+               new Description {
+                   Name = "JavaBook",
+                   Text = "On one of the tables there is a book with the title 'Java: The final chapter'"
+                }
+            };
+            descriptions.ForEach(element => context.Descriptions.AddOrUpdate(description => description.Text, element));
+
+            context.SaveChanges();
+
+            //Seed Items
+
+            var items = new List<Item>
+            {
+                new Item {
+                    Name = "Soap1",
+                    Description = context.Descriptions.Where(x => x.Name == "Soap1").FirstOrDefault(),
+                    isDrinkable = true,
+                    isEatable = false,
+                    Room = context.Rooms.Where(x => x.Name == "C3050").FirstOrDefault()
+                },
+                new Item {
+                    Name = "Soap2",
+                    Description = context.Descriptions.Where(x => x.Name == "Soap2").FirstOrDefault(),
+                    isDrinkable = false,
+                    isEatable = true,
+                    Room = context.Rooms.Where(x => x.Name == "C3040").FirstOrDefault()
+                },
+                new Item {
+                    Name = "JavaBook",
+                    Description = context.Descriptions.Where(x => x.Name == "JavaBook").FirstOrDefault(),
+                    isDrinkable = false,
+                    isEatable = false,
+                    Room = context.Rooms.Where(x => x.Name == "D3500").FirstOrDefault()
+                }
+
+            };
+            items.ForEach(element => context.Items.AddOrUpdate(item => item.Name, element));
+
+            context.SaveChanges();
+            
         }
     }
 }

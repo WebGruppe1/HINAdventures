@@ -33,6 +33,8 @@ namespace HINAdventures.classes
 
             string returnString = "-> " + command + " [" + argument + "] \n";
 
+            ICommand runCommand = null;
+
 			switch (command.ToLower())
 			{
 				case "inventory":
@@ -40,31 +42,38 @@ namespace HINAdventures.classes
 				case "turn":
                     return Turn.TurnCommand(argument);
 				case "hit":
-                    returnString += Hit.HitCommand(argument);
+                    runCommand = new Hit();
+                    returnString += runCommand.RunCommand(argument);
                     break;
 				case "kill":
 					break;
 				case "kiss":
-					return Kiss.KissCommand(argument);
+                    runCommand = new Kiss();
+                    return runCommand.RunCommand(argument);
                 case "enter":
-                    returnString += Enter.EnterCommand(argument);
+                    runCommand = new Enter();
+                    returnString += runCommand.RunCommand(argument);
                     break;
 				case "eat":
-                    return Eat.EatCommand(argument);
+                    runCommand = new Eat();
+                    return runCommand.RunCommand(argument);
 				case "drink":
-					return Drink.DrinkCommand(argument);
+                    runCommand = new Drink();
+                    return runCommand.RunCommand(argument);
                 case "pick":
-                   return Pick.PickCommand(argument);
+                    runCommand = new Pick();
+                    return runCommand.RunCommand(argument);
 				case "get":
 					break;
 				case "throw":
 					break; 
                 case "open":
-                    return Open.OpenCommand(argument);
+                    runCommand = new Open();
+                    return runCommand.RunCommand(argument);
 				case "give":
 					break;
 				case "help":
-					return Help.GetCommands();
+					return Help.GetCommand();
 				default:
 					return "The command is not recognised";
 			}
