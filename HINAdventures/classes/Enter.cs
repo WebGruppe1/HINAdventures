@@ -6,7 +6,7 @@ using System.Web;
 
 namespace HINAdventures.classes
 {
-    public class Enter
+    public class Enter : ICommand
     {
         private IRepository repo;
         
@@ -14,28 +14,9 @@ namespace HINAdventures.classes
         {
             repo = new Repository();
         }
-        public static String EnterCommand(String room)
+        public String RunCommand(String room)
         {
-
-            String returnString = "";
-            Room selectedRoom = null;
-
-            /*if (db.Rooms.Where(r => r.Name.Equals(room)).Count() > 0)
-            {
-                selectedRoom = db.Rooms.Where(r => r.Name.Equals(room)).First();
-                returnString = selectedRoom.Description;
-
-                //Spiller sin posisjon må flyttes til det aktuelle rommet.
-            }
-
-            else
-                returnString = "No room with that name exists in this area";
-            */
-            return returnString;
-        }
-        public static List <String> GetRooms()
-        {
-            return null;
+            return repo.RoomDescription(room);
         }
 
     }

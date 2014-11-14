@@ -29,7 +29,7 @@ namespace HINAdventures.classes
                           hit = "The Item you are trying to hit/struck does not exist";
                       }
                   }
-                  return "hei";
+                  return "heiaHitclass";
            
         }
         public List<Item> getItems()

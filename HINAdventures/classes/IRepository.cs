@@ -6,6 +6,8 @@ namespace HINAdventures.classes
 {
     public interface IRepository
     {
+        String RoomDescription(String input);
+
         List<String> getAvailableRooms();
         List<Item> GetAllItems();
     }

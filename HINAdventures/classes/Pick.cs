@@ -5,9 +5,9 @@ using System.Web;
 
 namespace HINAdventures.classes
 {
-    public class Pick
+    public class Pick : ICommand
     {
-        public static string PickCommand(String item)
+        public string RunCommand(String item)
         {
             return "You picked up " + item;
         }
