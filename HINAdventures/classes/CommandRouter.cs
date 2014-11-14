@@ -41,7 +41,8 @@ namespace HINAdventures.classes
 				case "inventory":
 					break;
 				case "turn":
-                    return Turn.TurnCommand(argument);
+                    returnString += Turn.TurnCommand(argument);
+                    break;
 				case "hit":
                     runCommand = new Hit();
                     returnString += runCommand.RunCommand(argument);
@@ -58,7 +59,8 @@ namespace HINAdventures.classes
                     break;
 				case "eat":
                     runCommand = new Eat();
-                    return runCommand.RunCommand(argument);
+                    returnString += runCommand.RunCommand(argument);
+                    break;
 				case "drink":
                     runCommand = new Drink();
                     returnString += runCommand.RunCommand(argument);
@@ -70,22 +72,21 @@ namespace HINAdventures.classes
 				case "get":
 					break;
 				case "throw":
-                    runCommand = new Throw();
-                    returnString += runCommand.RunCommand(argument);
 					break; 
                 case "scout":
                     runCommandNoArgs = new Scout();
-                    returnString += runCommandNoArgs.RunCommand();
-                    break;
+                    String returnStr = "-> " + command + "\n";
+                    return returnStr += runCommandNoArgs.RunCommand();
                 case "open":
                     runCommand = new Open();
                     returnString += runCommand.RunCommand(argument);
                     break;
 				case "give":
 					break;
-				case "help":
+                case "help":
                     runCommandNoArgs = new Help();
-					return runCommandNoArgs.RunCommand();
+                    returnStr = "-> " + command + "\n";
+                    return returnStr += runCommandNoArgs.RunCommand();
 				default:
 					return "The command is not recognised";
 			}
