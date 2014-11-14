@@ -234,6 +234,10 @@
     <Compile Include="Migrations\201411141001483_DrinkAndEatToItem.Designer.cs">
       <DependentUpon>201411141001483_DrinkAndEatToItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411141126237_RoomConnection.cs" />
+    <Compile Include="Migrations\201411141126237_RoomConnection.Designer.cs">
+      <DependentUpon>201411141126237_RoomConnection.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Description.cs" />
@@ -329,6 +333,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411141001483_DrinkAndEatToItem.resx">
       <DependentUpon>201411141001483_DrinkAndEatToItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411141126237_RoomConnection.resx">
+      <DependentUpon>201411141126237_RoomConnection.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

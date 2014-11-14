@@ -39,21 +39,17 @@ namespace HINAdventures.Models
 
         public DbSet<Item> Items { get; set; }
 
-        /*
+        
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             // Mange til mange forhold Rooms <=> Rooms
             modelBuilder.Entity<Room>()
-                .HasMany(t => t.Exits)
-                .WithMany(t => t.Exits)
-                .Map(m =>
-                {
-                    m.MapLeftKey("id");
-                    m.MapRightKey("id");
-                    m.ToTable("RoomToRoom");
-                });
+                .HasMany(room => room.ConnectedRooms)
+                .WithMany()
+                .Map(x => x.ToTable("RoomConnection"));
+
             base.OnModelCreating(modelBuilder);
         }
-         * */
+        
     }
 }
