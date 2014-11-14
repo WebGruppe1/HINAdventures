@@ -5,9 +5,9 @@ using System.Web;
 
 namespace HINAdventures.classes
 {
-	public static class Help
+	public class Help : ICommandNoArgs
 	{
-		public static string GetCommand(){
+		public string RunCommand(){
 			string availableCommands = "List of available commands:\n";
 			availableCommands += "- examine [Object]\n";
 			availableCommands += "- get [Object]\n";

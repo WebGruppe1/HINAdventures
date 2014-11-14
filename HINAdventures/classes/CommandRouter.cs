@@ -15,6 +15,9 @@ namespace HINAdventures.classes
 		 ***/
 		public static string RouteCommand(string commandToBeInterpreted)
 		{
+            ICommand runCommand = null;
+            ICommandNoArgs runCommandNoArgs = null;
+
 			string command = string.Empty;
 			string argument = string.Empty;
 
@@ -33,8 +36,6 @@ namespace HINAdventures.classes
 
             string returnString = "-> " + command + " [" + argument + "] \n";
 
-            ICommand runCommand = null;
-
 			switch (command.ToLower())
 			{
 				case "inventory":
@@ -49,7 +50,8 @@ namespace HINAdventures.classes
 					break;
 				case "kiss":
                     runCommand = new Kiss();
-                    return runCommand.RunCommand(argument);
+                    returnString += runCommand.RunCommand(argument);
+                    break;
                 case "enter":
                     runCommand = new Enter();
                     returnString += runCommand.RunCommand(argument);
@@ -59,21 +61,31 @@ namespace HINAdventures.classes
                     return runCommand.RunCommand(argument);
 				case "drink":
                     runCommand = new Drink();
-                    return runCommand.RunCommand(argument);
+                    returnString += runCommand.RunCommand(argument);
+                    break;
                 case "pick":
                     runCommand = new Pick();
-                    return runCommand.RunCommand(argument);
+                    returnString += runCommand.RunCommand(argument);
+                    break;
 				case "get":
 					break;
 				case "throw":
+                    runCommand = new Throw();
+                    returnString += runCommand.RunCommand(argument);
 					break; 
+                case "scout":
+                    runCommandNoArgs = new Scout();
+                    returnString += runCommandNoArgs.RunCommand();
+                    break;
                 case "open":
                     runCommand = new Open();
-                    return runCommand.RunCommand(argument);
+                    returnString += runCommand.RunCommand(argument);
+                    break;
 				case "give":
 					break;
 				case "help":
-					return Help.GetCommand();
+                    runCommandNoArgs = new Help();
+					return runCommandNoArgs.RunCommand();
 				default:
 					return "The command is not recognised";
 			}
