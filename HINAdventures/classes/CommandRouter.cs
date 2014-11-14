@@ -38,7 +38,7 @@ namespace HINAdventures.classes
 				case "inventory":
 					break;
 				case "turn":
-					break;
+                    return Turn.TurnCommand(argument);
 				case "hit":
                     returnString += Hit.HitCommand(argument);
                     break;

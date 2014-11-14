@@ -5,11 +5,11 @@ using System.Web;
 
 namespace HINAdventures.classes
 {
-    public class Drink
-    {    
-        public static string DrinkCommand(string item)
+    public class Turn
+    {
+        public static string TurnCommand(string person)
         {
-            return "You drank " + item;
+            return person + " just turned around";
         }
     }
 }
