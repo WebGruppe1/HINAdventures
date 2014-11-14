@@ -6,18 +6,18 @@ using System.Web;
 
 namespace HINAdventures.classes
 {
-    public class Eat
+    public class Eat :ICommand
     {
-        private static IRepository repos;
+        private IRepository repos;
         public Eat()
         {
             repos = new Repository();
         }
-        public static string EatCommand(string food)
+        public string RunCommand(string food)
         {
             string eat = "";
             
-            List<Item> items = GetItems();
+            List<Item> items = repos.GetAllItems();
             if (items != null)
             {
                 for (int i = 0; i < items.Count; i++)
@@ -31,12 +31,7 @@ namespace HINAdventures.classes
                 }
             }
             return eat;
-        }
-        static List<Item> GetItems()
-        {
-            return repos.GetAllItems();
-        }
-        
+        }      
 
     }
 }

@@ -6,14 +6,14 @@ using System.Web;
 
 namespace HINAdventures.classes
 {
-    public class Hit : ICommand
+    public class Hit
     {
         private static IRepository repos;
         public Hit()
         {
             repos = new Repository();
         }
-        public string RunCommand(string item)
+        public static string HitCommand(string item)
         {
                   string hit = "";
                   List<Item> items = getItems();
@@ -29,10 +29,10 @@ namespace HINAdventures.classes
                           hit = "The Item you are trying to hit/struck does not exist";
                       }
                   }
-                  return "hei";
+                  return hit;
            
         }
-        public List<Item> getItems()
+        static List<Item> getItems()
         {
             return repos.GetAllItems();
         }
