@@ -36,7 +36,8 @@ namespace HINAdventures.Models
 
         public DbSet<Description> Descriptions { get; set; }
         public DbSet<Room> Rooms { get; set; }
-
+        public DbSet<VirtualUser> VirtualUser { get; set; }
+        public DbSet<VirtualUserChatCommands> VirtualUserChatCommans { get; set; }
         public DbSet<Item> Items { get; set; }
 
         

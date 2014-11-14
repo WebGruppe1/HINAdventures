@@ -6,9 +6,9 @@ using System.Web;
 
 namespace HINAdventures.classes
 {
-    public class Hit : ICommand
+    public class Hit :ICommand
     {
-        private static IRepository repos;
+        private IRepository repos;
         public Hit()
         {
             repos = new Repository();
@@ -16,7 +16,7 @@ namespace HINAdventures.classes
         public string RunCommand(string item)
         {
                   string hit = "";
-                  List<Item> items = getItems();
+                  List<Item> items = repos.GetAllItems();
                   for (int i = 0; i < items.Count; i++)
                   {
                       Item it = items[i];
@@ -29,13 +29,8 @@ namespace HINAdventures.classes
                           hit = "The Item you are trying to hit/struck does not exist";
                       }
                   }
-                  return "heiaHitclass";
+                  return hit;
            
         }
-        public List<Item> getItems()
-        {
-            return repos.GetAllItems();
-        }
-        
     }
 }

@@ -41,7 +41,7 @@ namespace HINAdventures.classes
 				case "inventory":
 					break;
 				case "turn":
-					break;
+                    return Turn.TurnCommand(argument);
 				case "hit":
                     runCommand = new Hit();
                     returnString += runCommand.RunCommand(argument);
@@ -56,7 +56,8 @@ namespace HINAdventures.classes
                     returnString += runCommand.RunCommand(argument);
                     break;
 				case "eat":
-                    return Eat.EatCommand(argument);
+                    runCommand = new Eat();
+                    return runCommand.RunCommand(argument);
 				case "drink":
                     runCommand = new Drink();
                     return runCommand.RunCommand(argument);
