@@ -50,7 +50,8 @@ namespace HINAdventures.classes
 					break;
 				case "kiss":
                     runCommand = new Kiss();
-                    return runCommand.RunCommand(argument);
+                    returnString += runCommand.RunCommand(argument);
+                    break;
                 case "enter":
                     runCommand = new Enter();
                     returnString += runCommand.RunCommand(argument);
@@ -60,13 +61,17 @@ namespace HINAdventures.classes
                     return runCommand.RunCommand(argument);
 				case "drink":
                     runCommand = new Drink();
-                    return runCommand.RunCommand(argument);
+                    returnString += runCommand.RunCommand(argument);
+                    break;
                 case "pick":
                     runCommand = new Pick();
-                    return runCommand.RunCommand(argument);
+                    returnString += runCommand.RunCommand(argument);
+                    break;
 				case "get":
 					break;
 				case "throw":
+                    runCommand = new Throw();
+                    returnString += runCommand.RunCommand(argument);
 					break; 
                 case "scout":
                     runCommandNoArgs = new Scout();
@@ -74,7 +79,8 @@ namespace HINAdventures.classes
                     break;
                 case "open":
                     runCommand = new Open();
-                    return runCommand.RunCommand(argument);
+                    returnString += runCommand.RunCommand(argument);
+                    break;
 				case "give":
 					break;
 				case "help":
