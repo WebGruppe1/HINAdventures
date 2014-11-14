@@ -90,22 +90,9 @@ namespace HINAdventures.Migrations
             SetRole(userTommy, userRole);
             SetRole(userEivind, userRole);
             SetRole(userFrederik, userRole);
-            context.SaveChanges();
-
-            //Seed Descriptions
-
-            var descriptions = new List<Description>
-            {
-                new Description {
-                    Text = "Test description"
-               },
-               new Description {
-                   Text = "Test description 2"
-                }
-            };
-            descriptions.ForEach(element => context.Descriptions.AddOrUpdate(description => description.Text, element));
 
             context.SaveChanges();
+
             
             //Seed Rooms
             var rooms = new List<Room>
@@ -515,9 +502,7 @@ namespace HINAdventures.Migrations
             Room D3480 = context.Rooms.Where(room => room.Name == "D3480").FirstOrDefault();
             Room D3530 = context.Rooms.Where(room => room.Name == "D3530").FirstOrDefault();
             Room D3520 = context.Rooms.Where(room => room.Name == "D3520").FirstOrDefault();
-            Room D3540 = context.Rooms.Where(room => room.Name == "D3540").FirstOrDefault();
-
-            
+            Room D3540 = context.Rooms.Where(room => room.Name == "D3540").FirstOrDefault();         
 
             // Mapping av Tredje etasje
             D3310.ConnectedRooms.Add(D3340);
@@ -593,6 +578,58 @@ namespace HINAdventures.Migrations
             D3370.ConnectedRooms.Add(Corridor);
             D3430.ConnectedRooms.Add(Corridor);
             D3430.ConnectedRooms.Add(Corridor);
+
+            context.SaveChanges();
+
+            //Seed Descriptions
+
+            var descriptions = new List<Description>
+            {
+               new Description {
+                   Name = "Soap1",
+                   Text = "The soap is contained in a blue container with a pump at the top. It's half full."
+                },
+                new Description {
+                    Name = "Soap2",
+                    Text = "There is a white soap bar on the sink. It's well used."
+               },
+               new Description {
+                   Name = "JavaBook",
+                   Text = "On one of the tables there is a book with the title 'Java: The final chapter'"
+                }
+            };
+            descriptions.ForEach(element => context.Descriptions.AddOrUpdate(description => description.Text, element));
+
+            context.SaveChanges();
+
+            //Seed Items
+
+            var items = new List<Item>
+            {
+                new Item {
+                    Name = "Soap1",
+                    Description = context.Descriptions.Where(x => x.Name == "Soap1").FirstOrDefault(),
+                    isDrinkable = true,
+                    isEatable = false,
+                    Room = context.Rooms.Where(x => x.Name == "C3050").FirstOrDefault()
+                },
+                new Item {
+                    Name = "Soap2",
+                    Description = context.Descriptions.Where(x => x.Name == "Soap2").FirstOrDefault(),
+                    isDrinkable = false,
+                    isEatable = true,
+                    Room = context.Rooms.Where(x => x.Name == "C3040").FirstOrDefault()
+                },
+                new Item {
+                    Name = "JavaBook",
+                    Description = context.Descriptions.Where(x => x.Name == "JavaBook").FirstOrDefault(),
+                    isDrinkable = false,
+                    isEatable = false,
+                    Room = context.Rooms.Where(x => x.Name == "D3500").FirstOrDefault()
+                }
+
+            };
+            items.ForEach(element => context.Items.AddOrUpdate(item => item.Name, element));
 
             context.SaveChanges();
             
