@@ -106,7 +106,7 @@ namespace HINAdventures.Migrations
             descriptions.ForEach(element => context.Descriptions.AddOrUpdate(description => description.Text, element));
 
             context.SaveChanges();
-
+            
             //Seed Rooms
             var rooms = new List<Room>
             { new Room {
@@ -125,6 +125,7 @@ namespace HINAdventures.Migrations
                     Description = "You enter a big room with a lot computers where there is a dark person sitting in the back staring intensingly at the screen with quick moment inside his clothes, and a couple of students fighting over which is best between apple and android/Windows."
 
                 },
+                /*
                 new Room {
                     Name = "D2090",
                     OutsideDescription = "You see a door labeled 'D2090'",
@@ -449,10 +450,11 @@ namespace HINAdventures.Migrations
                     OutsideDescription = "You see a door labeled 'Corridor'",
                     Description = "You are in a long corridor with lots of dors on one side."
                 }
+        */
             };
-            rooms.ForEach(element => context.Rooms.AddOrUpdate(room => room.Name, element));
+            rooms.ForEach(element => context.Rooms.AddOrUpdate(x => x.Name, element));
             context.SaveChanges();
-
+            /*
             // Setter opp rom plasseringen
             Room C3020 = context.Rooms.Where(room => room.Name == "C3020").FirstOrDefault();
             Room B3200 = context.Rooms.Where(room => room.Name == "B3200").FirstOrDefault();

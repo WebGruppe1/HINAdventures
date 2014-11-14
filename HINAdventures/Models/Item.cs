@@ -12,5 +12,7 @@ namespace HINAdventures.Models
         public virtual Room Room { get; set; }
         public virtual Description Description { get; set; }
         public virtual ApplicationUser ApplicationUser { get; set; }
+        public bool isEatable { get; set; }
+        public bool isDrinkable { get; set; }
     }
 }

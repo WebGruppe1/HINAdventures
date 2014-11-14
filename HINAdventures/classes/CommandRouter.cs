@@ -40,7 +40,8 @@ namespace HINAdventures.classes
 				case "turn":
 					break;
 				case "hit":
-					break;
+                    returnString += Hit.HitCommand(argument);
+                    break;
 				case "kill":
 					break;
 				case "kiss":
