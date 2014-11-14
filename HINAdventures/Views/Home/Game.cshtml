@@ -12,13 +12,26 @@
     </div>
     <br />
     <div class="clearfix">
-    <h2>Chat</h2>
-        <div class="chat" style="float:left; width:45%">
-            <textarea class=form-control rows="6" style="resize:none" id="chatOutput" name="chatOutput"></textarea>
-            <div class="input-group">
-                <input type="text" id="chatInput" name="chatInput" class="form-control">
+   
+
+        <h2>GlobalChat</h2>
+
+        <div id="chat">
+            <textarea id="chatbox" cols="130" rows="10" readonly></textarea>
+            <div id="users">
+                <b>Online Users</b>
             </div>
-        </div> <!--end of chat-->
+            <br />
+            <input type="text" id="message" />
+            <input type="button" id="sendmessage" value="Send" />
+            <select id="userlist">
+                <option value="All">All</option>
+            </select>
+        </div>
+
+
+
+
         
     </div><!-- end of allExceptConsole-->
 </form>
@@ -29,6 +42,8 @@
         var hub = $.connection.Command;
         var username = "@User.Identity.Name";
         var id = "test";
+
+        startChat();
 
         //Define Command response function
         hub.client.CommandResponse = function (message) {
@@ -52,4 +67,54 @@
 
 
     });
+
+
+
+    //Script that deals with the chat functions.
+    //Kristian Alm 10.11.2014
+    function startChat() {
+        var chat = $.connection.globalChatHub;
+        var username = "@User.Identity.Name";               //Gets the players username
+
+        //Print messages received in this function
+        chat.client.addNewMessageToPage = function (username, message) {
+            $("#chatbox").append(username + ": " + message + "\n");
+        };
+
+        //Starts the connection with the hub
+        $.connection.hub.start().done(function () {
+            chat.server.join(username, $.connection.hub.id);            //Register the player with a list containing all online players
+
+            //On pressing send it checks if you want to send the message to all or just one player.
+            $("#sendmessage").click(function () {
+                if ($("#userlist").val() == "All") {
+                    chat.server.send(username, $("#message").val());
+                }
+                    //Sends with the name of the player you want to send a private message to
+                else {
+                    chat.server.sendToSpecific(username, "[Private] -> " + $("#userlist").val() + ": " + $("#message").val(), $("#userlist").val());
+                }
+                $('#message').val('').focus();          //Clears the textbox after sending a message
+            });
+        });
+
+        //Gives a list of all online players
+        chat.client.showConnected = function (name) {
+            //Excludes yourself from the dropdownlist
+            if (name == username) {
+                $("#users").append("<div class=\"players\">" + name + "</div>");
+            }
+            else {
+                $("#users").append("<div class=\"players\">" + name + "</div>");
+                $("#userlist").append('<option value="' + name + '">' + name + '</option>');
+            }
+        }
+
+        //Gets called from OnDisconnect in GlobalChathub when a player disconnects.
+        chat.client.disconnected = function (name) {
+            $(".players").remove(":contains('" + name + "')");
+            $("#userlist option").remove(":contains('" + name + "')");
+        }
+    }
+
 </script>
