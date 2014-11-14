@@ -8,11 +8,15 @@ namespace HINAdventures.classes
 {
     public class Hit
     {
-
+        private static IRepository repos;
+        public Hit()
+        {
+            repos = new Repository();
+        }
         public static string HitCommand(string item)
         {
                   string hit = "";
-                  List<Item> items = GetAlleItems();
+                  List<Item> items = getItems();
                   for (int i = 0; i < items.Count; i++)
                   {
                       Item it = items[i];
@@ -28,14 +32,10 @@ namespace HINAdventures.classes
                   return hit;
            
         }
-        static public List<Item> GetAlleItems()
+        static List<Item> getItems()
         {
-            using (var context = new ApplicationDbContext())
-            {
-                var itemListe = context.Items.ToList();
-                return itemListe;
-
-            }
+            return repos.GetAllItems();
         }
+        
     }
 }

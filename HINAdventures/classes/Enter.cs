@@ -8,15 +8,19 @@ namespace HINAdventures.classes
 {
     public class Enter
     {
-        static ApplicationDbContext db;
+        private IRepository repo;
 
+        public Enter()
+        {
+            repo = new Repository();
+        }
         public static String EnterCommand(String room)
         {
-            db = new ApplicationDbContext();
-            String returnString;
+
+            String returnString = "";
             Room selectedRoom = null;
 
-            if (db.Rooms.Where(r => r.Name.Equals(room)).Count() > 0)
+            /*if (db.Rooms.Where(r => r.Name.Equals(room)).Count() > 0)
             {
                 selectedRoom = db.Rooms.Where(r => r.Name.Equals(room)).First();
                 returnString = selectedRoom.Description;
@@ -26,9 +30,13 @@ namespace HINAdventures.classes
 
             else
                 returnString = "No room with that name exists in this area";
-
-
+            */
             return returnString;
         }
+        public static List <String> GetRooms()
+        {
+            return null;
+        }
+
     }
 }
