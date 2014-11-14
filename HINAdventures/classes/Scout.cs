@@ -15,11 +15,11 @@ namespace HINAdventures.classes
         public String RunCommand()
         {
             String[] temp =  repo.getAvailableRooms();
-            String returnString = "";
+            String returnString = "Nearby rooms: ";
 
             foreach(String s in temp)
             {
-                returnString += s + "\n";
+                returnString += s + ", ";
             }
             return returnString;
         }
