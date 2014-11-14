@@ -5,9 +5,9 @@ using System.Web;
 
 namespace HINAdventures.classes
 {
-    public class Open
+    public class Open : ICommand
     {
-        public static string OpenCommand(string item)
+        public string RunCommand(string item)
         {
             return item + " is open";
         }
