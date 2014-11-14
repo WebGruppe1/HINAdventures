@@ -1,11 +1,12 @@
-﻿using System;
+﻿using HINAdventures.Models;
+using System;
 using System.Collections.Generic;
 
 namespace HINAdventures.classes
 {
     public interface IRepository
     {
-        public List<String> getAvailableRooms();
-
+        List<String> getAvailableRooms();
+        List<Item> GetAllItems();
     }
 }
