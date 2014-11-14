@@ -93,7 +93,76 @@ namespace HINAdventures.Migrations
 
             context.SaveChanges();
 
-            
+            var virtualUser = new List<VirtualUser>
+            {
+                new VirtualUser {
+                    Name = "Knut Collin",
+                    Room = context.Rooms.Where(room => room.Name == "D3330").FirstOrDefault()
+                },
+                new VirtualUser {
+                    Name = "Werner Farstad",
+                    Room = context.Rooms.Where(room => room.Name == "D3330").FirstOrDefault()
+                },
+                new VirtualUser {
+                    Name = "Per",
+                    Room = context.Rooms.Where(room => room.Name == "D3330").FirstOrDefault()
+                },
+                new VirtualUser {
+                    Name = "Åge",
+                    Room = context.Rooms.Where(room => room.Name == "D3330").FirstOrDefault()
+                }
+            };
+
+            virtualUser.ForEach(element => context.VirtualUser.AddOrUpdate(x => x.Name, element));
+            context.SaveChanges();
+
+            var virtualUserChatCommands = new List<VirtualUserChatCommands>
+            {
+                new VirtualUserChatCommands {
+                    ChatCommand = "I like PHP & ASP.NET",
+                    SayRegulary = true
+                },
+                new VirtualUserChatCommands {
+                    ChatCommand = "hi, you like ASP.NET too?",
+                    SayRegulary = false
+                },
+                new VirtualUserChatCommands {
+                    ChatCommand = "I like Microsift & C#",
+                    SayRegulary = true
+                },
+                new VirtualUserChatCommands {
+                    ChatCommand = "hi, you like C# too?",
+                    SayRegulary = false
+                },
+                new VirtualUserChatCommands {
+                    ChatCommand = "IPhone is best, Android sucks",
+                    SayRegulary = true
+                },
+                new VirtualUserChatCommands {
+                    ChatCommand = "NO, IPhone is best, if it wasn't for smartphones, Android wouldn't even exsist.s",
+                    SayRegulary = true
+                },
+                new VirtualUserChatCommands {
+                    ChatCommand = "hi, you know Ihpone is best? else just walk away",
+                    SayRegulary = false
+                },
+                new VirtualUserChatCommands {
+                    ChatCommand = "Android is the best, Iphone sucks",
+                    SayRegulary = true
+                },
+                new VirtualUserChatCommands {
+                    ChatCommand = "NO, Android is the best, Apple isn't even biggest at anything except Pads and who cares about that",
+                    SayRegulary = true
+                },
+                new VirtualUserChatCommands {
+                    ChatCommand = "hi, you know Android is best? else just walk away",
+                    SayRegulary = false
+                }
+            };
+
+            virtualUserChatCommands.ForEach(element => context.VirtualUserChatCommans.AddOrUpdate(x => x.ChatCommand, element));
+            context.SaveChanges();
+
             //Seed Rooms
             var rooms = new List<Room>
             { new Room {
