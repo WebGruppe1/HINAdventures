@@ -17,7 +17,7 @@ namespace HINAdventures.classes
         public static String EnterCommand(String room)
         {
 
-            String returnString;
+            String returnString = "";
             Room selectedRoom = null;
 
             /*if (db.Rooms.Where(r => r.Name.Equals(room)).Count() > 0)

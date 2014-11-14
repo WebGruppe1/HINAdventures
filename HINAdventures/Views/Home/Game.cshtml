@@ -49,6 +49,7 @@
         hub.client.CommandResponse = function (message) {
             console.log("Message sent from server and written in #gameOutput");
             $('#gameOutput').append(message);
+            document.getElementById("gameOutput").scrollTop = document.getElementById("gameOutput").scrollHeight;       //scrolls down whenever something is written to window
         };
 
         $.connection.hub
@@ -79,6 +80,7 @@
         //Print messages received in this function
         chat.client.addNewMessageToPage = function (username, message) {
             $("#chatbox").append(username + ": " + message + "\n");
+            document.getElementById("chatbox").scrollTop = document.getElementById("chatbox").scrollHeight;     //keeps the chat window at the last sentence
         };
 
         //Starts the connection with the hub
