@@ -8,7 +8,7 @@ namespace HINAdventures.classes
 {
     public class Enter
     {
-        private IRepository repo;
+        private static IRepository repo;
 
         public Enter()
         {
@@ -16,8 +16,9 @@ namespace HINAdventures.classes
         }
         public static String EnterCommand(String room)
         {
+            
 
-            String returnString;
+            String returnString = "";
             Room selectedRoom = null;
 
             /*if (db.Rooms.Where(r => r.Name.Equals(room)).Count() > 0)
@@ -35,7 +36,10 @@ namespace HINAdventures.classes
         }
         public static List <String> GetRooms()
         {
-            return null;
+            repo = new Repository();
+            List<String> list = new List();
+            list = repo.getAvailableRooms();
+            return list;
         }
 
     }
