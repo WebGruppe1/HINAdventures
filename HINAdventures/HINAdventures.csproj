@@ -222,6 +222,7 @@
     <Compile Include="classes\Open.cs" />
     <Compile Include="classes\Pick.cs" />
     <Compile Include="classes\Scout.cs" />
+    <Compile Include="classes\Throw.cs" />
     <Compile Include="classes\Turn.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
