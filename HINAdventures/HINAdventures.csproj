@@ -252,6 +252,10 @@
     <Compile Include="Migrations\201411141255251_VirtualUsers.Designer.cs">
       <DependentUpon>201411141255251_VirtualUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411142128427_UserHasRoomAndItem.cs" />
+    <Compile Include="Migrations\201411142128427_UserHasRoomAndItem.Designer.cs">
+      <DependentUpon>201411142128427_UserHasRoomAndItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Description.cs" />
@@ -360,6 +364,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411141255251_VirtualUsers.resx">
       <DependentUpon>201411141255251_VirtualUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411142128427_UserHasRoomAndItem.resx">
+      <DependentUpon>201411142128427_UserHasRoomAndItem.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

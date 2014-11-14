@@ -12,15 +12,5 @@ namespace HINAdventures.Models
         public string OutsideDescription { get; set; }
         public string Description { get; set; }
         public virtual ICollection<Room> ConnectedRooms { get; set; }
-        
-       // public virtual ICollection<Room> RoomsConnectedToThisRoom { get; set; }
-       // public virtual ICollection<Room> RoomsRoomIsConnectedTo { get; set; }
-
-       /* public Room()
-        {
-            RoomsConnectedToThisRoom = new HashSet<Room>();
-            RoomsRoomIsConnectedTo = new HashSet<Room>();
-        }
-        */
     }
 }
