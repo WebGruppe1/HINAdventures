@@ -24,3 +24,16 @@ textarea {
     width:100%;
 }
 
+#content h1, #content h2, #content h3, #content h4, #content p, #content a {
+    margin-left:18px;
+}
+
+.form-control {
+    margin: 3px 0;
+}
+
+#users {
+    height: 360px;
+    max-height: 275px;
+    overflow: auto;
+}
