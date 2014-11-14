@@ -8,7 +8,7 @@ namespace HINAdventures.classes
 {
     public class Enter
     {
-        private static IRepository repo;
+        private IRepository repo;
 
         public Enter()
         {
@@ -16,7 +16,6 @@ namespace HINAdventures.classes
         }
         public static String EnterCommand(String room)
         {
-            
 
             String returnString = "";
             Room selectedRoom = null;
@@ -36,10 +35,7 @@ namespace HINAdventures.classes
         }
         public static List <String> GetRooms()
         {
-            repo = new Repository();
-            List<String> list = new List();
-            list = repo.getAvailableRooms();
-            return list;
+            return null;
         }
 
     }

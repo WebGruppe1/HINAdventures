@@ -23,6 +23,14 @@ namespace HINAdventures.classes
             
             return list;
         }
+        public List<Item> GetAllItems()
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var itemListe = context.Items.ToList();
+                return itemListe;
 
+            }
+        }
     }
 }

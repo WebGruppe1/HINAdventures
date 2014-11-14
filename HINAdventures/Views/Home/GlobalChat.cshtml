@@ -31,6 +31,7 @@
         //Print messages received in this function
         chat.client.addNewMessageToPage = function (username, message) {
             $("#chatbox").append(username + ": " + message + "\n");
+            document.getElementById("chatbox").scrollTop = document.getElementById("chatbox").scrollHeight;
         };
 
         //Starts the connection with the hub
