@@ -35,12 +35,12 @@ namespace HINAdventures.Migrations
         }
 
         // Creates a new user
-        private ApplicationUser createUser(string _username, string password, string _lastname, string _firstname, string _course)
+        private ApplicationUser createUser(string _username, string password, string _lastname, string _firstname, string _course, Room _room)
         {
             var user = userManager.FindByName(_username);
             if (user == null)
             {
-                user = new ApplicationUser { UserName = _username, Email = _username, LastName = _lastname, FirstName = _firstname, Course = _course };
+                user = new ApplicationUser { UserName = _username, Email = _username, LastName = _lastname, FirstName = _firstname, Course = _course, Room = _room };
                 var result = userManager.Create(user, password);
                 result = userManager.SetLockoutEnabled(user.Id, false);
             }
@@ -59,7 +59,6 @@ namespace HINAdventures.Migrations
 
         protected override void Seed(HINAdventures.Models.ApplicationDbContext _context)
         {
-
             //Sets context, User and Role store/managers to be used by private methods
             //to create new roles and users
             context = _context;
@@ -67,101 +66,6 @@ namespace HINAdventures.Migrations
             roleManager = new RoleManager<IdentityRole>(roleStore);
             userStore = new UserStore<ApplicationUser>(context);
             userManager = new UserManager<ApplicationUser>(userStore);
-
-            //Create Admin and User roles
-            var adminRole = createRole("Admin");
-            var userRole = createRole("User");
-
-            //Create users
-            var userAdmin = createUser("dag@ivarsoyfoto.no", "appelsinFarge5", "Ivarsøy", "Dag", "Datateknikk");
-            var userDag = createUser("dagivarsoy@gmail.com", "appelsinFarge5", "Ivarsøy", "Dag", "Datateknikk");
-            var userTord = createUser("tord.fredriksen@gmail.com", "appelsinFarge5", "Fredriksen", "Tord", "Datateknikk");
-            var userKristian = createUser("kristian.alm83@gmail.com", "appelsinFarge5", "Alm", "Kristian", "Datateknikk");
-            var userTommy = createUser("Tomlanghe@gmail.com", "appelsinFarge5", "Langhelle", "Tommy", "Datateknikk");
-            var userEivind = createUser("eivind.skreddernes@gmail.com", "appelsinFarge5", "Skreddernes", "Eivind", "Datateknikk");
-            var userFrederik = createUser("johnsen16@gmail.com", "appelsinFarge5", "Johnsen", "Frederik", "Datateknikk");
-
-
-            //Assign roles to users
-            SetRole(userAdmin, adminRole);
-            SetRole(userDag, userRole);
-            SetRole(userTord, userRole);
-            SetRole(userKristian, userRole);
-            SetRole(userTommy, userRole);
-            SetRole(userEivind, userRole);
-            SetRole(userFrederik, userRole);
-
-            context.SaveChanges();
-
-            var virtualUser = new List<VirtualUser>
-            {
-                new VirtualUser {
-                    Name = "Knut Collin",
-                    Room = context.Rooms.Where(room => room.Name == "D3330").FirstOrDefault()
-                },
-                new VirtualUser {
-                    Name = "Werner Farstad",
-                    Room = context.Rooms.Where(room => room.Name == "D3330").FirstOrDefault()
-                },
-                new VirtualUser {
-                    Name = "Per",
-                    Room = context.Rooms.Where(room => room.Name == "D3330").FirstOrDefault()
-                },
-                new VirtualUser {
-                    Name = "Åge",
-                    Room = context.Rooms.Where(room => room.Name == "D3330").FirstOrDefault()
-                }
-            };
-
-            virtualUser.ForEach(element => context.VirtualUser.AddOrUpdate(x => x.Name, element));
-            context.SaveChanges();
-
-            var virtualUserChatCommands = new List<VirtualUserChatCommands>
-            {
-                new VirtualUserChatCommands {
-                    ChatCommand = "I like PHP & ASP.NET",
-                    SayRegulary = true
-                },
-                new VirtualUserChatCommands {
-                    ChatCommand = "hi, you like ASP.NET too?",
-                    SayRegulary = false
-                },
-                new VirtualUserChatCommands {
-                    ChatCommand = "I like Microsift & C#",
-                    SayRegulary = true
-                },
-                new VirtualUserChatCommands {
-                    ChatCommand = "hi, you like C# too?",
-                    SayRegulary = false
-                },
-                new VirtualUserChatCommands {
-                    ChatCommand = "IPhone is best, Android sucks",
-                    SayRegulary = true
-                },
-                new VirtualUserChatCommands {
-                    ChatCommand = "NO, IPhone is best, if it wasn't for smartphones, Android wouldn't even exsist.s",
-                    SayRegulary = true
-                },
-                new VirtualUserChatCommands {
-                    ChatCommand = "hi, you know Ihpone is best? else just walk away",
-                    SayRegulary = false
-                },
-                new VirtualUserChatCommands {
-                    ChatCommand = "Android is the best, Iphone sucks",
-                    SayRegulary = true
-                },
-                new VirtualUserChatCommands {
-                    ChatCommand = "NO, Android is the best, Apple isn't even biggest at anything except Pads and who cares about that",
-                    SayRegulary = true
-                },
-                new VirtualUserChatCommands {
-                    ChatCommand = "hi, you know Android is best? else just walk away",
-                    SayRegulary = false
-                }
-            };
-
-            virtualUserChatCommands.ForEach(element => context.VirtualUserChatCommans.AddOrUpdate(x => x.ChatCommand, element));
-            context.SaveChanges();
 
             //Seed Rooms
             var rooms = new List<Room>
@@ -701,7 +605,102 @@ namespace HINAdventures.Migrations
             items.ForEach(element => context.Items.AddOrUpdate(item => item.Name, element));
 
             context.SaveChanges();
-            
+
+
+            //Create Admin and User roles
+            var adminRole = createRole("Admin");
+            var userRole = createRole("User");
+
+            //Create users
+            var userAdmin = createUser("dag@ivarsoyfoto.no", "appelsinFarge5", "Ivarsøy", "Dag", "Datateknikk", C3020);
+            var userDag = createUser("dagivarsoy@gmail.com", "appelsinFarge5", "Ivarsøy", "Dag", "Datateknikk", C3020);
+            var userTord = createUser("tord.fredriksen@gmail.com", "appelsinFarge5", "Fredriksen", "Tord", "Datateknikk", C3020);
+            var userKristian = createUser("kristian.alm83@gmail.com", "appelsinFarge5", "Alm", "Kristian", "Datateknikk", C3020);
+            var userTommy = createUser("Tomlanghe@gmail.com", "appelsinFarge5", "Langhelle", "Tommy", "Datateknikk", C3020);
+            var userEivind = createUser("eivind.skreddernes@gmail.com", "appelsinFarge5", "Skreddernes", "Eivind", "Datateknikk", C3020);
+            var userFrederik = createUser("johnsen16@gmail.com", "appelsinFarge5", "Johnsen", "Frederik", "Datateknikk", C3020);
+
+
+            //Assign roles to users
+            SetRole(userAdmin, adminRole);
+            SetRole(userDag, userRole);
+            SetRole(userTord, userRole);
+            SetRole(userKristian, userRole);
+            SetRole(userTommy, userRole);
+            SetRole(userEivind, userRole);
+            SetRole(userFrederik, userRole);
+
+            context.SaveChanges();
+
+            var virtualUser = new List<VirtualUser>
+            {
+                new VirtualUser {
+                    Name = "Knut Collin",
+                    Room = context.Rooms.Where(room => room.Name == "D3330").FirstOrDefault()
+                },
+                new VirtualUser {
+                    Name = "Werner Farstad",
+                    Room = context.Rooms.Where(room => room.Name == "D3330").FirstOrDefault()
+                },
+                new VirtualUser {
+                    Name = "Per",
+                    Room = context.Rooms.Where(room => room.Name == "D3330").FirstOrDefault()
+                },
+                new VirtualUser {
+                    Name = "Åge",
+                    Room = context.Rooms.Where(room => room.Name == "D3330").FirstOrDefault()
+                }
+            };
+
+            virtualUser.ForEach(element => context.VirtualUser.AddOrUpdate(x => x.Name, element));
+            context.SaveChanges();
+
+            var virtualUserChatCommands = new List<VirtualUserChatCommands>
+            {
+                new VirtualUserChatCommands {
+                    ChatCommand = "I like PHP & ASP.NET",
+                    SayRegulary = true
+                },
+                new VirtualUserChatCommands {
+                    ChatCommand = "hi, you like ASP.NET too?",
+                    SayRegulary = false
+                },
+                new VirtualUserChatCommands {
+                    ChatCommand = "I like Microsift & C#",
+                    SayRegulary = true
+                },
+                new VirtualUserChatCommands {
+                    ChatCommand = "hi, you like C# too?",
+                    SayRegulary = false
+                },
+                new VirtualUserChatCommands {
+                    ChatCommand = "IPhone is best, Android sucks",
+                    SayRegulary = true
+                },
+                new VirtualUserChatCommands {
+                    ChatCommand = "NO, IPhone is best, if it wasn't for smartphones, Android wouldn't even exsist.s",
+                    SayRegulary = true
+                },
+                new VirtualUserChatCommands {
+                    ChatCommand = "hi, you know Ihpone is best? else just walk away",
+                    SayRegulary = false
+                },
+                new VirtualUserChatCommands {
+                    ChatCommand = "Android is the best, Iphone sucks",
+                    SayRegulary = true
+                },
+                new VirtualUserChatCommands {
+                    ChatCommand = "NO, Android is the best, Apple isn't even biggest at anything except Pads and who cares about that",
+                    SayRegulary = true
+                },
+                new VirtualUserChatCommands {
+                    ChatCommand = "hi, you know Android is best? else just walk away",
+                    SayRegulary = false
+                }
+            };
+
+            virtualUserChatCommands.ForEach(element => context.VirtualUserChatCommans.AddOrUpdate(x => x.ChatCommand, element));
+            context.SaveChanges();
         }
     }
 }
