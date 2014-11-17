@@ -1,4 +1,7 @@
-﻿using System;
+﻿using HINAdventures.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +11,22 @@ namespace HINAdventures.Controllers
 {
     public class HomeController : Controller
     {
+        /// <summary>
+        /// Application DB context
+        /// </summary>
+        protected ApplicationDbContext ApplicationDbContext { get; set; }
+
+        /// <summary>
+        /// User manager - attached to application DB context
+        /// </summary>
+        protected UserManager<ApplicationUser> UserManager { get; set; }
+
+        public HomeController()
+        {
+            this.ApplicationDbContext = new ApplicationDbContext();
+            this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.ApplicationDbContext));
+        }
+
         public ActionResult Index()
         {
             return View("FirstPage");
@@ -15,6 +34,8 @@ namespace HINAdventures.Controllers
         [Authorize]
         public ActionResult Game()
         {
+            var user = UserManager.FindById(User.Identity.GetUserId());
+            ViewBag.UserID = user.Id;
             return View();
         }
 

@@ -13,7 +13,7 @@ namespace HINAdventures.Hubs
     [HubName("Command")]
     public class CommandHub : Hub
     {
-        public void Command(string command)
+        public void Command(string command, string userID)
         {
             // Start on method to map user to command...
            /*
@@ -24,7 +24,7 @@ namespace HINAdventures.Hubs
            }
            */
    
-           string commandResponse = CommandRouter.RouteCommand(command);
+           string commandResponse = CommandRouter.RouteCommand(command, userID);
             Clients.Caller.CommandResponse(commandResponse + "\n");
         }
     }
