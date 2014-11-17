@@ -15,14 +15,16 @@ namespace HINAdventures.classes
         }
         public string RunCommand(string food)
         {
+            /*
             String eat = "";
-            var item = repos.getSpecificItem(food);
+           // var item = repos.getSpecificItem(food);
             Boolean isEatable ;
 
             if (isEatable == true)
                 return eat = "You just ate " + food;
             else
                 return eat = "You can't eat that";
+            */
             /*List<Item> items = repos.GetAllItems();
             if (items != null)
             {
@@ -37,6 +39,7 @@ namespace HINAdventures.classes
                 }
             }
             return eat;*/
+            return "eat";
         }      
 
     }

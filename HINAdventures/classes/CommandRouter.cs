@@ -13,7 +13,7 @@ namespace HINAdventures.classes
 		/***
 		 * Finds the command in a string and routes it
 		 ***/
-		public static string RouteCommand(string commandToBeInterpreted)
+		public static string RouteCommand(string commandToBeInterpreted, string UserID)
 		{
             ICommand runCommand = null;
             ICommandNoArgs runCommandNoArgs = null;
@@ -38,6 +38,8 @@ namespace HINAdventures.classes
 
 			switch (command.ToLower())
 			{
+                case "userid":
+                    return UserID;
 				case "inventory":
 					runCommand = new Inventory();
                     return runCommand.RunCommand("");
