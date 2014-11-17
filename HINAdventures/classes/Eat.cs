@@ -16,8 +16,8 @@ namespace HINAdventures.classes
         public string RunCommand(string food)
         {
             String eat = "";
-            var item = repos.getSpecificItem(food);
-            Boolean isEatable ;
+            //var item = repos.getSpecificItem(food);
+            Boolean isEatable = false ;
 
             if (isEatable == true)
                 return eat = "You just ate " + food;
