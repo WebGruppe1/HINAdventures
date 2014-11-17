@@ -23,6 +23,7 @@ namespace HINAdventures.classes
             {
                 for (int i = 0; i < items.Count; i++)
                 {
+
                     Item it = items[i];
                     ApplicationUser user = repos.GetUser(userID);
                     if (user.Room.Id == it.Room.Id)
@@ -33,12 +34,12 @@ namespace HINAdventures.classes
                         }
                         else
                         {
-                            food = "You can't eat that";
+                            food = "The item you are trying to eat does not exist in this room!";
                         }
                     }
                     else
                     {
-                        food = "Do not exist in this room";
+                        food = "The item you are trying to eat does not exist in this room!";
                     }
                 }
 
