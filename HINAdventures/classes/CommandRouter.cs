@@ -42,7 +42,7 @@ namespace HINAdventures.classes
                     return UserID;
 				case "inventory":
 					runCommand = new Inventory();
-                    return runCommand.RunCommand("");
+                    return runCommand.RunCommand(UserID);
 				case "turn":
                     returnString += Turn.TurnCommand(argument);
                     break;
