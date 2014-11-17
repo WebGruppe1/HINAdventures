@@ -22,7 +22,7 @@ namespace HINAdventures.classes
         {
             using (var context = new ApplicationDbContext())
             {
-                var eatItems = context.Items.Where(i => i.isEatable == true).ToList();
+                var eatItems = context.Items.Include("Room").Where(i => i.isEatable == true).ToList();
                 return eatItems;
             }
         }
@@ -39,7 +39,7 @@ namespace HINAdventures.classes
         {
             using (var context = new ApplicationDbContext())
             {
-                var drinkListe = context.Items.Where(i=> i.isDrinkable == true).ToList();
+                var drinkListe = context.Items.Include("Room").Where(i => i.isDrinkable == true).ToList();
                 return drinkListe;
 
             }
@@ -55,6 +55,12 @@ namespace HINAdventures.classes
         {
             var itemList = db.Items.Where(items => items.ApplicationUser.Id.Equals(userId)).ToList();
             return itemList;
+        }
+
+        public ApplicationUser GetUser(string userId)
+        {
+            ApplicationUser user = db.Users.Where(u => u.Id == userId).FirstOrDefault();
+            return user;
         }
     }
 }

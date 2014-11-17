@@ -6,40 +6,45 @@ using System.Web;
 
 namespace HINAdventures.classes
 {
-    public class Eat :ICommand
+    public class Eat 
     {
         private IRepository repos;
         public Eat()
         {
             repos = new Repository();
         }
-        public string RunCommand(string food)
+        public string Command(string food, string userID)
         {
-            /*
-            String eat = "";
-           // var item = repos.getSpecificItem(food);
-            Boolean isEatable ;
 
-            if (isEatable == true)
-                return eat = "You just ate " + food;
-            else
-                return eat = "You can't eat that";
-            */
-            /*List<Item> items = repos.GetAllItems();
+
+            List<Item> items = repos.GetEatableItems();
+            
             if (items != null)
             {
                 for (int i = 0; i < items.Count; i++)
                 {
                     Item it = items[i];
-                   
-                    if (food == it.Name || food == it.Name.ToLower() && it.isEatable)
-                        eat = "You just ate " + food;
+                    ApplicationUser user = repos.GetUser(userID);
+                    if (user.Room.Id == it.Room.Id)
+                    {
+                        if (food == it.Name || food == it.Name.ToLower() && it.isEatable)
+                        {
+                            food = "You just ate " + food;
+                        }
+                        else
+                        {
+                            food = "You can't eat that";
+                        }
+                    }
                     else
-                        eat = "You can't eat that";
+                    {
+                        food = "Do not exist in this room";
+                    }
                 }
+
             }
-            return eat;*/
-            return "eat";
+            return food;
+
         }      
 
     }

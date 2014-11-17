@@ -12,5 +12,7 @@ namespace HINAdventures.classes
         List<Item> GetDrinkableItems();
         List<Item> GetAllItems();
         List<Item> GetInventory(string userId);
+        ApplicationUser GetUser(string userId);
+
     }
 }

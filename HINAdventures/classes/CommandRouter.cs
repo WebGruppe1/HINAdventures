@@ -61,8 +61,8 @@ namespace HINAdventures.classes
                     returnString += runCommand.RunCommand(argument);
                     break;
 				case "eat":
-                    runCommand = new Eat();
-                    returnString += runCommand.RunCommand(argument);
+                    Eat eat = new Eat();
+                    returnString += eat.Command(argument, UserID);
                     break;
 				case "drink":
                     runCommand = new Drink();
