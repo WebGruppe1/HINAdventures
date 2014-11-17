@@ -3,37 +3,27 @@
 }
 <br /><br />
 <form id="game">
-    <h2>Game</h2>
-    <div class="row">
-    <div class="col-sm-6" id="command-console">
-            <textarea readonly id="gameOutput" name="gameOutput" class=form-control rows="12" style="resize:none"></textarea>
+    <div class="col-sm-6" style="float:left">
+        <h2>Console</h2>
+        <div class="col-sm-12" id="command-console">
+            <textarea readonly id="gameOutput" name="gameOutput" class=form-control rows="17" style="resize:none"></textarea>
             <input type="text" id="gameInput" class="form-control" name="gameInput">
         </div>
     </div>
-    <br />
-    <div class="clearfix">
-   
 
-        <h2>GlobalChat</h2>
-
-        <div id="chat">
-            <textarea id="chatbox" cols="130" rows="10" readonly></textarea>
-            <div id="users">
-                <b>Online Users</b>
-            </div>
-            <br />
-            <input type="text" id="message" />
-            <input type="button" id="sendmessage" value="Send" />
-            <select id="userlist">
-                <option value="All">All</option>
-            </select>
+    <div id="chat" class="col-sm-6" style="float:left">
+        <h2>Chat</h2>
+        <textarea id="chatbox" class=form-control rows="10" readonly></textarea>
+        <div id="users">
+            <b>Online Users</b>
         </div>
-
-
-
-
-        
-    </div><!-- end of allExceptConsole-->
+        <br />
+        <input type="text" class=form-control id="message" />
+        <input type="button" class=form-control id="sendmessage" value="Send" />
+        <select id="userlist" class=form-control>
+            <option value="All">All</option>
+        </select>
+    </div>
 </form>
 <div class="clearfix"></div>
 <script>

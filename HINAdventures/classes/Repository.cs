@@ -27,6 +27,12 @@ namespace HINAdventures.classes
 
             }
         }
+        public IEnumerable<Item> getSpecificItem(String input)
+        {
+            var item = from a in db.Items where a.Name == input select a;
+            return item;
+          
+        }
         public String RoomDescription(String input)
         {
             var desc = from a in db.Rooms where a.Name == input select a.Description;

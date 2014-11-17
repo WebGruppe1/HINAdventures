@@ -72,7 +72,9 @@ namespace HINAdventures.classes
 				case "get":
 					break;
 				case "throw":
-					break; 
+                    runCommand = new Throw();
+                    returnString += runCommand.RunCommand(argument);
+                    break;
                 case "scout":
                     runCommandNoArgs = new Scout();
                     String returnStr = "-> " + command + "\n";
