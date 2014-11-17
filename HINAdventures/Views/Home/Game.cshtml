@@ -1,30 +1,35 @@
 ﻿@{
     ViewBag.Title = "Game";
 }
-<br /><br />
-<form id="game">
-    <div class="col-sm-6" style="float:left">
-        <h2>Console</h2>
-        <div class="col-sm-12" id="command-console">
-            <textarea readonly id="gameOutput" name="gameOutput" class=form-control rows="17" style="resize:none"></textarea>
+<div id="game" class="content">
+    <div class="row">
+        <h2>Game</h2>
+        <div class="col-sm-6" id="command-console">
+            <textarea readonly id="gameOutput" name="gameOutput" class=form-control rows="12" style="resize:none"></textarea>
             <input type="text" id="gameInput" class="form-control" name="gameInput">
         </div>
     </div>
-
-    <div id="chat" class="col-sm-6" style="float:left">
-        <h2>Chat</h2>
-        <textarea id="chatbox" class=form-control rows="10" readonly></textarea>
-        <div id="users">
+    <br />
+    <div class="row">
+        <h2>GlobalChat</h2>
+        <div id="chat" class="col-sm-6">
+            <textarea id="chatbox" rows="12" class="form-control" readonly></textarea>
+        </div>
+        <div id="users" class="col-sm-6">
             <b>Online Users</b>
         </div>
-        <br />
-        <input type="text" class=form-control id="message" />
-        <input type="button" class=form-control id="sendmessage" value="Send" />
-        <select id="userlist" class=form-control>
-            <option value="All">All</option>
-        </select>
     </div>
-</form>
+
+    <div class="row">
+       <div class="col-sm-6">
+           <select id="userlist" class="form-control">
+               <option value="All">All</option>
+           </select>
+           <input type="text" id="message" class="form-control" />
+            <button type="button" class="btn" id="sendmessage">Send</button>
+        </div>
+    </div>
+</div>
 <div class="clearfix"></div>
 <script>
     $(document).ready(function () {
@@ -54,7 +59,7 @@
                     }
 
                 });
-        });
+            });
 
 
     });
@@ -67,6 +72,17 @@
         var chat = $.connection.globalChatHub;
         var username = "@User.Identity.Name";               //Gets the players username
 
+        function sendMessage() {
+            if ($("#userlist").val() == "All") {
+                chat.server.send(username, $("#message").val());
+            }
+                //Sends with the name of the player you want to send a private message to
+            else {
+                chat.server.sendToSpecific(username, "[Private] -> " + $("#userlist").val() + ": " + $("#message").val(), $("#userlist").val());
+            }
+            $('#message').val('').focus();          //Clears the textbox after sending a message
+        }
+
         //Print messages received in this function
         chat.client.addNewMessageToPage = function (username, message) {
             $("#chatbox").append(username + ": " + message + "\n");
@@ -78,16 +94,15 @@
             chat.server.join(username, $.connection.hub.id);            //Register the player with a list containing all online players
 
             //On pressing send it checks if you want to send the message to all or just one player.
-            $("#sendmessage").click(function () {
-                if ($("#userlist").val() == "All") {
-                    chat.server.send(username, $("#message").val());
+            $("#sendmessage").on("click", sendMessage);
+
+            //On enter send message
+            $('#message').on("keydown", function (event) {
+                if (event.which == 13) {
+                    sendMessage();
                 }
-                    //Sends with the name of the player you want to send a private message to
-                else {
-                    chat.server.sendToSpecific(username, "[Private] -> " + $("#userlist").val() + ": " + $("#message").val(), $("#userlist").val());
-                }
-                $('#message').val('').focus();          //Clears the textbox after sending a message
             });
+
         });
 
         //Gives a list of all online players

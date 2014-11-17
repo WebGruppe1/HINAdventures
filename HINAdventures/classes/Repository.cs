@@ -18,6 +18,14 @@ namespace HINAdventures.classes
             
             return list;
         }
+        public List<Item> GetEatableItems()
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                var eatItems = context.Items.Where(i => i.isEatable == true).ToList();
+                return eatItems;
+            }
+        }
         public List<Item> GetAllItems()
         {
             using (var context = new ApplicationDbContext())
@@ -27,16 +35,26 @@ namespace HINAdventures.classes
 
             }
         }
-        public IEnumerable<Item> getSpecificItem(String input)
+        public List<Item> GetDrinkableItems()
         {
-            var item = from a in db.Items where a.Name == input select a;
-            return item;
-          
+            using (var context = new ApplicationDbContext())
+            {
+                var drinkListe = context.Items.Where(i=> i.isDrinkable == true).ToList();
+                return drinkListe;
+
+            }
         }
         public String RoomDescription(String input)
         {
             var desc = from a in db.Rooms where a.Name == input select a.Description;
             return desc.FirstOrDefault();
+        }
+
+        //utestet
+        public List<Item> GetInventory(string userId)
+        {
+            var itemList = db.Items.Where(items => items.ApplicationUser.Id.Equals(userId)).ToList();
+            return itemList;
         }
     }
 }

@@ -2,6 +2,12 @@
     padding-top: 50px;
     padding-bottom: 20px;
     background-color: #808080;
+    color: #fff;
+
+    background-image:url("images/abstract-lights-motion-1954.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-color: #141414;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -24,3 +30,16 @@ textarea {
     width:100%;
 }
 
+.content h1, .content h2, .content h3, .content h4, .content p, .content a {
+    margin-left:18px;
+}
+
+.form-control {
+    margin: 3px 0;
+}
+
+#users {
+    height: 360px;
+    max-height: 275px;
+    overflow: auto;
+}

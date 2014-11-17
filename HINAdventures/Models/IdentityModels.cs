@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections.Generic;
 
 namespace HINAdventures.Models
 {
@@ -12,6 +13,8 @@ namespace HINAdventures.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Course { get; set; }
+        public virtual Room Room { get; set; }
+        public virtual ICollection<Item> Items { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

@@ -16,7 +16,7 @@ namespace HINAdventures.classes
         }
         public string RunCommand(string item)
         {
-            items = repos.GetAllItems();
+            //items = repos.();
             return "";
 
         }
