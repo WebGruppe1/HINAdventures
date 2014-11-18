@@ -47,8 +47,8 @@ namespace HINAdventures.classes
                     returnString += Turn.TurnCommand(argument);
                     break;
 				case "hit":
-                    runCommand = new Hit();
-                    returnString += runCommand.RunCommand(argument);
+                    Hit hit = new Hit();
+                    returnString += hit.HitCommand(argument, UserID);
                     break;
 				case "kill":
 					break;
@@ -75,8 +75,8 @@ namespace HINAdventures.classes
 				case "get":
 					break;
 				case "throw":
-                    runCommand = new Throw();
-                    returnString += runCommand.RunCommand(argument);
+                    Throw thr = new Throw();
+                    returnString += thr.ThrowCommand(argument, UserID);
                     break;
                 case "scout":
                     runCommandNoArgs = new Scout();

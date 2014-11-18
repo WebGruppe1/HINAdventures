@@ -6,27 +6,35 @@ using System.Web;
 
 namespace HINAdventures.classes
 {
-    public class Hit :ICommand
+    public class Hit 
     {
         private IRepository repos;
         public Hit()
         {
             repos = new Repository();
         }
-        public string RunCommand(string item)
+        public string HitCommand(string item, string userID)
         {
                   string hit = "";
                   List<Item> items = repos.GetAllItems();
                   for (int i = 0; i < items.Count; i++)
                   {
                       Item it = items[i];
-                      if (item == it.Name.ToLower() || item == it.Name)
+                      ApplicationUser user = repos.GetUser(userID);
+                      if (user.Room.Id == it.Room.Id)
                       {
-                          hit = "You just struck a " + item;
+                          if (item == it.Name.ToLower() || item == it.Name)
+                          {
+                              hit = "You just struck a " + it.Name;
+                          }
+                          else
+                          {
+                              hit = "The Item you are trying to hit/struck does not exist in this room";
+                          }
                       }
                       else
                       {
-                          hit = "The Item you are trying to hit/struck does not exist";
+                          hit = "The Item you are trying to hit/struck does not exist in this room";
                       }
                   }
                   return hit;
