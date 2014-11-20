@@ -5,7 +5,7 @@ using System.Web;
 
 namespace HINAdventures.classes
 {
-    public class Examine : ICommand
+    public class Examine : ICommandTwoArgs
     {
         private IRepository repos;
 
@@ -14,9 +14,9 @@ namespace HINAdventures.classes
             repos = new Repository();
         }
 
-        public string RunCommand(string argument)
+        public string RunCommand(string argument, string userId)
         {
-            return repos.ItemDescription(argument);
+            return repos.ItemDescription(argument, userId);
         }
     }
 }

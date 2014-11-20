@@ -58,7 +58,6 @@ namespace HINAdventures.classes
             return desc.FirstOrDefault();
         }
 
-        //utestet
         public List<Item> GetInventory(string userId)
         {
             var itemList = db.Items.Where(items => items.ApplicationUser.Id.Equals(userId)).ToList();
@@ -79,14 +78,20 @@ namespace HINAdventures.classes
 
         }
 
-        public String ItemDescription(string item)
+        public String ItemDescription(string item, string userId)
         {
             string description = "";
 
             try
             {
+                ApplicationUser user = this.GetUser(userId);
                 Item itemFromDb = db.Items.Where(i => i.Name == item).FirstOrDefault();
-                description = itemFromDb.Description.Text;
+
+                if (user.Room.Id == itemFromDb.Room.Id)
+                    description = itemFromDb.Description.Text;
+    
+                else
+                    description = "An item like that is not around here";
             }
             catch (ArgumentNullException)
             {
