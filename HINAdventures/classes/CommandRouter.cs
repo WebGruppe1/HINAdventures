@@ -89,6 +89,10 @@ namespace HINAdventures.classes
                     break;
 				case "give":
 					break;
+                case "examine":
+                    runCommand = new Examine();
+                    returnString += runCommand.RunCommand(argument);
+                    break;
                 case "help":
                     runCommandNoArgs = new Help();
                     returnStr = "-> " + command + "\n";

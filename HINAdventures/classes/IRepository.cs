@@ -14,7 +14,7 @@ namespace HINAdventures.classes
         List<Item> GetInventory(string userId);
         ApplicationUser GetUser(string userId);
         void UpdatePlayerPosition(String roomID, String userID);
-
+        String ItemDescription(string item);
 
     }
 }

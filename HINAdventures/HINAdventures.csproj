@@ -217,6 +217,7 @@
     <Compile Include="classes\Drink.cs" />
     <Compile Include="classes\Eat.cs" />
     <Compile Include="classes\Enter.cs" />
+    <Compile Include="classes\Examine.cs" />
     <Compile Include="classes\Hit.cs" />
     <Compile Include="classes\ICommand.cs" />
     <Compile Include="classes\ICommandNoArgs.cs" />

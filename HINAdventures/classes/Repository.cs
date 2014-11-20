@@ -78,5 +78,21 @@ namespace HINAdventures.classes
             db.SaveChanges();
 
         }
+
+        public String ItemDescription(string item)
+        {
+            string description = "";
+
+            try
+            {
+                Item itemFromDb = db.Items.Where(i => i.Name == item).FirstOrDefault();
+                description = itemFromDb.Description.Text;
+            }
+            catch (ArgumentNullException)
+            {
+                description = "Cannot find the item you try to examine";
+            }
+            return description;
+        }
     }
 }
