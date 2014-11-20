@@ -6,7 +6,7 @@ using System.Web;
 
 namespace HINAdventures.classes
 {
-    public class Throw
+    public class Throw : ICommandTwoArgs
     {
         private IRepository repos;
         private List<Item> items;
@@ -15,7 +15,7 @@ namespace HINAdventures.classes
             repos = new Repository();
             items = repos.GetAllItems();
         }
-        public string ThrowCommand(string item, string userID)
+        public string RunCommand(string item, string userID)
         {
 
             for (int i = 0; i < items.Count; i++)

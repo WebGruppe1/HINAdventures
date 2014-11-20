@@ -6,14 +6,14 @@ using System.Web;
 
 namespace HINAdventures.classes
 {
-    public class Eat 
+    public class Eat : ICommandTwoArgs
     {
         private IRepository repos;
         public Eat()
         {
             repos = new Repository();
         }
-        public string Command(string food, string userID)
+        public string RunCommand(string food, string userID)
         {
 
 

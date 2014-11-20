@@ -217,6 +217,7 @@
     <Compile Include="classes\Hit.cs" />
     <Compile Include="classes\ICommand.cs" />
     <Compile Include="classes\ICommandNoArgs.cs" />
+    <Compile Include="classes\ICommandTwoArgs.cs" />
     <Compile Include="classes\Inventory.cs" />
     <Compile Include="classes\Kiss.cs" />
     <Compile Include="classes\Open.cs" />
