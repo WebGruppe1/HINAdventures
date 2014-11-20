@@ -217,11 +217,13 @@
     <Compile Include="classes\Drink.cs" />
     <Compile Include="classes\Eat.cs" />
     <Compile Include="classes\Enter.cs" />
+    <Compile Include="classes\Give.cs" />
     <Compile Include="classes\Hit.cs" />
     <Compile Include="classes\ICommand.cs" />
     <Compile Include="classes\ICommandNoArgs.cs" />
     <Compile Include="classes\ICommandTwoArgs.cs" />
     <Compile Include="classes\Inventory.cs" />
+    <Compile Include="classes\Kill.cs" />
     <Compile Include="classes\Kiss.cs" />
     <Compile Include="classes\Open.cs" />
     <Compile Include="classes\Pick.cs" />

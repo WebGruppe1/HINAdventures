@@ -6,7 +6,7 @@ using System.Web;
 
 namespace HINAdventures.classes
 {
-    public class Enter : ICommand
+    public class Enter
     {
         private IRepository repo;
         
@@ -14,9 +14,19 @@ namespace HINAdventures.classes
         {
             repo = new Repository();
         }
-        public String RunCommand(String room)
+        public String RunCommand(String room, String userID)
         {
-            return repo.RoomDescription(room);
+            List<String> rooms = repo.getAvailableRooms(userID);
+
+            foreach(String s in rooms)
+                if (s.Equals(room, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    repo.UpdatePlayerPosition(room, userID);
+                    return repo.RoomDescription(room);
+                }
+
+            return "This room is out of reach";
+
         }
 
     }

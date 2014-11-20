@@ -5,21 +5,21 @@ using System.Web;
 
 namespace HINAdventures.classes
 {
-    public class Scout : ICommandNoArgs
+    public class Scout : ICommand
     {
         private IRepository repo;
         public Scout()
         {
             repo = new Repository();
         }
-        public String RunCommand()
+        public String RunCommand(String userID)
         {
-            String[] temp =  repo.getAvailableRooms();
+            List<String> rooms =  repo.getAvailableRooms(userID);
             String returnString = "Nearby rooms: ";
 
-            foreach(String s in temp)
+            foreach(String room in rooms)
             {
-                returnString += s + ", ";
+                returnString += room + ", ";
             }
             return returnString;
         }

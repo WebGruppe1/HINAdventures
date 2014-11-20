@@ -58,8 +58,8 @@ namespace HINAdventures.classes
                     returnString += runCommand.RunCommand(argument);
                     break;
                 case "enter":
-                    runCommand = new Enter();
-                    returnString += runCommand.RunCommand(argument);
+                    Enter enter = new Enter();
+                    returnString += enter.RunCommand(argument, UserID);
                     break;
 				case "eat":
                     runCommandTwoArgs = new Eat();
@@ -80,15 +80,19 @@ namespace HINAdventures.classes
                     returnString += runCommandTwoArgs.RunCommand(argument, UserID);
                     break;
                 case "scout":
-                    runCommandNoArgs = new Scout();
+                    runCommand = new Scout();
                     String returnStr = "-> " + command + "\n";
-                    return returnStr += runCommandNoArgs.RunCommand();
+                    return returnStr += runCommand.RunCommand(UserID);
                 case "open":
                     runCommand = new Open();
                     returnString += runCommand.RunCommand(argument);
                     break;
 				case "give":
 					break;
+                case "examine":
+                    runCommandTwoArgs = new Examine();
+                    returnString += runCommandTwoArgs.RunCommand(argument, UserID);
+                    break;
                 case "help":
                     runCommandNoArgs = new Help();
                     returnStr = "-> " + command + "\n";
