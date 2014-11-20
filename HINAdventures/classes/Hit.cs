@@ -6,14 +6,14 @@ using System.Web;
 
 namespace HINAdventures.classes
 {
-    public class Hit 
+    public class Hit : ICommandTwoArgs
     {
         private IRepository repos;
         public Hit()
         {
             repos = new Repository();
         }
-        public string HitCommand(string item, string userID)
+        public string RunCommand(string item, string userID)
         {
                   string hit = "";
                   List<Item> items = repos.GetAllItems();

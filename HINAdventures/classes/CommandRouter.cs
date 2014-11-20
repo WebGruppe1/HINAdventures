@@ -17,6 +17,7 @@ namespace HINAdventures.classes
 		{
             ICommand runCommand = null;
             ICommandNoArgs runCommandNoArgs = null;
+            ICommandTwoArgs runCommandTwoArgs = null;
 
 			string command = string.Empty;
 			string argument = string.Empty;
@@ -47,8 +48,8 @@ namespace HINAdventures.classes
                     returnString += Turn.TurnCommand(argument);
                     break;
 				case "hit":
-                    Hit hit = new Hit();
-                    returnString += hit.HitCommand(argument, UserID);
+                    runCommandTwoArgs = new Hit();
+                    returnString += runCommandTwoArgs.RunCommand(argument, UserID);
                     break;
 				case "kill":
 					break;
@@ -61,8 +62,8 @@ namespace HINAdventures.classes
                     returnString += runCommand.RunCommand(argument);
                     break;
 				case "eat":
-                    Eat eat = new Eat();
-                    returnString += eat.Command(argument, UserID);
+                    runCommandTwoArgs = new Eat();
+                    returnString += runCommandTwoArgs.RunCommand(argument, UserID);
                     break;
 				case "drink":
                     runCommand = new Drink();
@@ -75,8 +76,8 @@ namespace HINAdventures.classes
 				case "get":
 					break;
 				case "throw":
-                    Throw thr = new Throw();
-                    returnString += thr.ThrowCommand(argument, UserID);
+                    runCommandTwoArgs = new Throw();
+                    returnString += runCommandTwoArgs.RunCommand(argument, UserID);
                     break;
                 case "scout":
                     runCommandNoArgs = new Scout();
