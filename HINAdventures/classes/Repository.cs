@@ -10,11 +10,19 @@ namespace HINAdventures.classes
     {
         ApplicationDbContext db = new ApplicationDbContext();
 
-        public String[] getAvailableRooms()
+        public List<String> getAvailableRooms(String userID)
         {            
-            var rooms = from a in db.Rooms select a.Name;
+            List<String> list = new List<String>();
+            ApplicationUser user = db.Users.Where(u => u.Id == userID).FirstOrDefault();
 
-            String[] list = rooms.ToArray();            
+            //user.Room.ConnectedRooms
+            //var EnteredRoom = db.Rooms.Where(r => r.Name == argument).FirstOrDefault();
+            
+
+            foreach (Room room in user.Room.ConnectedRooms)
+                list.Add(room.Name);
+                //if (room == user.Room)
+                   // list.Add(room.Name);     
             
             return list;
         }
@@ -61,6 +69,14 @@ namespace HINAdventures.classes
         {
             ApplicationUser user = db.Users.Where(u => u.Id == userId).FirstOrDefault();
             return user;
+        }
+        public void UpdatePlayerPosition(String argument, String userID)
+        {
+            ApplicationUser user = db.Users.Where(u => u.Id == userID).FirstOrDefault();
+            user.Room = db.Rooms.Where(r => r.Name == argument).FirstOrDefault();
+
+            db.SaveChanges();
+
         }
     }
 }
