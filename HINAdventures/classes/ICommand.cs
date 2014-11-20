@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HINAdventures.classes
 {
-    interface ICommand
+    public interface ICommand
     {
         string RunCommand(String argument);
     }

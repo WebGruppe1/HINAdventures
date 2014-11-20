@@ -13,7 +13,8 @@ namespace HINAdventures.Tests.Controllers
         public void TestIRepository()
         {
 
-            var newProduct = new Mock<IRepository>(); 
+            var newRepo = new Mock<IRepository>(); 
+            
 
 
 
