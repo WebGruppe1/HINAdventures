@@ -9,6 +9,7 @@ namespace HINAdventures.classes
 	{
 		public string RunCommand(){
 			string availableCommands = "List of available commands:\n";
+            availableCommands += "- scout\n";
 			availableCommands += "- examine [Object]\n";
 			availableCommands += "- get [Object]\n";
 			availableCommands += "- give [Playername] [Object]\n";
