@@ -12,6 +12,7 @@ namespace HINAdventures.classes
         List<Item> GetDrinkableItems();
         List<Item> GetAllItems();
         List<Item> GetInventory(string userId);
+        void PutIntoInventory(string item, string userID);
         ApplicationUser GetUser(string userId);
         void UpdatePlayerPosition(String roomID, String userID);
         String ItemDescription(string item, string userId);

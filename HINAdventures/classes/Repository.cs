@@ -63,6 +63,12 @@ namespace HINAdventures.classes
             var itemList = db.Items.Where(items => items.ApplicationUser.Id.Equals(userId)).ToList();
             return itemList;
         }
+        public void PutIntoInventory(string item, string userID)
+        {
+            //kode ikke ferdig
+            var selectedItem = db.Items.Where(i => i.Name == item).FirstOrDefault();
+
+        }
         public List<ApplicationUser> GetAllUsers()
         {
             var users = db.Users.ToList();
