@@ -16,7 +16,10 @@ namespace HINAdventures.classes
 
         public string RunCommand(string argument, string userId)
         {
-            return repos.ItemDescription(argument, userId);
+            if (!argument.Equals(""))
+                return repos.ItemDescription(argument, userId);
+            else
+                return "Use of the commando, examine [item to be examined]";
         }
     }
 }

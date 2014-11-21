@@ -63,7 +63,11 @@ namespace HINAdventures.classes
             var itemList = db.Items.Where(items => items.ApplicationUser.Id.Equals(userId)).ToList();
             return itemList;
         }
-
+        public List<ApplicationUser> GetAllUsers()
+        {
+            var users = db.Users.ToList();
+            return users;
+        }
         public ApplicationUser GetUser(string userId)
         {
             ApplicationUser user = db.Users.Where(u => u.Id == userId).FirstOrDefault();
@@ -73,6 +77,14 @@ namespace HINAdventures.classes
         {
             ApplicationUser user = db.Users.Where(u => u.Id == userID).FirstOrDefault();
             user.Room = db.Rooms.Where(r => r.Name == argument).FirstOrDefault();
+
+            //Utestet, skal forandre item i inventory sin posisjon
+            List<Item> itemList = this.GetAllItems();
+            foreach (Item item in itemList)
+            {
+                if (user.Id.Equals(item.ApplicationUser.Id))
+                    item.Room = user.Room;
+            }
 
             db.SaveChanges();
 
