@@ -15,5 +15,7 @@ namespace HINAdventures.classes
         ApplicationUser GetUser(string userId);
         void UpdatePlayerPosition(String roomID, String userID);
         String ItemDescription(string item, string userId);
+        List<ApplicationUser> GetAllUsers();
+
     }
 }

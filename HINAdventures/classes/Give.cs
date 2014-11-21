@@ -14,7 +14,8 @@ namespace HINAdventures.classes
         public Give()
         {
             repos = new Repository();
-
+            items = repos.GetAllItems();
+            users = repos.GetAllUsers();
         }
         public string RunCommand(string argument, string id)
         {

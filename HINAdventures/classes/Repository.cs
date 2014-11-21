@@ -63,7 +63,11 @@ namespace HINAdventures.classes
             var itemList = db.Items.Where(items => items.ApplicationUser.Id.Equals(userId)).ToList();
             return itemList;
         }
-
+        public List<ApplicationUser> GetAllUsers()
+        {
+            var users = db.Users.ToList();
+            return users;
+        }
         public ApplicationUser GetUser(string userId)
         {
             ApplicationUser user = db.Users.Where(u => u.Id == userId).FirstOrDefault();
