@@ -15,6 +15,11 @@ namespace HINAdventures.classes
             repos = new Repository();
         }
 
+        public Intro(IRepository _repo)
+        {
+            repos = _repo;
+        }
+
         public string RunCommand(string userId)
         {
             var user = repos.GetUser(userId);

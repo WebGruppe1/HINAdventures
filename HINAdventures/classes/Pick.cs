@@ -5,16 +5,14 @@ using System.Web;
 
 namespace HINAdventures.classes
 {
-    public class Pick
+    public class Pick : ICommandTwoArgs
     {
-        private IRepository repo;
-        public Pick()
-        {
-            repo = new Repository();
-        }
         public string RunCommand(String item, String userID)
         {
-            repo.PutIntoInventory(item, userID);
+            return "You picked up " + item;
+        }
+        public string RunCommand(String item)
+        {
             return "You picked up " + item;
         }
     }
