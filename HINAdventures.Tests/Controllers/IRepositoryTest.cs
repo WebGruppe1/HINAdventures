@@ -36,9 +36,9 @@ namespace HINAdventures.Tests.Controllers
 
            // var getGame = new Mock<IRepository>();
           
-            repos.Setup(x => x.getAvailableRooms("1")).Returns(fakeRooms);
+           // repos.Setup(x => x.getAvailableRooms("1")).Returns(fakeRooms);
 
-            Assert.AreEqual<string>("linux", "linux");
+           // Assert.AreEqual<string>("linux", "linux");
 
            // String result = fakeRooms.
              
