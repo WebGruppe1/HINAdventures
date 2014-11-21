@@ -14,15 +14,36 @@ namespace HINAdventures.classes
         {
             repo = new Repository();
         }
-        public String RunCommand(String room, String userID)
+        public String RunCommand(String _room, String userID)
         {
-            List<String> rooms = repo.getAvailableRooms(userID);
+            List<Room> rooms = repo.getAvailableRooms(userID);
 
-            foreach(String s in rooms)
-                if (s.Equals(room, StringComparison.InvariantCultureIgnoreCase))
+            foreach(Room room in rooms)
+                if (room.Name.Equals(_room, StringComparison.InvariantCultureIgnoreCase))
                 {
-                    repo.UpdatePlayerPosition(room, userID);
-                    return repo.RoomDescription(room);
+                    repo.UpdatePlayerPosition(_room, userID);
+                    string message = repo.RoomDescription(_room);
+                    message += "\n";
+                    
+                    var user = repo.GetUser(userID);
+
+                    message += string.Format("You see {0} doors labeled ", user.Room.ConnectedRooms.Count());
+
+                    Room last = user.Room.ConnectedRooms.Last();
+                    foreach (Room connectedRoom in user.Room.ConnectedRooms)
+                    {
+                        message += string.Format("'{0}'", connectedRoom.Name);
+                        if (connectedRoom.Equals(last))
+                        {
+                            message += ".\n";
+                        }
+                        else
+                        {
+                            message += ", ";
+                        }
+                    }    
+
+                    return message;
                 }
 
             return "This room is out of reach";

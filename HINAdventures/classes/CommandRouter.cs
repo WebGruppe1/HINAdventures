@@ -41,6 +41,9 @@ namespace HINAdventures.classes
 			{
                 case "userid":
                     return UserID;
+                case "intro":
+                    runCommand = new Intro();
+                    return runCommand.RunCommand(UserID);
 				case "inventory":
 					runCommand = new Inventory();
                     return runCommand.RunCommand(UserID);
@@ -89,6 +92,10 @@ namespace HINAdventures.classes
                     break;
 				case "give":
 					break;
+                case "examine":
+                    runCommandTwoArgs = new Examine();
+                    returnString += runCommandTwoArgs.RunCommand(argument, UserID);
+                    break;
                 case "help":
                     runCommandNoArgs = new Help();
                     returnStr = "-> " + command + "\n";

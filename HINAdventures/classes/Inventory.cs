@@ -29,6 +29,8 @@ namespace HINAdventures.classes
             //Build a string of all items
             if (itemList.Count != 0)
             {
+                items.Append("Items in inventory:\n");
+
                 foreach (Item item in itemList)
                 {
                     items.Append(item.Name + "\n");
