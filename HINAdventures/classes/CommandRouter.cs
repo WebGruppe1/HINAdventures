@@ -41,6 +41,9 @@ namespace HINAdventures.classes
 			{
                 case "userid":
                     return UserID;
+                case "intro":
+                    runCommand = new Intro();
+                    return runCommand.RunCommand(UserID);
 				case "inventory":
 					runCommand = new Inventory();
                     return runCommand.RunCommand(UserID);
