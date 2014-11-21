@@ -5,7 +5,7 @@ using System.Web;
 
 namespace HINAdventures.classes
 {
-    public class Pick : ICommand
+    public class Pick : ICommandTwoArgs
     {
         public string RunCommand(String item, String userID)
         {

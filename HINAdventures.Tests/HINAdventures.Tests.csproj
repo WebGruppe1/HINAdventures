@@ -33,6 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.AspNet.SignalR.Client">
       <HintPath>..\packages\Microsoft.AspNet.SignalR.Client.2.1.2\lib\net45\Microsoft.AspNet.SignalR.Client.dll</HintPath>
     </Reference>
@@ -113,10 +115,9 @@
   <ItemGroup>
     <Compile Include="Controllers\IRepositoryTest.cs" />
     <Compile Include="Controllers\ICommandTest.cs" />
-    <Compile Include="Controllers\AuthenticationTest.cs" />
-    <Compile Include="Controllers\RedirectionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
+    <Compile Include="CommandTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
