@@ -7,7 +7,7 @@ namespace HINAdventures.classes
 {
     public class Pick : ICommand
     {
-        public string RunCommand(String item)
+        public string RunCommand(String item, String userID)
         {
             return "You picked up " + item;
         }
