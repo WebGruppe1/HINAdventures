@@ -28,20 +28,20 @@ namespace HINAdventures.classes
         }
         public List<Item> GetEatableItems()
         {
-            using (var context = new ApplicationDbContext())
-            {
-                var eatItems = context.Items.Include("Room").Where(i => i.isEatable == true).ToList();
+            //using (var context = new ApplicationDbContext())
+            //{
+                var eatItems = db.Items.Include("Room").Where(i => i.isEatable == true).ToList();
                 return eatItems;
-            }
+            //}
         }
         public List<Item> GetAllItems()
         {
-            using (var context = new ApplicationDbContext())
-            {
-                var itemListe = context.Items.ToList();
+            //using (var context = new ApplicationDbContext())
+            //{
+                var itemListe = db.Items.ToList();
                 return itemListe;
 
-            }
+            //}
         }
         public List<Item> GetDrinkableItems()
         {
@@ -63,10 +63,31 @@ namespace HINAdventures.classes
             var itemList = db.Items.Where(items => items.ApplicationUser.Id.Equals(userId)).ToList();
             return itemList;
         }
-        public void PutIntoInventory(string item, string userID)
+        public string PutIntoInventory(string item, string userID)
         {
             //kode ikke ferdig
+            ApplicationUser user = GetUser(userID);
             var selectedItem = db.Items.Where(i => i.Name == item).FirstOrDefault();
+            
+
+            if(selectedItem != null && selectedItem.Room == user.Room)
+            {
+                if (selectedItem.ApplicationUser == null)
+                {
+                    selectedItem.ApplicationUser = user;
+                    user.Items.Add(selectedItem);
+                    db.SaveChanges();
+                    return "You picked up " + item + "\n";
+                }
+                else if (selectedItem.ApplicationUser == user)
+                    return "You already have that item in your inventory";
+                else
+                    return "Item not found";
+                
+            }
+
+            else
+                return "item not found\n";
 
         }
         public List<ApplicationUser> GetAllUsers()
@@ -88,8 +109,10 @@ namespace HINAdventures.classes
             List<Item> itemList = this.GetAllItems();
             foreach (Item item in itemList)
             {
-                if (user.Id.Equals(item.ApplicationUser.Id))
-                    item.Room = user.Room;
+                //if (user.Id.Equals(item.ApplicationUser.Id))
+                if(item.ApplicationUser != null)
+                    if(user.Equals(item.ApplicationUser))
+                        item.Room = user.Room;
             }
 
             db.SaveChanges();

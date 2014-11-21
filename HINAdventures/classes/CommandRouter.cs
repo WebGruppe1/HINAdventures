@@ -73,8 +73,8 @@ namespace HINAdventures.classes
                     returnString += runCommand.RunCommand(argument);
                     break;
                 case "pick":
-                    Pick pick = new Pick();
-                    returnString += pick.RunCommand(argument, UserID);
+                    runCommandTwoArgs = new Pick();
+                    returnString += runCommandTwoArgs.RunCommand(argument, UserID);
                     break;
 				case "get":
 					break;

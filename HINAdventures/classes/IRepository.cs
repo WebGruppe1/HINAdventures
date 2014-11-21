@@ -17,5 +17,6 @@ namespace HINAdventures.classes
         string ItemDescription(string item, string userId);
         string RoomDescription(string roomName);
         void UpdatePlayerPosition(string argument, string userID);
+        string PutIntoInventory(string item, string userID);
     }
 }

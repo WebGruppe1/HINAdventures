@@ -7,9 +7,15 @@ namespace HINAdventures.classes
 {
     public class Pick : ICommandTwoArgs
     {
+        private IRepository repo;
+
+        public Pick ()
+        {
+            repo = new Repository();
+        }
         public string RunCommand(String item, String userID)
         {
-            return "You picked up " + item;
+            return repo.PutIntoInventory(item, userID);
         }
         public string RunCommand(String item)
         {
