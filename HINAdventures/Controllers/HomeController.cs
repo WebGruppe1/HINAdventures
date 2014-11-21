@@ -29,7 +29,7 @@ namespace HINAdventures.Controllers
 
         public ActionResult Index()
         {
-            return View("FirstPage");
+            return View("Game");
         }
         [Authorize]
         public ActionResult Game()
