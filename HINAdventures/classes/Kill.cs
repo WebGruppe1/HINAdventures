@@ -23,21 +23,25 @@ namespace HINAdventures.classes
         }
         public string RunCommand(string arg)
         {
-            string kill = "";
-            for (int i = 0; i < users.Count; i++)
+            string killresponse = "";
+            if (users != null)
             {
-                ApplicationUser user = users[i];
-                if (user.FirstName == arg)
+                for (int i = 0; i < users.Count; i++)
                 {
-                    kill = str.ElementAt(rand.Next(0, 2));
-                }
-                else
-                {
-                    kill = "This person does not exist";
+                    ApplicationUser user = users[i];
+
+                    if (user.FirstName.Equals(arg) || user.FirstName.ToLower().Equals(arg))
+                    {
+                        killresponse = str.ElementAt(rand.Next(0,3));
+                    }
                 }
             }
+            else
+            {
+                killresponse = "This person does not exist";
 
-            return kill;
+            }
+            return killresponse;
 
         }
 
