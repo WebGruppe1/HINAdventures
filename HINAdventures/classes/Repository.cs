@@ -10,9 +10,9 @@ namespace HINAdventures.classes
     {
         ApplicationDbContext db = new ApplicationDbContext();
 
-        public List<String> getAvailableRooms(String userID)
+        public List<Room> getAvailableRooms(String userID)
         {            
-            List<String> list = new List<String>();
+            List<Room> list = new List<Room>();
             ApplicationUser user = db.Users.Where(u => u.Id == userID).FirstOrDefault();
 
             //user.Room.ConnectedRooms
@@ -20,7 +20,7 @@ namespace HINAdventures.classes
             
 
             foreach (Room room in user.Room.ConnectedRooms)
-                list.Add(room.Name);
+                list.Add(room);
                 //if (room == user.Room)
                    // list.Add(room.Name);     
             
@@ -52,9 +52,9 @@ namespace HINAdventures.classes
 
             }
         }
-        public String RoomDescription(String input)
+        public String RoomDescription(String roomName)
         {
-            var desc = from a in db.Rooms where a.Name == input select a.Description;
+            var desc = from a in db.Rooms where a.Name == roomName select a.Description;
             return desc.FirstOrDefault();
         }
 

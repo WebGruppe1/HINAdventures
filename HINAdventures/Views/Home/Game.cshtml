@@ -37,7 +37,6 @@
         var hub = $.connection.Command;
         var username = "@User.Identity.Name";
         var userid = "@ViewBag.UserID";
-        var id = "test";
 
         startChat();
 
@@ -52,6 +51,7 @@
             .start()
             .done(function () {
                 console.log("CommandHub started");
+                hub.server.command("intro", userid);
                 $('#gameInput').on("keydown", function (event) {
                     if (event.which == 13) {
                         console.log("User just pressed enter in 'GameInput' box")
