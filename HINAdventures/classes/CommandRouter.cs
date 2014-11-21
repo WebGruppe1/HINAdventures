@@ -93,6 +93,8 @@ namespace HINAdventures.classes
                     returnString += runCommand.RunCommand(argument);
                     break;
 				case "give":
+                    runCommandTwoArgs = new Give();
+                    returnString += runCommandTwoArgs.RunCommand(argument, UserID);
 					break;
                 case "examine":
                     runCommandTwoArgs = new Examine();
