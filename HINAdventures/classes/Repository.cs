@@ -6,7 +6,7 @@ using System.Web;
 
 namespace HINAdventures.classes
 {
-    public class Repository : IRepository
+    public class Repository : HINAdventures.classes.IRepository
     {
         ApplicationDbContext db = new ApplicationDbContext();
 
@@ -111,5 +111,39 @@ namespace HINAdventures.classes
             }
             return description;
         }
+
+
+        public List<VirtualUser> GetVirtualUsers()
+        {
+            var users = from u in db.VirtualUser select u;
+            return users.ToList();
+        }
+
+        public List<VirtualUserChatCommands> GetVirtualUserChatCommandsToUser(VirtualUser user)
+        {
+            var chatCommands = from c in db.VirtualUserChatCommans
+                               where c.VirtualUser == user && c.SayRegulary == true
+                               select c;
+            return chatCommands.ToList();
+        }
+
+        public List<VirtualUserChatCommands> GetVirtualUserChatCommandsNotRegularyToUser(VirtualUser user)
+        {
+            var chatCommands = from c in db.VirtualUserChatCommans
+                               where c.VirtualUser == user && c.SayRegulary == false
+                               select c;
+            return chatCommands.ToList();
+        }
+
+
+        public VirtualUser GetVirtualUser(string name)
+        {
+            VirtualUser user = db.VirtualUser.Where(u => u.Name == name).FirstOrDefault();
+         
+            return user;
+        }
+
+
+
     }
 }

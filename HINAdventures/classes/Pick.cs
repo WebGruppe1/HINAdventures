@@ -11,5 +11,9 @@ namespace HINAdventures.classes
         {
             return "You picked up " + item;
         }
+        public string RunCommand(String item)
+        {
+            return "You picked up " + item;
+        }
     }
 }
