@@ -113,6 +113,8 @@
   <ItemGroup>
     <Compile Include="Controllers\IRepositoryTest.cs" />
     <Compile Include="Controllers\ICommandTest.cs" />
+    <Compile Include="Controllers\AuthenticationTest.cs" />
+    <Compile Include="Controllers\RedirectionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>

@@ -6,7 +6,13 @@ using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using HINAdventures;
 using HINAdventures.Controllers;
-
+/**
+ *HomeControllerTest.cs
+ *
+ * Testing HomeController methods.
+ * 
+ * T.Fredriksen 21.11.14
+ **/
 namespace HINAdventures.Tests.Controllers
 {
     [TestClass]
