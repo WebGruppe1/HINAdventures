@@ -8,12 +8,14 @@ namespace HINAdventures.classes
     {
         String RoomDescription(String input);
         List<Item> GetEatableItems();
-        List<String> getAvailableRooms(String userID);
+        List<Room> getAvailableRooms(String userID);
         List<Item> GetDrinkableItems();
         List<Item> GetAllItems();
         List<Item> GetInventory(string userId);
         ApplicationUser GetUser(string userId);
         void UpdatePlayerPosition(String roomID, String userID);
         String ItemDescription(string item, string userId);
+        List<ApplicationUser> GetAllUsers();
+
     }
 }

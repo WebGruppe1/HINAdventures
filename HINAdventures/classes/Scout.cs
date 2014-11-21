@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HINAdventures.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,12 +15,12 @@ namespace HINAdventures.classes
         }
         public String RunCommand(String userID)
         {
-            List<String> rooms =  repo.getAvailableRooms(userID);
+            List<Room> rooms =  repo.getAvailableRooms(userID);
             String returnString = "Nearby rooms: ";
 
-            foreach(String room in rooms)
+            foreach(Room room in rooms)
             {
-                returnString += room + ", ";
+                returnString += room.Name + ", ";
             }
             return returnString;
         }
