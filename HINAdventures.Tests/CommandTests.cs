@@ -113,11 +113,11 @@ namespace HINAdventures.Tests
 
             var hit = new Hit();
 
-            //string actual = hit.RunCommand("JavaBook", "userid");
-            string test = "You just struck a JavaBook";
+            string actual = hit.RunCommand("JavaBook", "555");
+           // string test = "You just struck a JavaBook";
             //Assess
-           //  Assert.AreEqual(expected, actual);
-            Assert.AreEqual(expected, test);
+             Assert.AreEqual(expected, actual);
+            //Assert.AreEqual(expected, test);
 
         }
     }
