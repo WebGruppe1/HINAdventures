@@ -27,7 +27,7 @@ namespace HINAdventures.classes
                     
                     var user = repo.GetUser(userID);
 
-                    message += string.Format("You see {0} doors labeled ", user.Room.ConnectedRooms.Count());
+                    message += string.Format("You see {0} doors labeled " + userID, user.Room.ConnectedRooms.Count());
 
                     Room last = user.Room.ConnectedRooms.Last();
                     foreach (Room connectedRoom in user.Room.ConnectedRooms)

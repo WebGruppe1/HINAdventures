@@ -13,6 +13,10 @@ namespace HINAdventures.classes
         {
             repos = new Repository();
         }
+        public Hit(IRepository _repo)
+        {
+            repos = _repo;
+        }
         public string RunCommand(string item, string userID)
         {
                   string hit = "";
