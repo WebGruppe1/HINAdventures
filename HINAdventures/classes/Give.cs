@@ -36,12 +36,17 @@ namespace HINAdventures.classes
 
                             if (it.Name.Equals(word.ElementAt(1)) || it.Name.ToLower().Equals(word.ElementAt(1)))
                             {
-                                returnarg = "You gave " + user.FirstName + " a " + it.Name;
+                                ApplicationUser loggedInUser = repos.GetUser(id);
+                                if (it.ApplicationUser.Id == loggedInUser.Id)
+                                {
+                                    repos.UpdatePersonItem(it.ID, user.Id);
+                                    returnarg = "You gave " + user.FirstName + " a " + it.Name;
+                                }
                                 break;
                             }
                             else
                             {
-                                returnarg = "You can't give " + user.FirstName + " " + word.ElementAt(1) + " because it doesn't exist";
+                                returnarg = "You can't give " + user.FirstName + " " + word.ElementAt(1) + " because it doesn't exist or because your not the owner";
                             }
 
                         }

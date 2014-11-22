@@ -90,6 +90,13 @@ namespace HINAdventures.classes
                 return "item not found\n";
 
         }
+        public void UpdatePersonItem(int item_id, string userID)
+        {
+            var item = db.Items.Include("ApplicationUser").Where(i => i.ID == item_id).FirstOrDefault();
+            item.ApplicationUser.Id = userID;
+            db.SaveChanges();
+
+        }
         public List<ApplicationUser> GetAllUsers()
         {
             var users = db.Users.ToList();
