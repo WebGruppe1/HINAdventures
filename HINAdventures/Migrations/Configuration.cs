@@ -91,10 +91,16 @@ namespace HINAdventures.Migrations
                     OutsideDescription = "You see a door labeled 'D2090'",
                     Description = "This room is the most boring one I've been in so far. No drama, no blood, , no nothing. There is a fire extinguisher in the corner tho, can this be used to ruin the cleaninglady's day?"
 
-                }, new Room {
+                }, 
+                new Room {
                     Name = "C2000",
                     OutsideDescription = "You see a door labeled 'C2000'",
-                    Description = "you enter the stairs that leads up to the 3. floor, just walk straight forward to it.",
+                    Description = "You enter the stairs that leads up to the 3. floor, just walk straight forward to it.",
+                },                
+                new Room {
+                    Name = "C3000",
+                    OutsideDescription = "You see a door labeled 'C3000'",
+                    Description = "You enter the stairs that leads down to the 2. floor, just walk straight forward to it.",
                 },
                 new Room {
                     Name = "D3320",
@@ -401,9 +407,19 @@ namespace HINAdventures.Migrations
                     Description = "The room is totaly empty. It looks like it is being redorated, as the paint on the walls is still damp"
                 },
                 new Room{
+                    Name = "C2090",
+                    OutsideDescription = "You see a door labeled 'C2090'",
+                    Description = "The room is totaly empty. It looks like it is being redorated, as the paint on the walls is still damp"
+                },
+                new Room{
                     Name = "Corridor",
                     OutsideDescription = "You see a door labeled 'Corridor'",
                     Description = "You are in a long corridor with lots of dors on one side."
+                },
+                new Room{
+                    Name = "D2500",
+                    OutsideDescription = "You see a door labeled 'D2500'",
+                    Description = "You are on the gallery, with a great view of the rest of the school."
                 }
         
             };
@@ -475,7 +491,8 @@ namespace HINAdventures.Migrations
             Room D3480 = context.Rooms.Where(room => room.Name == "D3480").FirstOrDefault();
             Room D3530 = context.Rooms.Where(room => room.Name == "D3530").FirstOrDefault();
             Room D3520 = context.Rooms.Where(room => room.Name == "D3520").FirstOrDefault();
-            Room D3540 = context.Rooms.Where(room => room.Name == "D3540").FirstOrDefault();         
+            Room D3540 = context.Rooms.Where(room => room.Name == "D3540").FirstOrDefault();    
+            Room D2500 = context.Rooms.Where(room => room.Name == "D2500").FirstOrDefault();  
 
             // Mapping av Tredje etasje
             D3310.ConnectedRooms.Add(D3340);
@@ -551,6 +568,68 @@ namespace HINAdventures.Migrations
             D3370.ConnectedRooms.Add(Corridor);
             D3430.ConnectedRooms.Add(Corridor);
             D3430.ConnectedRooms.Add(Corridor);
+
+            C3000.ConnectedRooms.Add(C2000);
+
+            // Mapping av Andre etasje
+            C2000.ConnectedRooms.Add(C3000);
+            C2000.ConnectedRooms.Add(D2500);
+
+            D2500.ConnectedRooms.Add(C2070);
+            D2500.ConnectedRooms.Add(C2060);
+            D2500.ConnectedRooms.Add(C2080);
+            D2500.ConnectedRooms.Add(C2090);
+            D2500.ConnectedRooms.Add(C2100);
+            D2500.ConnectedRooms.Add(D2400);
+
+            C2070.ConnectedRooms.Add(D2500);
+            C2060.ConnectedRooms.Add(D2500);
+            C2080.ConnectedRooms.Add(D2500);
+            C2090.ConnectedRooms.Add(D2500);
+            C2100.ConnectedRooms.Add(D2500);
+            D2400.ConnectedRooms.Add(D2500);
+
+            D2400.ConnectedRooms.Add(D2330);
+            D2400.ConnectedRooms.Add(D2320);
+            D2400.ConnectedRooms.Add(D2310);
+            D2400.ConnectedRooms.Add(D2300);
+            D2400.ConnectedRooms.Add(D2290);
+            D2400.ConnectedRooms.Add(D2280);
+            D2400.ConnectedRooms.Add(D2270);
+            D2400.ConnectedRooms.Add(D2260);
+            D2400.ConnectedRooms.Add(D2250);
+            D2400.ConnectedRooms.Add(D2240);
+            D2400.ConnectedRooms.Add(D2230);
+            D2400.ConnectedRooms.Add(D2220);
+            D2400.ConnectedRooms.Add(D2210);
+            D2400.ConnectedRooms.Add(D2200);
+            D2400.ConnectedRooms.Add(D2340);
+            D2400.ConnectedRooms.Add(D2350);
+            D2400.ConnectedRooms.Add(D2360);
+            D2400.ConnectedRooms.Add(D2370);
+            D2400.ConnectedRooms.Add(D2380);
+            D2400.ConnectedRooms.Add(D2390);
+
+            D2330.ConnectedRooms.Add(D2400);
+            D2320.ConnectedRooms.Add(D2400);
+            D2310.ConnectedRooms.Add(D2400);
+            D2300.ConnectedRooms.Add(D2400);
+            D2290.ConnectedRooms.Add(D2400);
+            D2280.ConnectedRooms.Add(D2400);
+            D2270.ConnectedRooms.Add(D2400);
+            D2260.ConnectedRooms.Add(D2400);
+            D2250.ConnectedRooms.Add(D2400);
+            D2240.ConnectedRooms.Add(D2400);
+            D2230.ConnectedRooms.Add(D2400);
+            D2220.ConnectedRooms.Add(D2400);
+            D2210.ConnectedRooms.Add(D2400);
+            D2200.ConnectedRooms.Add(D2400);
+            D2340.ConnectedRooms.Add(D2400);
+            D2350.ConnectedRooms.Add(D2400);
+            D2360.ConnectedRooms.Add(D2400);
+            D2370.ConnectedRooms.Add(D2400);
+            D2380.ConnectedRooms.Add(D2400);
+            D2390.ConnectedRooms.Add(D2400);
 
             context.SaveChanges();
 
