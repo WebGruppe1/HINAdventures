@@ -678,6 +678,90 @@ namespace HINAdventures.Migrations
                     isDrinkable = false,
                     isEatable = false,
                     Room = context.Rooms.Where(x => x.Name == "D3500").FirstOrDefault()
+                },
+                new Item {
+                    Name = "Coffee",
+                    Description = context.Descriptions.Where(x => x.Name == "Coffee").FirstOrDefault(),
+                    isDrinkable = true,
+                    isEatable = false,
+                    Room = context.Rooms.Where(x => x.Name == "D3350").FirstOrDefault()
+                },
+                new Item {
+                    Name = "Apple",
+                    Description = context.Descriptions.Where(x => x.Name == "Apple").FirstOrDefault(),
+                    isDrinkable = false,
+                    isEatable = true,
+                    Room = context.Rooms.Where(x => x.Name == "D3500").FirstOrDefault()
+                },
+                new Item {
+                    Name = "Whiskey Flaske",
+                    Description = context.Descriptions.Where(x => x.Name == "Whiskey Flaske").FirstOrDefault(),
+                    isDrinkable = true,
+                    isEatable = false,
+                    Room = context.Rooms.Where(x => x.Name == "D2570").FirstOrDefault()
+                },
+                new Item {
+                    Name = "Coffee Machine",
+                    Description = context.Descriptions.Where(x => x.Name == "Coffee Maschine").FirstOrDefault(),
+                    isDrinkable = false,
+                    isEatable = false,
+                    Room = context.Rooms.Where(x => x.Name == "D3330").FirstOrDefault()
+                },
+                new Item {
+                    Name = "JavaBook",
+                    Description = context.Descriptions.Where(x => x.Name == "JavaBook").FirstOrDefault(),
+                    isDrinkable = false,
+                    isEatable = false,
+                    Room = context.Rooms.Where(x => x.Name == "D3330").FirstOrDefault()
+                },
+                new Item {
+                    Name = "Playstation 3",
+                    Description = context.Descriptions.Where(x => x.Name == "Playstation 3").FirstOrDefault(),
+                    isDrinkable = false,
+                    isEatable = false,
+                    Room = context.Rooms.Where(x => x.Name == "D3330").FirstOrDefault()
+                },
+                new Item {
+                    Name = "Xbox 360",
+                    Description = context.Descriptions.Where(x => x.Name == "Xbox 360").FirstOrDefault(),
+                    isDrinkable = false,
+                    isEatable = false,
+                    Room = context.Rooms.Where(x => x.Name == "D3330").FirstOrDefault()
+                },
+                new Item {
+                    Name = "Wii",
+                    Description = context.Descriptions.Where(x => x.Name == "Wii").FirstOrDefault(),
+                    isDrinkable = false,
+                    isEatable = false,
+                    Room = context.Rooms.Where(x => x.Name == "D3330").FirstOrDefault()
+                },
+                new Item {
+                    Name = "TV",
+                    Description = context.Descriptions.Where(x => x.Name == "TV").FirstOrDefault(),
+                    isDrinkable = false,
+                    isEatable = false,
+                    Room = context.Rooms.Where(x => x.Name == "D3330").FirstOrDefault()
+                },
+                new Item {
+                    Name = "TV",
+                    Description = context.Descriptions.Where(x => x.Name == "TV").FirstOrDefault(),
+                    isDrinkable = false,
+                    isEatable = false,
+                    Room = context.Rooms.Where(x => x.Name == "D3330").FirstOrDefault()
+                },
+                new Item {
+                    Name = "Sofa",
+                    Description = context.Descriptions.Where(x => x.Name == "Sofa").FirstOrDefault(),
+                    isDrinkable = false,
+                    isEatable = false,
+                    Room = context.Rooms.Where(x => x.Name == "D3330").FirstOrDefault()
+                },
+                new Item {
+                    Name = "White board",
+                    Description = context.Descriptions.Where(x => x.Name == "Xbox 360").FirstOrDefault(),
+                    isDrinkable = false,
+                    isEatable = false,
+                    Room = context.Rooms.Where(x => x.Name == "D3330").FirstOrDefault()
                 }
 
             };
