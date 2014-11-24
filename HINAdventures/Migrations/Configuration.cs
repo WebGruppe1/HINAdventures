@@ -646,9 +646,53 @@ namespace HINAdventures.Migrations
                     Text = "There is a white soap bar on the sink. It's well used."
                },
                new Description {
+                   Name = "Coffee",
+                   Text = "The cup is filled with black coffee, no milk'"
+                },
+                new Description {
                    Name = "JavaBook",
                    Text = "On one of the tables there is a book with the title 'Java: The final chapter'"
-                }
+                },
+                new Description {
+                   Name = "Apple",
+                   Text = "The computer in front of you is a brand new Apple Macbook Pro'"
+                },
+                new Description {
+                   Name = "Whiskey Bottle",
+                   Text = "It's a nice bottle of Whiskey. It's not been opened.'"
+                },
+                new Description {
+                   Name = "Coffee Machine",
+                   Text = "The coffee machine looks very used. The filter needs changing'"
+                },
+                new Description {
+                   Name = "Playstation 3",
+                   Text = "It's a playstation 3. It seems to be broken."
+                },
+                new Description {
+                   Name = "Xbox 360",
+                   Text = "It's a Xbox 360. There is a red circle of death on the front of it."
+                },
+                new Description {
+                   Name = "JavaBook",
+                   Text = "On one of the tables there is a book with the title 'Java: The final chapter'"
+                },
+                new Description {
+                   Name = "Wii",
+                   Text = "It's a Nintendo Wii. Brand new!"
+                },
+                new Description {
+                   Name = "TV",
+                   Text = "The TV is on, it seems to be running old reruns of 'Norge Rundt'"
+                },
+                new Description {
+                   Name = "Sofa",
+                   Text = "The Sofa looks comfy."
+                },
+                new Description {
+                   Name = "White board",
+                   Text = "There are messages written on the whiteboard. Maybe I should try to write some."
+                }   
             };
             descriptions.ForEach(element => context.Descriptions.AddOrUpdate(description => description.Text, element));
 
@@ -679,6 +723,7 @@ namespace HINAdventures.Migrations
                     isEatable = false,
                     Room = context.Rooms.Where(x => x.Name == "D3500").FirstOrDefault()
                 },
+                
                 new Item {
                     Name = "Coffee",
                     Description = context.Descriptions.Where(x => x.Name == "Coffee").FirstOrDefault(),
@@ -694,8 +739,8 @@ namespace HINAdventures.Migrations
                     Room = context.Rooms.Where(x => x.Name == "D3500").FirstOrDefault()
                 },
                 new Item {
-                    Name = "Whiskey Flaske",
-                    Description = context.Descriptions.Where(x => x.Name == "Whiskey Flaske").FirstOrDefault(),
+                    Name = "Whiskey Bottle",
+                    Description = context.Descriptions.Where(x => x.Name == "Whiskey Bottle").FirstOrDefault(),
                     isDrinkable = true,
                     isEatable = false,
                     Room = context.Rooms.Where(x => x.Name == "D2570").FirstOrDefault()
@@ -706,9 +751,9 @@ namespace HINAdventures.Migrations
                     isDrinkable = false,
                     isEatable = false,
                     Room = context.Rooms.Where(x => x.Name == "D3330").FirstOrDefault()
-                },
+                },                
                 new Item {
-                    Name = "JavaBook",
+                    Name = "JavaBook2",
                     Description = context.Descriptions.Where(x => x.Name == "JavaBook").FirstOrDefault(),
                     isDrinkable = false,
                     isEatable = false,
@@ -735,6 +780,7 @@ namespace HINAdventures.Migrations
                     isEatable = false,
                     Room = context.Rooms.Where(x => x.Name == "D3330").FirstOrDefault()
                 },
+                
                 new Item {
                     Name = "TV",
                     Description = context.Descriptions.Where(x => x.Name == "TV").FirstOrDefault(),
@@ -742,13 +788,7 @@ namespace HINAdventures.Migrations
                     isEatable = false,
                     Room = context.Rooms.Where(x => x.Name == "D3330").FirstOrDefault()
                 },
-                new Item {
-                    Name = "TV",
-                    Description = context.Descriptions.Where(x => x.Name == "TV").FirstOrDefault(),
-                    isDrinkable = false,
-                    isEatable = false,
-                    Room = context.Rooms.Where(x => x.Name == "D3330").FirstOrDefault()
-                },
+                
                 new Item {
                     Name = "Sofa",
                     Description = context.Descriptions.Where(x => x.Name == "Sofa").FirstOrDefault(),
@@ -763,6 +803,7 @@ namespace HINAdventures.Migrations
                     isEatable = false,
                     Room = context.Rooms.Where(x => x.Name == "D3330").FirstOrDefault()
                 }
+              
 
             };
             items.ForEach(element => context.Items.AddOrUpdate(item => item.Name, element));
