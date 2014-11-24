@@ -266,6 +266,10 @@
     <Compile Include="Migrations\201411142128427_UserHasRoomAndItem.Designer.cs">
       <DependentUpon>201411142128427_UserHasRoomAndItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411241558516_ukjent.cs" />
+    <Compile Include="Migrations\201411241558516_ukjent.Designer.cs">
+      <DependentUpon>201411241558516_ukjent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Description.cs" />
@@ -379,6 +383,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411142128427_UserHasRoomAndItem.resx">
       <DependentUpon>201411142128427_UserHasRoomAndItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411241558516_ukjent.resx">
+      <DependentUpon>201411241558516_ukjent.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
