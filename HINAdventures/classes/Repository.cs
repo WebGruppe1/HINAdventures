@@ -133,6 +133,15 @@ namespace HINAdventures.classes
 
             ApplicationUser user = this.GetUserFromName(item);
             ApplicationUser currentUser = this.GetUser(userId);
+            Room room = this.GetRoom(item);
+
+            if (room != null)
+            {
+                if (room.Id == currentUser.Room.Id)
+                    return room.Description;
+                else
+                    return "You need to be in a room to examine it.";
+            }
 
             if (user == null)
             {
@@ -208,6 +217,12 @@ namespace HINAdventures.classes
             {
                 return null;
             }
+        }
+
+        private Room GetRoom(string roomName)
+        {
+            Room room = db.Rooms.Where(w => w.Name == roomName).FirstOrDefault();
+            return room;
         }
 
 
