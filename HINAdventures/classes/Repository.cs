@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Text;
 
 namespace HINAdventures.classes
 {
@@ -126,26 +127,87 @@ namespace HINAdventures.classes
 
         }
 
-        public String ItemDescription(string item, string userId)
+        public String Examine(string item, string userId)
         {
             string description = "";
 
+            ApplicationUser user = this.GetUserFromName(item);
+            ApplicationUser currentUser = this.GetUser(userId);
+
+            if (user == null)
+            {
+                try
+                {
+                    user = this.GetUser(userId);
+                    Item itemFromDb = db.Items.Where(i => i.Name == item).FirstOrDefault();
+
+                    if (itemFromDb != null)
+                    {
+                        if (user.Room.Id == itemFromDb.Room.Id)
+                            description = itemFromDb.Description.Text;
+
+                        else
+                            description = "An item like that is not around here.";
+                    }
+
+                    else
+                        description = "Does not seem like that item can be found anywhere at this school.";
+                }
+                catch (ArgumentNullException)
+                {
+                    description = "Does not seem like that item can be found anywhere at this school.";
+                }
+            }
+
+            else
+            {
+                //Comment out for testing on your own user
+                if (userId.Equals(user.Id))
+                {
+                    return "No reason to examine yourself in public, try inventory if you want to check your pockets.";
+                }
+                //
+
+                if (currentUser.Room.Id != user.Room.Id)
+                {
+                    return "You need to be in the same room as the user you want to examine.";
+                }
+
+                List<Item> itemList = this.GetInventory(user.Id);
+                StringBuilder tempDescription = new StringBuilder();
+
+                tempDescription.Append("Your examination of " + user.UserName + " has revealed he is currently in the possesion of");
+
+                if (itemList.Count > 0)
+                {
+                    tempDescription.Append(" the following items:");
+                    foreach (Item i in itemList)
+                    {
+                        tempDescription.Append("\n" + i.Name);
+                        description = tempDescription.ToString();
+                    }
+                }
+                else
+                {
+                    tempDescription.Append(" no items worth taking notice of.");
+                    description = tempDescription.ToString();
+                }
+            }
+            return description;
+        }
+
+        //Brukes kun fra samme klasse av metoden Examine
+        private ApplicationUser GetUserFromName(string username)
+        {
             try
             {
-                ApplicationUser user = this.GetUser(userId);
-                Item itemFromDb = db.Items.Where(i => i.Name == item).FirstOrDefault();
-
-                if (user.Room.Id == itemFromDb.Room.Id)
-                    description = itemFromDb.Description.Text;
-    
-                else
-                    description = "An item like that is not around here";
+                ApplicationUser user = db.Users.Where(u => u.UserName == username).FirstOrDefault();
+                return user;
             }
             catch (ArgumentNullException)
             {
-                description = "Cannot find the item you try to examine";
+                return null;
             }
-            return description;
         }
 
 

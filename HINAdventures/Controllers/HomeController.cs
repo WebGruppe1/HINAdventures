@@ -27,6 +27,7 @@ namespace HINAdventures.Controllers
             this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.ApplicationDbContext));
         }
 
+        [Authorize]
         public ActionResult Index()
         {
             return View("Game");

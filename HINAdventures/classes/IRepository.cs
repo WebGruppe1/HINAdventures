@@ -14,7 +14,7 @@ namespace HINAdventures.classes
         System.Collections.Generic.List<HINAdventures.Models.VirtualUserChatCommands> GetVirtualUserChatCommandsNotRegularyToUser(HINAdventures.Models.VirtualUser user);
         System.Collections.Generic.List<HINAdventures.Models.VirtualUserChatCommands> GetVirtualUserChatCommandsToUser(HINAdventures.Models.VirtualUser user);
         System.Collections.Generic.List<HINAdventures.Models.VirtualUser> GetVirtualUsers();
-        string ItemDescription(string item, string userId);
+        string Examine(string item, string userId);
         string RoomDescription(string roomName);
         void UpdatePlayerPosition(string argument, string userID);
         string PutIntoInventory(string item, string userID);
