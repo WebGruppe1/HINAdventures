@@ -30,21 +30,12 @@ namespace HINAdventures.classes
                     {
                         if (food == it.Name || food == it.Name.ToLower() && it.isEatable)
                         {
-                            food = "You just ate " + food;
+                            return "You just ate " + food;
                         }
-                        else
-                        {
-                            food = "The item you are trying to eat does not exist in this room!";
-                        }
-                    }
-                    else
-                    {
-                        food = "The item you are trying to eat does not exist in this room!";
                     }
                 }
-
             }
-            return food;
+            return "You can't eat this";
 
         }      
 

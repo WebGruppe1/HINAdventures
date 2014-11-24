@@ -6,7 +6,7 @@ using System.Web;
 
 namespace HINAdventures.classes
 {
-    public class Drink : ICommand
+    public class Drink : ICommandTwoArgs
     {    
         private IRepository repos;
         private List<Item> items;
@@ -15,24 +15,24 @@ namespace HINAdventures.classes
             repos = new Repository();
             items = repos.GetDrinkableItems();
         }
-        public string RunCommand(string item)
+        public string RunCommand(string item, string userID)
         {
             if (items != null)
             {
                 for (int i = 0; i < items.Count; i++)
                 {
                     Item it = items[i];
-                    if (it.Name == item || it.Name.ToLower() == item)
+                    ApplicationUser user = repos.GetUser(userID);
+                    if (user.Room.Id == it.Room.Id)
                     {
-                        item = "You drank " + item;
-                    }
-                    else
-                    {
-                        item = "You can't drink this";
+                        if (it.Name == item || it.Name.ToLower() == item)
+                        {
+                            return "You drank " + item;
+                        }
                     }
                 }
             }
-            return item;
+            return "You can't drink this";
         }
     
     }

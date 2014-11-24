@@ -71,8 +71,8 @@ namespace HINAdventures.classes
                     returnString += runCommandTwoArgs.RunCommand(argument, UserID);
                     break;
 				case "drink":
-                    runCommand = new Drink();
-                    returnString += runCommand.RunCommand(argument);
+                    runCommandTwoArgs = new Drink();
+                    returnString += runCommandTwoArgs.RunCommand(argument, UserID);
                     break;
                 case "pick":
                     runCommandTwoArgs = new Pick();
