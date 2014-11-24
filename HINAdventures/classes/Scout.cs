@@ -32,11 +32,18 @@ namespace HINAdventures.classes
 
             if(items.Count > 0)
             {
-                returnString += "When you look around you see some items: ";
+                
+                Boolean runnedOnce = false;
                 foreach(Item item in items)
                 {
                     if (item.ApplicationUser == null && item.Room == user.Room)
                     {
+                        if (!runnedOnce)
+                        {
+                            returnString += "When you look around you also see some items: ";
+                            runnedOnce = true;
+                        }
+
                         if (item.Equals(items.Last()))
                             returnString += item.Name + ". ";
                         else
@@ -50,7 +57,7 @@ namespace HINAdventures.classes
                 string availableUsers = "";
                 foreach(ApplicationUser u in users)
                 {
-                    if (u.Room == user.Room)
+                    if (u.Room == user.Room && u.Id != user.Id)
                     {
                         if (u.Equals(users.Last()))
                             availableUsers += u.FirstName;
