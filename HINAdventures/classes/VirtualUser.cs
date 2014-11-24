@@ -6,34 +6,17 @@ using HINAdventures.Models;
 
 namespace HINAdventures.classes
 {
-    public static class Virtualuser
+    public class Virtualuser : ICommandTwoArgs
     {
-        private static IRepository myRepository = new Repository();
+        private IRepository myRepository = new Repository();
 
-        public static string output()
-        {
-            string chatCommand = string.Empty;
-            List<VirtualUser> users = myRepository.GetVirtualUsers();
-            //int countdown = 20;
-            foreach (VirtualUser user in users)
-            {
-                List<VirtualUserChatCommands> chatCommands = myRepository.GetVirtualUserChatCommandsToUser(user);
-                List<VirtualUserChatCommands> notRegualaryChatCommands = myRepository.GetVirtualUserChatCommandsNotRegularyToUser(user);
-
-                foreach (VirtualUserChatCommands command in chatCommands)
-                {
-                    chatCommand = command.ChatCommand;
-                }
-            }
-            return chatCommand;
-        }
-        public static string ChatWithVirtualUser(string name, string message)
+        public string RunCommand(string message, string name)
         {
             string newName = char.ToUpper(name[0]) + name.Substring(1);
             try
             {
                 VirtualUser chattingWith = myRepository.GetVirtualUser("");
-                if (message.Contains("Hi"))
+                if (message.Contains("Hi") || message.Contains("Hello") || message.Contains("hey") || message.Contains("god day"))
                     return "Hi i am " + chattingWith.Name + " :) how are you?";
                 else if (message.Contains("How are you?"))
                     return "Im good thank you very much. what are you doing?";
