@@ -39,7 +39,7 @@ namespace HINAdventures.classes
                                 ApplicationUser loggedInUser = repos.GetUser(id);
                                 if (it.ApplicationUser.Id == loggedInUser.Id)
                                 {
-                                    repos.UpdatePersonItem(it.ID, user.Id);
+                                    repos.UpdatePersonItem(it.ID, user);
                                     returnarg = "You gave " + user.FirstName + " a " + it.Name;
                                 }
                                 break;
