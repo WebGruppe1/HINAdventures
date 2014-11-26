@@ -62,10 +62,23 @@ namespace HINAdventures.Tests
         public void TestKiss()
         {
             //Arrange
-            string expected = "You kissed girlfriend";
-            var kiss = new Kiss();
+            Room room = new Room { Id = 1, Name = "D3000", Description = "Test Description"};
+            ApplicationUser user1 = new ApplicationUser { FirstName = "Tommy", Room = room};
+            ApplicationUser user2 = new ApplicationUser { FirstName = "Eivind", Room = room};
+
+            List<ApplicationUser> listOfUsers = new List<ApplicationUser>();
+            listOfUsers.Add(user1);
+            listOfUsers.Add(user2);
+
+            Mock<IRepository> repo = new Mock<IRepository>();
+            repo.Setup(x => x.GetAllUsers()).Returns(listOfUsers);
+            repo.Setup(x => x.GetUser("userid")).Returns(user1);
+            
+            var kiss = new Kiss(repo.Object);
+
+            string expected = "You kissed Eivind";
             //Act
-            string actual = kiss.RunCommand("girlfriend");
+            string actual = kiss.RunCommand("Eivind", "userid");
             //Assess
             Assert.AreEqual(expected, actual);
         }
