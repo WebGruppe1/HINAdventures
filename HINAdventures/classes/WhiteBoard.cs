@@ -6,11 +6,11 @@ using HINAdventures.Models;
 
 namespace HINAdventures.classes
 {
-    public class WhiteBoard
+    public class WhiteBoard : ICommandTwoArgs
     {
         private IRepository repos = new Repository();
 
-        public string RunCommand(string title, string message, string userId)
+        public string RunCommand(string message, string userId)
         {
             List<WhiteBoardBlog> list = repos.GetAllWhiteBoardBlogs();
             ApplicationUser user = repos.GetUser(userId);

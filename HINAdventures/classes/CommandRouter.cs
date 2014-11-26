@@ -108,6 +108,10 @@ namespace HINAdventures.classes
                     runCommandTwoArgs = new Virtualuser();
                     returnString += runCommandTwoArgs.RunCommand(argument, UserID);
                     break;
+                case "white board":
+                    runCommandTwoArgs = new WhiteBoard();
+                    returnString += runCommandTwoArgs.RunCommand(argument, UserID);
+                    break;
 				default:
 					return "The command is not recognised";
 			}
