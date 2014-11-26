@@ -13,6 +13,7 @@ namespace HINAdventures.classes
         System.Collections.Generic.List<HINAdventures.Models.VirtualUserChatCommands> GetVirtualUserChatCommandsToUser(HINAdventures.Models.VirtualUser user);
         System.Collections.Generic.List<HINAdventures.Models.VirtualUser> GetVirtualUsers();
         System.Collections.Generic.List<HINAdventures.Models.WhiteBoardBlog> GetAllWhiteBoardBlogs();
+        HINAdventures.Models.WhiteBoardBlog GetWhiteBordByUserId(string userId, string message);
         string Examine(string item, string userId);
         HINAdventures.Models.ApplicationUser GetUser(string userId);
         HINAdventures.Models.VirtualUser GetVirtualUser(string name);

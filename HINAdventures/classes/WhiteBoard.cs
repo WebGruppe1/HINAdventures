@@ -12,17 +12,11 @@ namespace HINAdventures.classes
 
         public string RunCommand(string message, string userId)
         {
-            List<WhiteBoardBlog> list = repos.GetAllWhiteBoardBlogs();
-            ApplicationUser user = repos.GetUser(userId);
-            string returnMessage = null;
-            WhiteBoardBlog blog = new WhiteBoardBlog(message, user);
-            list.Add(blog);
-            foreach (WhiteBoardBlog wh in list)
-            {
-                if(wh.Room.Id == user.Room.Id)
-                    returnMessage = "Post: " + wh.Description + "\nAuthor: " + wh.Author.FirstName + " " + wh.Author.LastName;
-            }
-            return returnMessage;
+            WhiteBoardBlog whiteBoard = repos.GetWhiteBordByUserId(userId, message);
+            if (whiteBoard != null)
+                return "Posts: \n" + whiteBoard.Description;
+            else
+                return "Det er ingen whiteboard i dette rommet, prøv et annet rom";
         }
     }
 }

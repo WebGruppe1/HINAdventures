@@ -266,5 +266,19 @@ namespace HINAdventures.classes
             var list = db.WhiteBoardBlogs.ToList();
             return list;
         }
+
+        public WhiteBoardBlog GetWhiteBordByUserId(string userId, string message)
+        {
+            try {
+                ApplicationUser user = this.GetUser(userId);
+                var item = db.WhiteBoardBlogs.Where(w => w.Room.Id == user.Room.Id).FirstOrDefault();
+                item.Description += "\n" + message;
+                db.Entry(item).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                return item;
+            } catch {
+                return null;
+            }
+        }
     }
 }
