@@ -89,8 +89,8 @@ namespace HINAdventures.classes
                     String returnStr = "-> " + command + "\n";
                     return returnStr += runCommand.RunCommand(UserID);
                 case "open":
-                    runCommand = new Open();
-                    returnString += runCommand.RunCommand(argument);
+                    runCommandTwoArgs = new Open();
+                    returnString += runCommandTwoArgs.RunCommand(argument, UserID);
                     break;
 				case "give":
                     runCommandTwoArgs = new Give();
