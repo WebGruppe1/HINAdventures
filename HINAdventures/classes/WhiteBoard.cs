@@ -16,7 +16,7 @@ namespace HINAdventures.classes
             if (whiteBoard != null)
                 return "Posts: \n" + whiteBoard.Description;
             else
-                return "Det er ingen whiteboard i dette rommet, prøv et annet rom";
+                return "There is no whiteboards in this room, try another room";
         }
     }
 }

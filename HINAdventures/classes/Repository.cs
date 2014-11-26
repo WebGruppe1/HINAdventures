@@ -237,22 +237,13 @@ namespace HINAdventures.classes
             return users.ToList();
         }
 
-        public List<VirtualUserChatCommands> GetVirtualUserChatCommandsToUser(VirtualUser user)
+        public List<VirtualUserChatCommands> GetVirtualUserChatCommands(VirtualUser user)
         {
             var chatCommands = from c in db.VirtualUserChatCommans
-                               where c.VirtualUser == user && c.SayRegulary == true
+                               where c.VirtualUser.Id == user.Id
                                select c;
             return chatCommands.ToList();
         }
-
-        public List<VirtualUserChatCommands> GetVirtualUserChatCommandsNotRegularyToUser(VirtualUser user)
-        {
-            var chatCommands = from c in db.VirtualUserChatCommans
-                               where c.VirtualUser == user && c.SayRegulary == false
-                               select c;
-            return chatCommands.ToList();
-        }
-
 
         public VirtualUser GetVirtualUser(string name)
         {

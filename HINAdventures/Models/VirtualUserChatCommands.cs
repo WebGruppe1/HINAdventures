@@ -9,7 +9,6 @@ namespace HINAdventures.Models
     {
         public int Id { get; set; }
         public string ChatCommand { get; set; }
-        public bool SayRegulary { get; set; }
         public virtual VirtualUser VirtualUser { get; set; }
     }
 }

@@ -9,8 +9,7 @@ namespace HINAdventures.classes
         System.Collections.Generic.List<HINAdventures.Models.Item> GetDrinkableItems();
         System.Collections.Generic.List<HINAdventures.Models.Item> GetEatableItems();
         System.Collections.Generic.List<HINAdventures.Models.Item> GetInventory(string userId);
-        System.Collections.Generic.List<HINAdventures.Models.VirtualUserChatCommands> GetVirtualUserChatCommandsNotRegularyToUser(HINAdventures.Models.VirtualUser user);
-        System.Collections.Generic.List<HINAdventures.Models.VirtualUserChatCommands> GetVirtualUserChatCommandsToUser(HINAdventures.Models.VirtualUser user);
+        System.Collections.Generic.List<HINAdventures.Models.VirtualUserChatCommands> GetVirtualUserChatCommands(HINAdventures.Models.VirtualUser user);
         System.Collections.Generic.List<HINAdventures.Models.VirtualUser> GetVirtualUsers();
         System.Collections.Generic.List<HINAdventures.Models.WhiteBoardBlog> GetAllWhiteBoardBlogs();
         HINAdventures.Models.WhiteBoardBlog GetWhiteBordByUserId(string userId, string message);

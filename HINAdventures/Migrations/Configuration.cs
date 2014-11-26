@@ -875,43 +875,27 @@ namespace HINAdventures.Migrations
             {
                 new VirtualUserChatCommands {
                     ChatCommand = "I like PHP & ASP.NET",
-                    SayRegulary = true
-                },
-                new VirtualUserChatCommands {
-                    ChatCommand = "hi, you like ASP.NET too?",
-                    SayRegulary = false
+                    VirtualUser = context.VirtualUser.Where(vu => vu.Name == "Knut Collin").FirstOrDefault()
                 },
                 new VirtualUserChatCommands {
                     ChatCommand = "I like Microsift & C#",
-                    SayRegulary = true
-                },
-                new VirtualUserChatCommands {
-                    ChatCommand = "hi, you like C# too?",
-                    SayRegulary = false
+                    VirtualUser = context.VirtualUser.Where(vu => vu.Name == "Werner Farstad").FirstOrDefault()
                 },
                 new VirtualUserChatCommands {
                     ChatCommand = "IPhone is best, Android sucks",
-                    SayRegulary = true
+                    VirtualUser = context.VirtualUser.Where(vu => vu.Name == "Per").FirstOrDefault()
                 },
                 new VirtualUserChatCommands {
-                    ChatCommand = "NO, IPhone is best, if it wasn't for smartphones, Android wouldn't even exsist.s",
-                    SayRegulary = true
-                },
-                new VirtualUserChatCommands {
-                    ChatCommand = "hi, you know Ihpone is best? else just walk away",
-                    SayRegulary = false
+                    ChatCommand = "NO, IPhone is best, if it wasn't for smartphones, Android wouldn't even exsist.",
+                    VirtualUser = context.VirtualUser.Where(vu => vu.Name == "Per").FirstOrDefault()
                 },
                 new VirtualUserChatCommands {
                     ChatCommand = "Android is the best, Iphone sucks",
-                    SayRegulary = true
+                    VirtualUser = context.VirtualUser.Where(vu => vu.Name == "Åge").FirstOrDefault()
                 },
                 new VirtualUserChatCommands {
                     ChatCommand = "NO, Android is the best, Apple isn't even biggest at anything except Pads and who cares about that",
-                    SayRegulary = true
-                },
-                new VirtualUserChatCommands {
-                    ChatCommand = "hi, you know Android is best? else just walk away",
-                    SayRegulary = false
+                    VirtualUser = context.VirtualUser.Where(vu => vu.Name == "Åge").FirstOrDefault()
                 }
             };
 

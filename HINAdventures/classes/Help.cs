@@ -10,7 +10,6 @@ namespace HINAdventures.classes
 		public string RunCommand(){
 			string availableCommands = "List of available commands:\n";
 
-
             availableCommands += "- Close [Object][Door]\n";
             availableCommands += "  Closes object/door\n";
 
@@ -56,14 +55,15 @@ namespace HINAdventures.classes
             availableCommands += "- Scout\n";
             availableCommands += "  List available exits\n";
 
-
 			availableCommands += "- Throw [Object]\n";
             availableCommands += "  Drops an object\n";
             
-
 			availableCommands += "- Turn [on / off] [Object]\n";
             availableCommands += "  Turns object on or off\n";
-			return availableCommands; 
+
+            availableCommands += "- Whiteboard [Object]\n";
+            availableCommands += "  You can write someting on the whiteboard so other can read\n";
+            return availableCommands; 
 		}
 	}
 }
