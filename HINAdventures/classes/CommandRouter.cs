@@ -55,8 +55,8 @@ namespace HINAdventures.classes
                     returnString += runCommandTwoArgs.RunCommand(argument, UserID);
                     break;
 				case "kill":
-                    runCommand = new Kill();
-                    returnString += runCommand.RunCommand(argument);
+                    runCommandTwoArgs = new Kill();
+                    returnString += runCommandTwoArgs.RunCommand(argument, UserID);
 					break;
 				case "kiss":
                     runCommandTwoArgs = new Kiss();

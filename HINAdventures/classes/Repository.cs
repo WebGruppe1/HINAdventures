@@ -98,6 +98,11 @@ namespace HINAdventures.classes
             db.SaveChanges();
 
         }
+        public Item GetItem(string name)
+        {
+            var item = db.Items.Include("ApplicationUser").Where(i => i.Name == name).FirstOrDefault();
+            return item;
+        }
         public List<ApplicationUser> GetAllUsers()
         {
             var users = db.Users.ToList();

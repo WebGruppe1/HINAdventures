@@ -13,5 +13,7 @@ namespace HINAdventures.Models
         public DateTime Created { get; set; }
         public virtual ApplicationUser Author { get; set; }
         public virtual Room Room { get; set; }
+        public virtual ICollection<WhiteBoardComment> Comments { get; set; }
+
     }
 }
