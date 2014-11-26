@@ -18,6 +18,7 @@ namespace HINAdventures.classes
             List<Room> rooms =  repo.getAvailableRooms(userID);
             List<Item> items = repo.GetAllItems();
             List<ApplicationUser> users = repo.GetAllUsers();
+            List<VirtualUser> virtualUsers = repo.GetVirtualUsers();
             ApplicationUser user = repo.GetUser(userID);
 
             String returnString = "You look around and see doors labeled with the names ";
@@ -68,6 +69,18 @@ namespace HINAdventures.classes
                 }
                 if (availableUsers != "")
                     returnString += "It looks like you're not alone in this room! you also see " + availableUsers + " standing around doing nothing. ";
+            }
+
+            if(virtualUsers.Count > 0)
+            {
+                string availableVirtualUsers = "";
+                foreach(VirtualUser vu in virtualUsers)
+                {
+                    if (vu.Room == user.Room)
+                        availableVirtualUsers += vu.Name;
+                }
+                if (availableVirtualUsers != "")
+                    returnString += "There might be a lecture going on, bacause " + availableVirtualUsers + " is standing by the canvas";
             }
 
 
