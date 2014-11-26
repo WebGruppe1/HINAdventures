@@ -39,12 +39,19 @@ namespace HINAdventures.classes
                     }
                     else if (arg.Equals("zombie") && user.Room.Id == 21)
                     {
-                       
+
                         Item item = repos.GetItem("Brown key");
                         if (item.ApplicationUser != null)
                         {
-                            killresponse = "You killed the zombie, thank god for that! " + "You must ask " + item.ApplicationUser.FirstName + " for the key";
-                            break;
+                            if (item.ApplicationUser.Id.Equals(userID))
+                            {
+                                killresponse = "You killed the zombie again, and you already have the key for the door. Check your inventory";
+                                break;
+                            }
+                            else
+                            {
+                                killresponse = "You killed the zombie, thank god for that! " + "You must ask " + item.ApplicationUser.FirstName + " for the key";
+                            }
                         }
                         else
                         {
