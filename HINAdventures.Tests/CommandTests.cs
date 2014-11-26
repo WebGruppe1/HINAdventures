@@ -179,5 +179,29 @@ namespace HINAdventures.Tests
             Assert.IsTrue(actualUser.StartsWith(expectedUser));
 
         }
+
+        [TestMethod]
+        public void TestExamine()
+        {
+            string expected = "On one of the tables there is a book with the title 'Java: The final chapter'";
+
+            Description description = new Description();
+            description.Id = 5;
+            description.Name = "JavaBook";
+            description.Text = "On one of the tables there is a book with the title 'Java: The final chapter'";
+
+            Item item = new Item();
+            item.ID = 3;
+            item.Name = "JavaBook";
+            item.Description = description;
+
+            Mock<IRepository> repository = new Mock<IRepository>();
+            repository.Setup(x => x.Examine("JavaBook", "")).Returns(item.Description.Text);
+
+            var examine = new Examine(repository.Object);
+
+            Assert.AreEqual(expected, examine.RunCommand("JavaBook", ""));
+            Assert.AreNotEqual(expected, examine.RunCommand("Soap", ""));
+        }
     }
 }
