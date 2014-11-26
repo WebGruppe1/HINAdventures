@@ -260,8 +260,5 @@ namespace HINAdventures.classes
          
             return user;
         }
-
-
-
     }
 }

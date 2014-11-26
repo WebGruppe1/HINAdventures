@@ -234,6 +234,7 @@
     <Compile Include="classes\Throw.cs" />
     <Compile Include="classes\Turn.cs" />
     <Compile Include="classes\VirtualUser.cs" />
+    <Compile Include="classes\WhiteBoard.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
