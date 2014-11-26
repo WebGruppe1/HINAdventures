@@ -49,11 +49,24 @@ namespace HINAdventures.Tests
 
         [TestMethod]
         public void TestOpen()
-        {   //Arrange
-            string expected = "Door is open";
-            var open = new Open();
+        {   
+            //Arrange
+            Room room = new Room { Id = 1, Name = "D2370", Description = "Test" };
+            ApplicationUser user = new ApplicationUser { FirstName = "Eivind", Room = room };
+            Item item1 = new Item { Name = "Brown key", Room = room, ApplicationUser = user };
+            Item item2 = new Item { Name = "soap", Room = room, ApplicationUser = user};
+            List<Item> items = new List<Item>();
+            items.Add(item1);
+            items.Add(item2);
+
+            Mock<IRepository> repo = new Mock<IRepository>();
+            repo.Setup(x => x.GetUser("userid")).Returns(user);
+            repo.Setup(x => x.GetInventory("userid")).Returns(items);
+            var open = new Open(repo.Object);
+            //expected
+            string expected = "You unlocked the door! but there is no treasure here, besides the opportunity for cleaning the school :)";
             //Act
-            string actual = open.RunCommand("Door");
+            string actual = open.RunCommand("door", "userid");
             //Assess
             Assert.AreEqual(expected, actual);
         }

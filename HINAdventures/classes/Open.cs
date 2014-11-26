@@ -14,6 +14,10 @@ namespace HINAdventures.classes
         {
             repos = new Repository();
         }
+          public Open(IRepository _repo)
+        {
+            repos = _repo;
+        }
         public string RunCommand(string item, string userId)
         {
             inventory = repos.GetInventory(userId);
