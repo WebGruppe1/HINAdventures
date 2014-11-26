@@ -70,7 +70,31 @@ namespace HINAdventures.Tests
             //Assess
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        public void TestEat()
+        {
+            //Arrange
+            Room room = new Room { Id = 1, Name = "D3320", Description = "Test" };
+            ApplicationUser user = new ApplicationUser { FirstName = "Eivind", Room = room };
+            Item item1 = new Item { Name = "salad", Room = room, isEatable = true };
+            Item item2 = new Item { Name = "cake", Room = room, isEatable = true };
 
+
+            List<Item> items = new List<Item>();
+            items.Add(item1);
+            items.Add(item2);
+            Mock<IRepository> repo = new Mock<IRepository>();
+            repo.Setup(x => x.GetUser("userid")).Returns(user);
+            repo.Setup(x => x.GetEatableItems()).Returns(items);
+
+            var eat = new Eat(repo.Object);
+
+            string expected = "You just ate salad";
+            string actual = eat.RunCommand("salad", "userid");
+
+            Assert.AreEqual(expected, actual);
+
+        }
         [TestMethod]
         public void TestKiss()
         {
@@ -154,6 +178,30 @@ namespace HINAdventures.Tests
             Assert.AreEqual(expectedItem, actualItem);
             Assert.IsTrue(actualUser.StartsWith(expectedUser));
 
+        }
+
+        [TestMethod]
+        public void TestExamine()
+        {
+            string expected = "On one of the tables there is a book with the title 'Java: The final chapter'";
+
+            Description description = new Description();
+            description.Id = 5;
+            description.Name = "JavaBook";
+            description.Text = "On one of the tables there is a book with the title 'Java: The final chapter'";
+
+            Item item = new Item();
+            item.ID = 3;
+            item.Name = "JavaBook";
+            item.Description = description;
+
+            Mock<IRepository> repository = new Mock<IRepository>();
+            repository.Setup(x => x.Examine("JavaBook", "")).Returns(item.Description.Text);
+
+            var examine = new Examine(repository.Object);
+
+            Assert.AreEqual(expected, examine.RunCommand("JavaBook", ""));
+            Assert.AreNotEqual(expected, examine.RunCommand("Soap", ""));
         }
     }
 }

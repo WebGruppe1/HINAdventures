@@ -14,6 +14,11 @@ namespace HINAdventures.classes
             repos = new Repository();
         }
 
+        public Examine(IRepository _repo)
+        {
+            repos = _repo;
+        }
+
         public string RunCommand(string argument, string userId)
         {
             if (!argument.Equals(""))
