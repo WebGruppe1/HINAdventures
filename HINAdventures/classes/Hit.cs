@@ -9,9 +9,14 @@ namespace HINAdventures.classes
     public class Hit : ICommandTwoArgs
     {
         private IRepository repos;
+        private List<ApplicationUser> users;
+        private string[] vitals = new[] { "face", "stomach", "arm", "fot", "back", "crotch", "chest" };
+        private Random rand = new Random();
         public Hit()
         {
             repos = new Repository();
+            users = repos.GetAllUsers();
+
         }
         public Hit(IRepository _repo)
         {
@@ -19,11 +24,25 @@ namespace HINAdventures.classes
         }
         public string RunCommand(string item, string userID)
         {
+            ApplicationUser user = repos.GetUser(userID);
             List<Item> items = repos.GetAllItems();
+
+            for (int j = 0; j < users.Count; j++)
+            {
+                ApplicationUser players = users[j];
+                if (players.FirstName.Equals(item) || players.FirstName.ToLower().Equals(item))
+                {
+                    if (user.Room.Id == players.Room.Id)
+                    {
+                        return "You just punched " + players.FirstName + " in the " + vitals.ElementAt(rand.Next(0, 7));
+                    }
+                }
+
+            }
+
             for (int i = 0; i < items.Count; i++)
             {
                 Item it = items[i];
-                ApplicationUser user = repos.GetUser(userID);
                 if (user.Room.Id == it.Room.Id)
                 {
                     if (item == it.Name.ToLower() || item == it.Name)
@@ -32,7 +51,7 @@ namespace HINAdventures.classes
                     }
                 }
             }
-            return "The Item you are trying to hit/struck does not exist in this room";
+            return "The Item/Person you are trying to hit/struck does not exist in this room";
 
         }
     }

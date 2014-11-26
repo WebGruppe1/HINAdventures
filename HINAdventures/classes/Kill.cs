@@ -37,6 +37,13 @@ namespace HINAdventures.classes
                         killresponse = str.ElementAt(rand.Next(0, 5));
                         break;
                     }
+                    else if (arg.Equals("zombie") && user.Room.Id == 21)
+                    {
+                        killresponse = "You killed the zombie, thank god for that! " +
+                            "you will now be given a key that will open a secret door";
+
+                        break;
+                    }
                     else
                     {
                         killresponse = "This person does not exist";
