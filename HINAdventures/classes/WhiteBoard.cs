@@ -12,7 +12,7 @@ namespace HINAdventures.classes
 
         public string RunCommand(string title, string message, string userId)
         {
-            List<WhiteBoardBlog> list = repos.GetAllWhiteBoards();
+            List<WhiteBoardBlog> list = repos.GetAllWhiteBoardBlogs();
             ApplicationUser user = repos.GetUser(userId);
             string returnMessage = null;
             WhiteBoardBlog blog = new WhiteBoardBlog(message, user);

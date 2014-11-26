@@ -14,5 +14,13 @@ namespace HINAdventures.Models
         public virtual ApplicationUser Author { get; set; }
         public virtual Room Room { get; set; }
         public virtual ICollection<WhiteBoardComment> Comments { get; set; }
+
+        public WhiteBoardBlog(string description, ApplicationUser author)
+        {
+            Description = description;
+            Created = DateTime.Now;
+            Author = author;
+            Room = author.Room;
+        }
     }
 }
