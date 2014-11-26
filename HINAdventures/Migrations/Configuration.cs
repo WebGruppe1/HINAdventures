@@ -509,7 +509,9 @@ namespace HINAdventures.Migrations
             C3020.ConnectedRooms.Add(C3191);
             C3020.ConnectedRooms.Add(C3000);
             C3020.ConnectedRooms.Add(C3021);
+            C3020.ConnectedRooms.Add(D3330);
 
+            C3000.ConnectedRooms.Add(C3020);
             D3350.ConnectedRooms.Add(C3020);
             D3330.ConnectedRooms.Add(C3020);
             D3360.ConnectedRooms.Add(C3020);
