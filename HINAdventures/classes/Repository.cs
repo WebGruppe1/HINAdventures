@@ -261,7 +261,10 @@ namespace HINAdventures.classes
             return user;
         }
 
-
-
+        public List<WhiteBoardBlog> GetAllWhiteBoardBlogs()
+        {
+            var list = db.WhiteBoardBlogs.ToList();
+            return list;
+        }
     }
 }

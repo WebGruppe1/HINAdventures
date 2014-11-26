@@ -9,12 +9,13 @@ namespace HINAdventures.classes
         System.Collections.Generic.List<HINAdventures.Models.Item> GetDrinkableItems();
         System.Collections.Generic.List<HINAdventures.Models.Item> GetEatableItems();
         System.Collections.Generic.List<HINAdventures.Models.Item> GetInventory(string userId);
-        HINAdventures.Models.ApplicationUser GetUser(string userId);
-        HINAdventures.Models.VirtualUser GetVirtualUser(string name);
         System.Collections.Generic.List<HINAdventures.Models.VirtualUserChatCommands> GetVirtualUserChatCommandsNotRegularyToUser(HINAdventures.Models.VirtualUser user);
         System.Collections.Generic.List<HINAdventures.Models.VirtualUserChatCommands> GetVirtualUserChatCommandsToUser(HINAdventures.Models.VirtualUser user);
         System.Collections.Generic.List<HINAdventures.Models.VirtualUser> GetVirtualUsers();
+        System.Collections.Generic.List<HINAdventures.Models.WhiteBoardBlog> GetAllWhiteBoardBlogs();
         string Examine(string item, string userId);
+        HINAdventures.Models.ApplicationUser GetUser(string userId);
+        HINAdventures.Models.VirtualUser GetVirtualUser(string name);
         string RoomDescription(string roomName);
         void UpdatePlayerPosition(string argument, string userID);
         string PutIntoInventory(string item, string userID);
