@@ -8,10 +8,15 @@ namespace HINAdventures.classes
 {
     public class Virtualuser : ICommandTwoArgs
     {
-        private IRepository myRepository = new Repository();
+        private IRepository myRepository;
 
-        public string RunCommand(string message, string name)
+        public Virtualuser ()
         {
+            myRepository = new Repository();
+        }
+        public string RunCommand(string message, string userid)
+        {
+            //ApplicationUser user = myRepository
             string newName = char.ToUpper(name[0]) + name.Substring(1);
             try
             {
