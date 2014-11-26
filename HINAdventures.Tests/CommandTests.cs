@@ -70,7 +70,31 @@ namespace HINAdventures.Tests
             //Assess
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        public void TestEat()
+        {
+            //Arrange
+            Room room = new Room { Id = 1, Name = "D3320", Description = "Test" };
+            ApplicationUser user = new ApplicationUser { FirstName = "Eivind", Room = room };
+            Item item1 = new Item { Name = "salad", Room = room, isEatable = true };
+            Item item2 = new Item { Name = "cake", Room = room, isEatable = true };
 
+
+            List<Item> items = new List<Item>();
+            items.Add(item1);
+            items.Add(item2);
+            Mock<IRepository> repo = new Mock<IRepository>();
+            repo.Setup(x => x.GetUser("userid")).Returns(user);
+            repo.Setup(x => x.GetEatableItems()).Returns(items);
+
+            var eat = new Eat(repo.Object);
+
+            string expected = "You just ate salad";
+            string actual = eat.RunCommand("salad", "userid");
+
+            Assert.AreEqual(expected, actual);
+
+        }
         [TestMethod]
         public void TestKiss()
         {
