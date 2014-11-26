@@ -15,7 +15,6 @@ namespace HINAdventures.classes
         public Hit()
         {
             repos = new Repository();
-            users = repos.GetAllUsers();
 
         }
         public Hit(IRepository _repo)
@@ -25,6 +24,7 @@ namespace HINAdventures.classes
         public string RunCommand(string item, string userID)
         {
             ApplicationUser user = repos.GetUser(userID);
+            users = repos.GetAllUsers();
             List<Item> items = repos.GetAllItems();
 
             for (int j = 0; j < users.Count; j++)
@@ -37,7 +37,6 @@ namespace HINAdventures.classes
                         return "You just punched " + players.FirstName + " in the " + vitals.ElementAt(rand.Next(0, 7));
                     }
                 }
-
             }
 
             for (int i = 0; i < items.Count; i++)

@@ -111,26 +111,35 @@ namespace HINAdventures.Tests
         [TestMethod]
         public void TestHit()
         {
-            string expected = "You just struck a JavaBook";
+            Room room = new Room { Id = 10, Name = "D3350" };
 
-            Room enteredRoom = new Room { Id = 10, Name = "D3350" };
-            ApplicationUser user = new ApplicationUser { FirstName = "Tord", Room = enteredRoom };
+            ApplicationUser user1 = new ApplicationUser { FirstName = "Tord", Room = room };
+            ApplicationUser user2 = new ApplicationUser { FirstName = "Tommy", Room = room };
+            List<ApplicationUser> listOfUsers = new List<ApplicationUser>();
+            listOfUsers.Add(user1);
+            listOfUsers.Add(user2);
 
-            Item item = new Item();
-            item.ID = 3;
-            item.Name = "JavaBook";
-            item.Room = new Room { Id = 10, Name = "D3350" };
+            Item item1 = new Item { ID = 1, Name = "JavaBook", Room = room };
+            Item item2 = new Item { ID = 2, Name = "Potato", Room = room };
+            List<Item> listOfItems = new List<Item>();
+            listOfItems.Add(item1);
+            listOfItems.Add(item2);
 
             Mock<IRepository> repository = new Mock<IRepository>();
-            repository.Setup(x => x.GetUser("userid")).Returns(user);
+            repository.Setup(x => x.GetUser("userid")).Returns(user1);
+            repository.Setup(x => x.GetAllUsers()).Returns(listOfUsers);
+            repository.Setup(x => x.GetAllItems()).Returns(listOfItems);
 
-            var hit = new Hit();
+            var hit = new Hit(repository.Object);
 
-            string actual = hit.RunCommand("JavaBook", "555");
-           // string test = "You just struck a JavaBook";
+            string actualItem = hit.RunCommand("JavaBook", "userid");
+            string actualUser = hit.RunCommand("Tommy", "userid");
+
+            string expectedItem = "You just struck a JavaBook";
+            string expectedUser = "You just punched Tommy in the";
             //Assess
-             Assert.AreEqual(expected, actual);
-            //Assert.AreEqual(expected, test);
+            Assert.AreEqual(expectedItem, actualItem);
+            Assert.IsTrue(actualUser.StartsWith(expectedUser));
 
         }
     }
