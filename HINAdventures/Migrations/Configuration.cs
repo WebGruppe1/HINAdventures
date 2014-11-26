@@ -915,6 +915,36 @@ namespace HINAdventures.Migrations
 
             virtualUserChatCommands.ForEach(element => context.VirtualUserChatCommans.AddOrUpdate(x => x.ChatCommand, element));
             context.SaveChanges();
+
+            var whiteBoard = new List<WhiteBoardBlog>
+            {
+                new WhiteBoardBlog{
+                    Description = "Yo, dude. you're so cool man",
+                    Author = context.Users.Where(u => u.Id == "c933cc62-91bd-43b0-8a75-0c72140104a0").FirstOrDefault(),
+                    Room = context.Rooms.Where(room => room.Name == "D3330").FirstOrDefault(),
+                    Created = DateTime.Now
+                },
+                new WhiteBoardBlog{
+                    Description = "Hi man, thx bro, you're not too bad either",
+                    Author = context.Users.Where(u => u.Id == "c933cc62-91bd-43b0-8a75-0c72140104a0").FirstOrDefault(),
+                    Room = context.Rooms.Where(room => room.Name == "D3330").FirstOrDefault(),
+                    Created = DateTime.Now
+                },
+                new WhiteBoardBlog{
+                    Description = "haha awesome. what up?",
+                    Author = context.Users.Where(u => u.Id == "c933cc62-91bd-43b0-8a75-0c72140104a0").FirstOrDefault(),
+                    Room = context.Rooms.Where(room => room.Name == "D3330").FirstOrDefault(),
+                    Created = DateTime.Now
+                },
+                new WhiteBoardBlog{
+                    Description = "nothing much, just chilling",
+                    Author = context.Users.Where(u => u.Id == "c933cc62-91bd-43b0-8a75-0c72140104a0").FirstOrDefault(),
+                    Room = context.Rooms.Where(room => room.Name == "D3330").FirstOrDefault(),
+                    Created = DateTime.Now
+                }
+            };
+            whiteBoard.ForEach(element => context.WhiteBoardBlogs.AddOrUpdate(x => x.Description, element));
+            context.SaveChanges();
         }
     }
 }

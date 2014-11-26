@@ -13,6 +13,10 @@ namespace HINAdventures.Models
         public virtual ApplicationUser Author { get; set; }
         public virtual Room Room { get; set; }
 
+        public WhiteBoardBlog()
+        {
+        }
+
         public WhiteBoardBlog(string description, ApplicationUser author)
         {
             Description = description;

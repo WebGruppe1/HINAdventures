@@ -6,18 +6,16 @@ using HINAdventures.Models;
 
 namespace HINAdventures.classes
 {
-    public class Virtualuser : ICommandTwoArgs
+    public class Virtualuser : ICommand
     {
         private IRepository myRepository = new Repository();
 
-        public string RunCommand(string message, string name)
+        public string RunCommand(string message)
         {
-            string newName = char.ToUpper(name[0]) + name.Substring(1);
             try
             {
-                VirtualUser chattingWith = myRepository.GetVirtualUser("");
                 if (message.Contains("Hi") || message.Contains("Hello") || message.Contains("hey") || message.Contains("god day"))
-                    return "Hi i am " + chattingWith.Name + " :) how are you?";
+                    return "Hi :) how are you?";
                 else if (message.Contains("How are you?"))
                     return "Im good thank you very much. what are you doing?";
                 else if (message.Contains("What are you doing?"))

@@ -19,7 +19,8 @@ namespace HINAdventures.classes
             list.Add(blog);
             foreach (WhiteBoardBlog wh in list)
             {
-                returnMessage = "Post: " + wh.Description + "\nAuthor: " + wh.Author.FirstName + " " + wh.Author.LastName;
+                if(wh.Room.Id == user.Room.Id)
+                    returnMessage = "Post: " + wh.Description + "\nAuthor: " + wh.Author.FirstName + " " + wh.Author.LastName;
             }
             return returnMessage;
         }
