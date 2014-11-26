@@ -802,7 +802,7 @@ namespace HINAdventures.Migrations
                 },
                 new Item {
                     Name = "White board",
-                    Description = context.Descriptions.Where(x => x.Name == "White board").FirstOrDefault(),
+                    Description = context.Descriptions.Where(x => x.Name == "Xbox 360").FirstOrDefault(),
                     isDrinkable = false,
                     isEatable = false,
                     Room = context.Rooms.Where(x => x.Name == "D3330").FirstOrDefault()
