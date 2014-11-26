@@ -692,7 +692,11 @@ namespace HINAdventures.Migrations
                 new Description {
                    Name = "White board",
                    Text = "There are messages written on the whiteboard. Maybe I should try to write some."
-                }   
+                },
+                new Description {
+                    Name = "Brown key",
+                    Text = "The key is a bit rusty. You can make out som text 'D2370'"
+                }
             };
             descriptions.ForEach(element => context.Descriptions.AddOrUpdate(description => description.Text, element));
 
@@ -802,8 +806,14 @@ namespace HINAdventures.Migrations
                     isDrinkable = false,
                     isEatable = false,
                     Room = context.Rooms.Where(x => x.Name == "D3330").FirstOrDefault()
+                },
+                new Item {
+                    Name = "Brown key",
+                    Description = context.Descriptions.Where(x => x.Name == "Brown key").FirstOrDefault(),
+                    isDrinkable = false,
+                    isEatable = true,
+                    Room = context.Rooms.Where(x => x.Name == "D2330").FirstOrDefault()
                 }
-              
 
             };
             items.ForEach(element => context.Items.AddOrUpdate(item => item.Name, element));

@@ -42,6 +42,8 @@ namespace HINAdventures.Models
         public DbSet<VirtualUser> VirtualUser { get; set; }
         public DbSet<VirtualUserChatCommands> VirtualUserChatCommans { get; set; }
         public DbSet<Item> Items { get; set; }
+        public DbSet<WhiteBoardBlog> WhiteBoardBlogs { get; set; }
+        public DbSet<WhiteBoardComment> WhiteBoardComments { get; set; }
 
         
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

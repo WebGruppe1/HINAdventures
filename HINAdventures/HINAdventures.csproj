@@ -274,6 +274,10 @@
     <Compile Include="Migrations\201411241925468_ukjent2.Designer.cs">
       <DependentUpon>201411241925468_ukjent2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411261034463_addWhiteBoard.cs" />
+    <Compile Include="Migrations\201411261034463_addWhiteBoard.Designer.cs">
+      <DependentUpon>201411261034463_addWhiteBoard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Description.cs" />
@@ -283,6 +287,8 @@
     <Compile Include="Models\Room.cs" />
     <Compile Include="Models\VirtualUserChatCommands.cs" />
     <Compile Include="Models\VirtualUser.cs" />
+    <Compile Include="Models\WhiteBoardBlog.cs" />
+    <Compile Include="Models\WhiteBoardComment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="classes\Repository.cs" />
     <Compile Include="Startup.cs" />
@@ -395,6 +401,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411241925468_ukjent2.resx">
       <DependentUpon>201411241925468_ukjent2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411261034463_addWhiteBoard.resx">
+      <DependentUpon>201411261034463_addWhiteBoard.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
