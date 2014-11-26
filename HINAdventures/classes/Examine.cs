@@ -14,12 +14,18 @@ namespace HINAdventures.classes
             repos = new Repository();
         }
 
+        //Used when running tests
+        public Examine(IRepository _repo)
+        {
+            repos = _repo;
+        }
+
         public string RunCommand(string argument, string userId)
         {
             if (!argument.Equals(""))
                 return repos.Examine(argument, userId);
             else
-                return "Use of the commando, examine [item or person to be examined]";
+                return "Use of the commando, examine [item, room or person to be examined]";
         }
     }
 }

@@ -13,6 +13,10 @@ namespace HINAdventures.classes
         {
             repos = new Repository();
         }
+         public Eat(IRepository _repo)
+        {
+            repos = _repo;
+        }
         public string RunCommand(string food, string userID)
         {
 

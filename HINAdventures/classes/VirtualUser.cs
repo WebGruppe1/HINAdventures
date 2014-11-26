@@ -8,8 +8,12 @@ namespace HINAdventures.classes
 {
     public class Virtualuser : ICommand
     {
-        private IRepository myRepository = new Repository();
+        private IRepository myRepository;
 
+        public Virtualuser ()
+        {
+            myRepository = new Repository();
+        }
         public string RunCommand(string message)
         {
             try
