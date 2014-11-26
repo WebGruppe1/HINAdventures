@@ -19,6 +19,7 @@ namespace HINAdventures.classes
         void UpdatePlayerPosition(string argument, string userID);
         string PutIntoInventory(string item, string userID);
         void UpdatePersonItem(int item_id, HINAdventures.Models.ApplicationUser user);
+        HINAdventures.Models.Item GetItem(string name);
 
     }
 }
