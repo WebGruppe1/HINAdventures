@@ -9,66 +9,64 @@ using System.Diagnostics;
 
 namespace HINAdventures.classes
 {
+    /// <summary>
+    /// Repository class, all interaction with the database goes through here.
+    /// Written by everyone, new methods added as they were needed.
+    /// </summary>
     public class Repository : HINAdventures.classes.IRepository
     {
         ApplicationDbContext db = new ApplicationDbContext();
 
+        //Returns a list of rooms available from a given playerposition
         public List<Room> getAvailableRooms(String userID)
         {            
             List<Room> list = new List<Room>();
             ApplicationUser user = db.Users.Where(u => u.Id == userID).FirstOrDefault();
 
-            //user.Room.ConnectedRooms
-            //var EnteredRoom = db.Rooms.Where(r => r.Name == argument).FirstOrDefault();
-            
-
             foreach (Room room in user.Room.ConnectedRooms)
-                list.Add(room);
-                //if (room == user.Room)
-                   // list.Add(room.Name);     
+                list.Add(room);  
             
             return list;
         }
+
+        //Returns eatable item
         public List<Item> GetEatableItems()
         {
-            //using (var context = new ApplicationDbContext())
-            //{
-                var eatItems = db.Items.Include("Room").Where(i => i.isEatable == true).ToList();
-                return eatItems;
-            //}
+            var eatItems = db.Items.Include("Room").Where(i => i.isEatable == true).ToList();
+            return eatItems;
         }
+
+        //Returns a list of all available items
         public List<Item> GetAllItems()
         {
-            //using (var context = new ApplicationDbContext())
-            //{
-                var itemListe = db.Items.ToList();
-                return itemListe;
-
-            //}
+            var itemListe = db.Items.ToList();
+            return itemListe;
         }
+
+        //Returns drinkable item
         public List<Item> GetDrinkableItems()
         {
-            using (var context = new ApplicationDbContext())
-            {
-                var drinkListe = context.Items.Include("Room").Where(i => i.isDrinkable == true).ToList();
-                return drinkListe;
-
-            }
+            var drinkListe = db.Items.Include("Room").Where(i => i.isDrinkable == true).ToList();
+            return drinkListe;
         }
+
+        //Returns a room description string given a room name
         public String RoomDescription(String roomName)
         {
             var desc = from a in db.Rooms where a.Name == roomName select a.Description;
             return desc.FirstOrDefault();
         }
 
+        //Returns item given a users id, a users inventory
         public List<Item> GetInventory(string userId)
         {
             var itemList = db.Items.Where(items => items.ApplicationUser.Id.Equals(userId)).ToList();
             return itemList;
         }
+
+        //Puts an item into a users inventory, adds a userobject to the item
         public string PutIntoInventory(string item, string userID)
         {
-            //kode ikke ferdig
             ApplicationUser user = GetUser(userID);
             var selectedItem = db.Items.Where(i => i.Name == item).FirstOrDefault();
             
@@ -93,38 +91,45 @@ namespace HINAdventures.classes
                 return "item not found\n";
 
         }
+
+        //
         public void UpdatePersonItem(int item_id, ApplicationUser user)
         {
             var item = db.Items.Include("ApplicationUser").Where(i => i.ID == item_id).FirstOrDefault();
             item.ApplicationUser = user;
             db.SaveChanges();
-
         }
+
+        //Returns an item object given an item name
         public Item GetItem(string name)
         {
             var item = db.Items.Include("ApplicationUser").Where(i => i.Name == name).FirstOrDefault();
             return item;
         }
+
+        //Returns a list of all registered users
         public List<ApplicationUser> GetAllUsers()
         {
             var users = db.Users.ToList();
             return users;
         }
+
+        //Gets a specific user from a given user id
         public ApplicationUser GetUser(string userId)
         {
             ApplicationUser user = db.Users.Where(u => u.Id == userId).FirstOrDefault();
             return user;
         }
+
+        //Updates the players position, also updates position of all items belonging to that player
         public string UpdatePlayerPosition(String argument, String userID)
         {
             ApplicationUser user = db.Users.Where(u => u.Id == userID).FirstOrDefault();
             user.Room = db.Rooms.Where(r => r.Name == argument).FirstOrDefault();
 
-            //Utestet, skal forandre item i inventory sin posisjon
             List<Item> itemList = this.GetAllItems();
             foreach (Item item in itemList)
             {
-                //if (user.Id.Equals(item.ApplicationUser.Id))
                 if(item.ApplicationUser != null)
                     if(user.Equals(item.ApplicationUser))
                         item.Room = user.Room;
@@ -132,6 +137,7 @@ namespace HINAdventures.classes
 
             db.SaveChanges();
 
+            //If a virtual user is present in the room entered, a few sentences will be added with the roomdescription from the virtual user
             List<VirtualUser> users = this.GetVirtualUsers();
             Dictionary<VirtualUser, int> positionInList = new Dictionary<VirtualUser, int>();
             string returnMessage = null;
@@ -264,13 +270,14 @@ namespace HINAdventures.classes
             return room;
         }
 
-
+        //Returns a list of virtual users
         public List<VirtualUser> GetVirtualUsers()
         {
             var users = from u in db.VirtualUser select u;
             return users.ToList();
         }
 
+        //Returns a list of sentences said by the virtual player
         public List<VirtualUserChatCommands> GetVirtualUserChatCommands(VirtualUser user)
         {
             var chatCommands = from c in db.VirtualUserChatCommans
@@ -279,6 +286,7 @@ namespace HINAdventures.classes
             return chatCommands.ToList();
         }
 
+        //Gets a virtual user by name
         public VirtualUser GetVirtualUser(string name)
         {
             VirtualUser user = db.VirtualUser.Where(u => u.Name == name).FirstOrDefault();
@@ -286,11 +294,13 @@ namespace HINAdventures.classes
             return user;
         }
 
+        //Gets all comments written on the whiteboard
         public List<WhiteBoardBlog> GetAllWhiteBoardBlogs()
         {
             var list = db.WhiteBoardBlogs.ToList();
             return list;
         }
+
 
         public WhiteBoardBlog GetWhiteBordByUserId(string userId, string message)
         {
