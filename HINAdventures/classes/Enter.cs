@@ -27,7 +27,7 @@ namespace HINAdventures.classes
             foreach(Room room in rooms)
                 if (room.Name.Equals(_room, StringComparison.InvariantCultureIgnoreCase))
                 {
-                    repo.UpdatePlayerPosition(_room, userID);
+                    string virtuelUserChat = repo.UpdatePlayerPosition(_room, userID);
                     string message = repo.RoomDescription(_room);
                     message += "\n";
                     
@@ -49,7 +49,7 @@ namespace HINAdventures.classes
                         }
                     }    
 
-                    return message;
+                    return message + "\n\n" + virtuelUserChat;
                 }
 
             return "This room is out of reach";

@@ -1,9 +1,11 @@
-﻿using HINAdventures.Models;
+﻿using HINAdventures.Hubs;
+using HINAdventures.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Text;
+using System.Diagnostics;
 
 namespace HINAdventures.classes
 {
@@ -113,7 +115,7 @@ namespace HINAdventures.classes
             ApplicationUser user = db.Users.Where(u => u.Id == userId).FirstOrDefault();
             return user;
         }
-        public void UpdatePlayerPosition(String argument, String userID)
+        public string UpdatePlayerPosition(String argument, String userID)
         {
             ApplicationUser user = db.Users.Where(u => u.Id == userID).FirstOrDefault();
             user.Room = db.Rooms.Where(r => r.Name == argument).FirstOrDefault();
@@ -130,6 +132,30 @@ namespace HINAdventures.classes
 
             db.SaveChanges();
 
+            List<VirtualUser> users = this.GetVirtualUsers();
+            Dictionary<VirtualUser, int> positionInList = new Dictionary<VirtualUser, int>();
+            string returnMessage = null;
+            bool isRunning = true;
+            while (isRunning)
+            {
+                foreach (VirtualUser vu in users)
+                {
+                    if (!positionInList.ContainsKey(vu))
+                        positionInList[vu] = 0;
+                    if (vu.Room.Id == user.Room.Id)
+                    {
+                        int pos = positionInList[vu];
+                        VirtualUserChatCommands vucc = vu.VirtualUserChatCommands[pos];
+
+                        positionInList[vu] = pos;
+                        returnMessage += "Virtual user: " + vu.Name + " - " + vucc.ChatCommand + "\n";
+                        vu.VirtualUserChatCommands.Remove(vucc);
+                    }
+                    if (vu.VirtualUserChatCommands.Count == 0)
+                        isRunning = false;
+                }
+            }
+            return returnMessage;
         }
 
         public String Examine(string item, string userId)

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using HINAdventures.Models;
+using System.Timers;
+using System.Threading;
 
 namespace HINAdventures.classes
 {
@@ -14,25 +16,6 @@ namespace HINAdventures.classes
         {
             myRepository = new Repository();
         }
-
-        public string SayRegulary(string userId)
-        {
-            List<VirtualUser> users = myRepository.GetVirtualUsers();
-            ApplicationUser user = myRepository.GetUser(userId);
-            string returnMessage = null;
-            foreach(VirtualUser vu in users)
-            {
-                if(vu.Room.Id == user.Room.Id)
-                {
-                    foreach(VirtualUserChatCommands vucc in vu.VirtualUserChatCommands)
-                    {
-                        returnMessage += vucc.ChatCommand;
-                    }
-                }
-            }
-            return null;
-        }
-
         public string RunCommand(string message)
         {
             try
