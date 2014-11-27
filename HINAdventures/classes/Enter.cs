@@ -6,6 +6,12 @@ using System.Web;
 
 namespace HINAdventures.classes
 {
+    /// <summary>
+    /// Enter.cs
+    /// 
+    /// Makes a player change his position from one room to another. a new list of available rooms
+    /// is returned and displayed.
+    /// </summary>
     public class Enter : ICommandTwoArgs
     {
         private IRepository repo;

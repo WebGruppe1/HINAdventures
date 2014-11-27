@@ -5,6 +5,9 @@ using System.Web;
 
 namespace HINAdventures.classes
 {
+    /// <summary>
+    /// Updates the inventory of a player with the selected item and returns a string with info.
+    /// </summary>
     public class Pick : ICommandTwoArgs
     {
         private IRepository repo;

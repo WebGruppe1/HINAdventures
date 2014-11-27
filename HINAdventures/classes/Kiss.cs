@@ -6,6 +6,12 @@ using System.Web;
 
 namespace HINAdventures.classes
 {
+    /// <summary>
+    /// Kiss.cs
+    /// 
+    /// Command to kiss a person. checks if there is a user in the current room with the same 
+    /// name as entered by user.
+    /// </summary>
     public class Kiss : ICommandTwoArgs
     {
         private IRepository repo;

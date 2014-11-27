@@ -5,6 +5,9 @@ using System.Web;
 
 namespace HINAdventures.classes
 {
+    /**Kristian Alm 27.11.2014
+     * This class enables the use of examine commando
+     */ 
     public class Examine : ICommandTwoArgs
     {
         private IRepository repos;

@@ -158,14 +158,16 @@ namespace HINAdventures.classes
             return returnMessage;
         }
 
+        //Returns the description of an item, a room or a person
         public String Examine(string item, string userId)
         {
             string description = "";
 
-            ApplicationUser user = this.GetUserFromName(item);
-            ApplicationUser currentUser = this.GetUser(userId);
-            Room room = this.GetRoom(item);
+            ApplicationUser user = this.GetUserFromName(item);      //Gets the user if it is a user
+            ApplicationUser currentUser = this.GetUser(userId);     //Gets the current user
+            Room room = this.GetRoom(item);                         //Gets the room if it is a room
 
+            //If room returns a result, the description will be returned
             if (room != null)
             {
                 if (room.Id == currentUser.Room.Id)
@@ -174,13 +176,15 @@ namespace HINAdventures.classes
                     return "You need to be in a room to examine it.";
             }
 
+            //If user is null, then the item to be examined must be an item or nothing.
             if (user == null)
             {
                 try
                 {
-                    user = this.GetUser(userId);
+                    //Check if provided string exists in form of an item
                     Item itemFromDb = db.Items.Where(i => i.Name == item).FirstOrDefault();
 
+                    //Returns a result based on item found or not, and if its in the same room
                     if (itemFromDb != null)
                     {
                         if (user.Room.Id == itemFromDb.Room.Id)
@@ -199,20 +203,23 @@ namespace HINAdventures.classes
                 }
             }
 
+            //This runs if the item to be examined is a player
             else
             {
-                //Comment out for testing on your own user
+                //Comment out for testing on your own user, checks if the user to be examined is yourself
                 if (userId.Equals(user.Id))
                 {
-                    return "No reason to examine yourself in public, try inventory if you want to check your pockets.";
+                    return "No reason to examine yourself, try inventory if you want to check your pockets.";
                 }
                 //
 
+                //Checks if the user is in the same room as you
                 if (currentUser.Room.Id != user.Room.Id)
                 {
                     return "You need to be in the same room as the user you want to examine.";
                 }
 
+                //Returns information about the players inventory, if there is something in it
                 List<Item> itemList = this.GetInventory(user.Id);
                 StringBuilder tempDescription = new StringBuilder();
 
@@ -236,7 +243,7 @@ namespace HINAdventures.classes
             return description;
         }
 
-        //Brukes kun fra samme klasse av metoden Examine
+        //Used by the method Examine, returns a user object from a username
         private ApplicationUser GetUserFromName(string username)
         {
             try
@@ -250,6 +257,7 @@ namespace HINAdventures.classes
             }
         }
 
+        //Used by the method Examine, returns a room object from room name
         private Room GetRoom(string roomName)
         {
             Room room = db.Rooms.Where(w => w.Name == roomName).FirstOrDefault();
