@@ -10,10 +10,6 @@ namespace HINAdventures.classes
 		public string RunCommand(){
 			string availableCommands = "List of available commands:\n";
 
-
-            availableCommands += "- Close [Object][Door]\n";
-            availableCommands += "  Closes object/door\n";
-
             availableCommands += "- Drink [Object]\n";
             availableCommands += "  Tries to drink the object\n";
 

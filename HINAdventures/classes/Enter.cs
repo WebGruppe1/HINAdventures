@@ -6,7 +6,7 @@ using System.Web;
 
 namespace HINAdventures.classes
 {
-    public class Enter
+    public class Enter : ICommandTwoArgs
     {
         private IRepository repo;
         

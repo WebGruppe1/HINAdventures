@@ -65,7 +65,7 @@ namespace HINAdventures.classes
                     returnString += runCommandTwoArgs.RunCommand(argument, UserID);
                     break;
                 case "enter":
-                    Enter enter = new Enter();
+                    runCommandTwoArgs = new Enter();
                     returnString += runCommandTwoArgs.RunCommand(argument, UserID);
                     break;
 				case "eat":
