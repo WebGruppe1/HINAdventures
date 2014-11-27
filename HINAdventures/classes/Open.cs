@@ -6,6 +6,11 @@ using System.Web;
 
 namespace HINAdventures.classes
 {
+    /// <summary>
+    /// Open.cs
+    /// 
+    /// Kommando for å åpne et hemmelig rom som trenger en nøkkel.
+    /// </summary>
     public class Open : ICommandTwoArgs
     {
         private IRepository repos;
