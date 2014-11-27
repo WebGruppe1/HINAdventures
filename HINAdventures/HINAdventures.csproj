@@ -212,7 +212,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="classes\Close.cs" />
     <Compile Include="classes\CommandRouter.cs" />
     <Compile Include="classes\Drink.cs" />
     <Compile Include="classes\Eat.cs" />
@@ -232,7 +231,6 @@
     <Compile Include="classes\Pick.cs" />
     <Compile Include="classes\Scout.cs" />
     <Compile Include="classes\Throw.cs" />
-    <Compile Include="classes\Turn.cs" />
     <Compile Include="classes\VirtualUser.cs" />
     <Compile Include="classes\WhiteBoard.cs" />
     <Compile Include="Controllers\AccountController.cs" />

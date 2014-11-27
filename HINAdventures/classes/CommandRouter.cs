@@ -3,7 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
-
+/**
+ * CommandRouter.cs
+ * 
+ * All commands go through this class, and a response is returned.
+ * 
+ **/ 
 namespace HINAdventures.classes
 {
 	public static class CommandRouter
@@ -47,9 +52,6 @@ namespace HINAdventures.classes
 				case "inventory":
 					runCommand = new Inventory();
                     return runCommand.RunCommand(UserID);
-				case "turn":
-                    returnString += Turn.TurnCommand(argument);
-                    break;
 				case "hit":
                     runCommandTwoArgs = new Hit();
                     returnString += runCommandTwoArgs.RunCommand(argument, UserID);
@@ -64,7 +66,7 @@ namespace HINAdventures.classes
                     break;
                 case "enter":
                     Enter enter = new Enter();
-                    returnString += enter.RunCommand(argument, UserID);
+                    returnString += runCommandTwoArgs.RunCommand(argument, UserID);
                     break;
 				case "eat":
                     runCommandTwoArgs = new Eat();
