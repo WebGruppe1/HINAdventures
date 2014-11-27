@@ -17,7 +17,7 @@ namespace HINAdventures.classes
         HINAdventures.Models.ApplicationUser GetUser(string userId);
         HINAdventures.Models.VirtualUser GetVirtualUser(string name);
         string RoomDescription(string roomName);
-        void UpdatePlayerPosition(string argument, string userID);
+        string UpdatePlayerPosition(string argument, string userID);
         string PutIntoInventory(string item, string userID);
         void UpdatePersonItem(int item_id, HINAdventures.Models.ApplicationUser user);
         HINAdventures.Models.Item GetItem(string name);
