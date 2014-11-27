@@ -98,7 +98,6 @@
         $.connection.hub.start().done(function () {
             chat.server.join(username, $.connection.hub.id);            //Register the player with a list containing all online players
 
-            //On pressing send it checks if you want to send the message to all or just one player.
             $("#sendmessage").on("click", sendMessage);
 
             //On enter send message
