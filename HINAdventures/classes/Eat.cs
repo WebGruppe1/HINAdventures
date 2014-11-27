@@ -6,6 +6,12 @@ using System.Web;
 
 namespace HINAdventures.classes
 {
+    /// <summary>
+    /// Eat.cs
+    /// 
+    /// Kommando klasse for å spise noe. Henter ut en liste med items som kan
+    /// spises og sjekker om iteme og bruker er i samme rom.
+    /// </summary>
     public class Eat : ICommandTwoArgs
     {
         private IRepository repos;

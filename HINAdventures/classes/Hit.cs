@@ -6,6 +6,12 @@ using System.Web;
 
 namespace HINAdventures.classes
 {
+    /// <summary>
+    /// Hit.cs
+    /// 
+    /// Kommando for å slå en person eller et item. Sjekker om person og item er i samme rom som innlogget
+    /// bruker. Slår du en person returnerer det tilfeldig hvor du slå personen.
+    /// </summary>
     public class Hit : ICommandTwoArgs
     {
         private IRepository repos;

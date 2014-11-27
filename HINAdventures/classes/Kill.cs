@@ -6,6 +6,14 @@ using System.Web;
 
 namespace HINAdventures.classes
 {
+    /// <summary>
+    /// Kill.cs
+    /// 
+    /// Kommando for å drepe en person. Sjekker om du er i samme rom som personen. 
+    /// Returnerer et tilfeldig svar om dreping(at det ikke er lov). 
+    /// Inneholder en sjekk om du dreper en zombie, da får du en nøkkel til et hemmelig
+    /// rom.
+    /// </summary>
     public class Kill : ICommandTwoArgs
     {
         private string[] str = new[]

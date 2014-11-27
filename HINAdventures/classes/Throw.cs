@@ -6,6 +6,13 @@ using System.Web;
 
 namespace HINAdventures.classes
 {
+    /// <summary>
+    /// Throw.cs
+    /// 
+    /// Kommando for å kaste. Sjekker om hvilke item innlogget bruker eier, som gir deg
+    /// mulighet til å kaste det. Da er du ikke lenger eier av iteme.
+    /// 
+    /// </summary>
     public class Throw : ICommandTwoArgs
     {
         private IRepository repos;
@@ -13,10 +20,11 @@ namespace HINAdventures.classes
         public Throw()
         {
             repos = new Repository();
-            items = repos.GetAllItems();
         }
         public string RunCommand(string item, string userID)
         {
+            items = repos.GetInventory(userID);
+
             string output = "";
             for (int i = 0; i < items.Count; i++)
             {
@@ -32,13 +40,13 @@ namespace HINAdventures.classes
                     }
                     else
                     {
-                        output = "The item you are trying to throw does not exist in this room";
+                        output = "You can't throw items you don't have, check your inventory";
                     }
                     
                 }
                 else
                 {
-                    output = "The item you are trying to throw does not exist in this room";
+                    output = "You can't throw items you don't have, check your inventory";
 
                 }
             }

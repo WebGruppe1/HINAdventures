@@ -6,6 +6,12 @@ using System.Web;
 
 namespace HINAdventures.classes
 {
+    /// <summary>
+    /// Give.cs
+    /// 
+    /// Kommando for å gi item til en bruker. henter ut item til innlogget bruker
+    /// og sjekker om personen du har løst til å gi et item til er i sammer rom.
+    /// </summary>
     public class Give : ICommandTwoArgs
     {
         private IRepository repos;
@@ -14,11 +20,12 @@ namespace HINAdventures.classes
         public Give()
         {
             repos = new Repository();
-            items = repos.GetAllItems();
-            users = repos.GetAllUsers();
+            
         }
         public string RunCommand(string argument, string id)
         {
+            items = repos.GetInventory(id);
+            users = repos.GetAllUsers();
             string returnarg = "";
             string[] word = argument.Split(' ');
 

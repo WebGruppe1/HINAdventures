@@ -6,6 +6,12 @@ using System.Web;
 
 namespace HINAdventures.classes
 {
+    /// <summary>
+    /// Drink.cs
+    /// 
+    /// Kommando for å drikke noe. Henter en liste me items som kan drikkes og
+    /// sjekker om item og bruker er i samme rom.
+    /// </summary>
     public class Drink : ICommandTwoArgs
     {    
         private IRepository repos;
