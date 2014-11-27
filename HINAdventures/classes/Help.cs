@@ -10,6 +10,9 @@ namespace HINAdventures.classes
 		public string RunCommand(){
 			string availableCommands = "List of available commands:\n";
 
+            availableCommands += "- Chat [message] [Object]\n";
+            availableCommands += "  Chat with a virtual user\n";
+
             availableCommands += "- Drink [Object]\n";
             availableCommands += "  Tries to drink the object\n";
 
@@ -23,19 +26,13 @@ namespace HINAdventures.classes
             availableCommands += "  Gives a decription of the object\n";
 
             availableCommands += "- Give [Playername] [Object]\n";
-            availableCommands += "  Gives an item to a player\n";
-
-			availableCommands += "- Get [Object]\n";
-            availableCommands += "  Puts the object in you inventory\n";
-
-			availableCommands += "- Give [Playername] [Object]\n";
-            availableCommands += "  Gives the object to another player\n";
-
-			availableCommands += "- Help\n";
-            availableCommands += "  Lists available commands\n";
+            availableCommands += "  Gives an item/object to another player\n";
 
 			availableCommands += "- Hit [Playername]\n";
             availableCommands += "  Hits another player\n";
+
+            availableCommands += "- Intro\n";
+            availableCommands += "  Give the intro message one more time\n";
 
 			availableCommands += "- Inventory\n";
             availableCommands += "  Lists all objects in your inventory\n";
@@ -60,6 +57,9 @@ namespace HINAdventures.classes
 
 			availableCommands += "- Turn [on / off] [Object]\n";
             availableCommands += "  Turns object on or off\n";
+
+            availableCommands += "- Whiteboard [message] [Object]\n";
+            availableCommands += "  Write a message on a whiteboard\n";
 			return availableCommands; 
 		}
 	}

@@ -11,51 +11,11 @@ namespace HINAdventures.classes
     public class Virtualuser : ICommand
     {
         private IRepository myRepository;
-        private List<VirtualUser> usersInTheRoom;
-        private List<VirtualUser> users;
-        private string returnMessage;
-        private ApplicationUser user;
-        private bool stillInRoom;
-        private static Dictionary<VirtualUser, int> positionInList = new Dictionary<VirtualUser, int>();
 
         public Virtualuser ()
         {
             myRepository = new Repository();
-            usersInTheRoom = new List<VirtualUser>();
-            users = myRepository.GetVirtualUsers();
-            returnMessage = null;
-            stillInRoom = true;
         }
-
-        public string SayRegulary(string userId)
-        {
-            user = myRepository.GetUser(userId);
-
-            foreach (VirtualUser vu in users)
-            {
-                if (!positionInList.ContainsKey(vu))
-                    positionInList[vu] = 0;
-                if (vu.Room.Id == user.Room.Id)
-                {
-                    int pos = positionInList[vu];
-                    usersInTheRoom.Add(vu);
-                    VirtualUserChatCommands vucc = vu.VirtualUserChatCommands[pos];
-
-                    pos++;
-                    if (pos >= vu.VirtualUserChatCommands.Count)
-                        pos = 0;
-
-                    positionInList[vu] = pos;
-                    returnMessage += "Virtual user: " + vu.Name + " - " + vucc.ChatCommand + "\n";
-                }
-            }
-
-            if (usersInTheRoom.Count == 0)
-                returnMessage += "There is no virtual users in this room";
-
-            return returnMessage;
-        }
-
         public string RunCommand(string message)
         {
             try
