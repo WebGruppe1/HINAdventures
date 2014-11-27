@@ -26,6 +26,9 @@ namespace HINAdventures.classes
 			availableCommands += "- Examine [Object]\n";
             availableCommands += "  Gives a decription of the object\n";
 
+            availableCommands += "- Give [Playername] [Object]\n";
+            availableCommands += "  Gives an item to a player\n";
+
 			availableCommands += "- Get [Object]\n";
             availableCommands += "  Puts the object in you inventory\n";
 
@@ -56,10 +59,8 @@ namespace HINAdventures.classes
             availableCommands += "- Scout\n";
             availableCommands += "  List available exits\n";
 
-
 			availableCommands += "- Throw [Object]\n";
             availableCommands += "  Drops an object\n";
-            
 
 			availableCommands += "- Turn [on / off] [Object]\n";
             availableCommands += "  Turns object on or off\n";
