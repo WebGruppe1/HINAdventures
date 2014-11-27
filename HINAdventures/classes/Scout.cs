@@ -6,6 +6,9 @@ using System.Web;
 
 namespace HINAdventures.classes
 {
+    /// <summary>
+    /// Returns all available rooms and all items, users and virtual users in the current room.
+    /// </summary>
     public class Scout : ICommand
     {
         private IRepository repo;
@@ -33,24 +36,22 @@ namespace HINAdventures.classes
 
             if(items.Count > 0)
             {
-                
                 Boolean runnedOnce = false;
                 foreach(Item item in items)
                 {
                     if (item.ApplicationUser == null && item.Room == user.Room)
                     {
+                        if(runnedOnce)
+                            returnString += ", ";
                         if (!runnedOnce)
                         {
                             returnString += "When you look around you also see some items: ";
                             runnedOnce = true;
                         }
-
-                        if (item.Equals(items.Last()))
-                            returnString += item.Name + ". ";
-                        else
-                            returnString += item.Name + ", ";
+                        returnString += item.Name;
                     }
                 }
+                returnString += ". ";
             }
 
             if(users.Count > 0)
@@ -60,10 +61,7 @@ namespace HINAdventures.classes
                 {
                     if (u.Room == user.Room && u.Id != user.Id)
                     {
-                        if (u.Equals(users.Last()))
-                            availableUsers += u.FirstName;
-                        else
-                            availableUsers += u.FirstName + ", ";
+                        availableUsers += u.FirstName + ", ";
                     }
 
                 }
@@ -77,13 +75,11 @@ namespace HINAdventures.classes
                 foreach(VirtualUser vu in virtualUsers)
                 {
                     if (vu.Room == user.Room)
-                        availableVirtualUsers += vu.Name;
+                        availableVirtualUsers += vu.Name + ", ";
                 }
                 if (availableVirtualUsers != "")
                     returnString += "There might be a lecture going on, bacause " + availableVirtualUsers + " is standing by the canvas";
             }
-
-
             return returnString;
         }
     }
