@@ -65,11 +65,13 @@ namespace HINAdventures.classes
         /// <returns></returns>
         System.Collections.Generic.List<HINAdventures.Models.WhiteBoardBlog> GetAllWhiteBoardBlogs();
         /// <summary>
-        /// 
+        /// get the message and userid which i find the right user object to the id. then find the whiteboard
+        /// which is located in the same room that user is in, den adds the message to the description of that whiteboard
+        /// and then update the database and return the item again.
         /// </summary>
-        /// <param name="userId">User id</param>
-        /// <param name="message"> message</param>
-        /// <returns></returns>
+        /// <param name="userId"></param>
+        /// <param name="message"></param>
+        /// <returns>a whiteboard object</returns>
         HINAdventures.Models.WhiteBoardBlog GetWhiteBordByUserId(string userId, string message);
         /// <summary>
         /// Examine
@@ -104,8 +106,9 @@ namespace HINAdventures.classes
         string RoomDescription(string roomName);
         /// <summary>
         /// UpdatePlayerPosition
-        /// 
         /// Updates the players position
+        /// and search for a virtual user. if he finds some he returns their comments and add them in the end of 
+        /// the room description
         /// </summary>
         /// <param name="argument"></param>
         /// <param name="userID">User id</param>

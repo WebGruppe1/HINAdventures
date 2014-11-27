@@ -23,6 +23,13 @@ namespace HINAdventures.classes
         {
             repos = _repo;
         }
+
+        /// <summary>
+        /// with the right item, you can open a door which is usually locked.
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         public string RunCommand(string item, string userId)
         {
             inventory = repos.GetInventory(userId);

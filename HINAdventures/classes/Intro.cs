@@ -20,6 +20,13 @@ namespace HINAdventures.classes
             repos = _repo;
         }
 
+        /// <summary>
+        /// by running the command intro, you will get the intro message up on the screen again. the same message 
+        /// you get when you first log into this game.
+        /// and it checks for the last room a user have been in and put and describe that room again
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         public string RunCommand(string userId)
         {
             var user = repos.GetUser(userId);

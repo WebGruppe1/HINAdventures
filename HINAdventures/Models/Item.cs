@@ -5,6 +5,10 @@ using System.Web;
 
 namespace HINAdventures.Models
 {
+    /// <summary>
+    /// Entity item class. holds all the items in this game. which you can pick up/eat and others things. 
+    /// holds foreignkeys like room so it knows where it is, a description and a user if a user holds it
+    /// </summary>
     public class Item
     {
         public int ID { get; set; }

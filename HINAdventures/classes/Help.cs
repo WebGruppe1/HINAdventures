@@ -5,6 +5,10 @@ using System.Web;
 
 namespace HINAdventures.classes
 {
+    /// <summary>
+    /// by running the help command, you can get help on what command that is availeble in this game. 
+    /// and a small description on what each command do.
+    /// </summary>
 	public class Help : ICommandNoArgs
 	{
 		public string RunCommand(){

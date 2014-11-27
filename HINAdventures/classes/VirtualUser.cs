@@ -16,6 +16,14 @@ namespace HINAdventures.classes
         {
             myRepository = new Repository();
         }
+
+        /// <summary>
+        /// gets the message a user said to the virtual user and then this class look through the message it recived 
+        /// and look for spesific words, and then return a full sentence that fits to those words. if he doesn't
+        /// find what he wants, then he have a default message that he use.
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
         public string RunCommand(string message)
         {
             try

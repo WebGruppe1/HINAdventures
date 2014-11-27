@@ -13,6 +13,13 @@ namespace HINAdventures.classes
         {
             repo = new Repository();
         }
+
+        /// <summary>
+        /// this one looks for different things in this room and name them or what it is in this room. 
+        /// like another player, virtual user, items and says what rooms this is.
+        /// </summary>
+        /// <param name="userID"></param>
+        /// <returns></returns>
         public String RunCommand(String userID)
         {
             List<Room> rooms =  repo.getAvailableRooms(userID);

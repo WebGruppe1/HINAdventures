@@ -14,6 +14,15 @@ namespace HINAdventures.classes
         {
             repo = new Repository();
         }
+
+        /// <summary>
+        /// when you run the command enter with a room, it will first check if that room excist and that room is a
+        /// neightbour room of the room you are in. if that checks out, you will get the new descption of that room
+        /// and update the player position so that is always updated.
+        /// </summary>
+        /// <param name="_room"></param>
+        /// <param name="userID"></param>
+        /// <returns></returns>
         public String RunCommand(String _room, String userID)
         {
             List<Room> rooms = repo.getAvailableRooms(userID);

@@ -20,6 +20,13 @@ namespace HINAdventures.classes
             repos = _repo;
         }
 
+        /// <summary>
+        /// you get and argument, and checks that the argument you want to exam is not empty. 
+        /// then he will find the thing you want to exam, and writ out the description of that item
+        /// </summary>
+        /// <param name="argument"></param>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         public string RunCommand(string argument, string userId)
         {
             if (!argument.Equals(""))

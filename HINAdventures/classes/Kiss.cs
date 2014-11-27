@@ -17,6 +17,14 @@ namespace HINAdventures.classes
         {
             repo = _repo;
         }
+
+        /// <summary>
+        /// if you want to kiss a person you can do that. gets the players in this game, 
+        /// name a player you want to kiss and if it matches, they will kiss and if they are in the same room
+        /// </summary>
+        /// <param name="person"></param>
+        /// <param name="userID"></param>
+        /// <returns></returns>
         public string RunCommand(string person, string userID)
         {
             List<ApplicationUser> users = repo.GetAllUsers();

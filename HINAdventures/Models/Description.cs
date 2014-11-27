@@ -7,6 +7,9 @@ using System.Web;
 
 namespace HINAdventures.Models
 {
+    /// <summary>
+    /// Entity description class. Hold descriptions of items and other things. 
+    /// </summary>
     public class Description
     {
         public int Id { get; set; }
