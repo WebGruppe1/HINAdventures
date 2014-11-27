@@ -17,7 +17,7 @@ namespace HINAdventures.classes
         }
         public string RunCommand(string item, string userID)
         {
-
+            string output = "";
             for (int i = 0; i < items.Count; i++)
             {
                 Item it = items[i];
@@ -26,21 +26,23 @@ namespace HINAdventures.classes
                 {
                     if (it.Name.ToLower() == item || it.Name == item)
                     {
-                        item = "You just threw a " + it.Name;
+                        output = "You just threw a " + it.Name;
+                        repos.UpdatePersonItem(it.ID, null);
+                        break;
                     }
                     else
                     {
-                        item = "The item you are trying to throw does not exist in this room";
+                        output = "The item you are trying to throw does not exist in this room";
                     }
-
+                    
                 }
                 else
                 {
-                    item = "The item you are trying to throw does not exist in this room";
+                    output = "The item you are trying to throw does not exist in this room";
 
                 }
             }
-            return item;
+            return output;
 
         }
     }

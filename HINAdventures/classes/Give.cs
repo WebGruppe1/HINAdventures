@@ -22,7 +22,7 @@ namespace HINAdventures.classes
             string returnarg = "";
             string[] word = argument.Split(' ');
 
-            if (word.Length == 2)
+            if (word.Length == 3)
             {
                 for (int i = 0; i < users.Count; i++)
                 {
@@ -33,8 +33,8 @@ namespace HINAdventures.classes
                         {
                             Item it = items[j];
 
-
-                            if (it.Name.Equals(word.ElementAt(1)) || it.Name.ToLower().Equals(word.ElementAt(1)))
+                            string item = word.ElementAt(1) + " " + word.ElementAt(2);
+                            if (it.Name.Equals(item) || it.Name.ToLower().Equals(item))
                             {
                                 ApplicationUser loggedInUser = repos.GetUser(id);
                                 if (it.ApplicationUser.Id == loggedInUser.Id)

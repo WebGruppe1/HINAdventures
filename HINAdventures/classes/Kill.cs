@@ -53,12 +53,19 @@ namespace HINAdventures.classes
                                 killresponse = "You killed the zombie, thank god for that! " + "You must ask " + item.ApplicationUser.FirstName + " for the key";
                             }
                         }
-                        else
+                        else if(item.Room.Id == 21)
                         {
                             ApplicationUser loggedinUser = repos.GetUser(userID);
                             killresponse = "You killed the zombie, thank god for that! " +
                            "you will now be given a key that will open a secret door";
                             repos.UpdatePersonItem(item.ID, loggedinUser);
+                            break;
+                        }
+                        else
+                        {
+                            killresponse = "You killed the zombie, thank god for that!" +
+                                " the key is not here, somebody have been before you and "
+                                + " dropped it somewhere" + " hint: " + item.Room.Name;
                         }
                         break;
                     }
