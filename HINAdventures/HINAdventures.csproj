@@ -283,6 +283,14 @@
     <Compile Include="Migrations\201411261231086_remoteWhiteBoardcomments.Designer.cs">
       <DependentUpon>201411261231086_remoteWhiteBoardcomments.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411261526198_removeAuthorWhiteBoard.cs" />
+    <Compile Include="Migrations\201411261526198_removeAuthorWhiteBoard.Designer.cs">
+      <DependentUpon>201411261526198_removeAuthorWhiteBoard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411261556556_removeSayRegularVirtualUser.cs" />
+    <Compile Include="Migrations\201411261556556_removeSayRegularVirtualUser.Designer.cs">
+      <DependentUpon>201411261556556_removeSayRegularVirtualUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Description.cs" />
@@ -411,6 +419,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411261231086_remoteWhiteBoardcomments.resx">
       <DependentUpon>201411261231086_remoteWhiteBoardcomments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411261526198_removeAuthorWhiteBoard.resx">
+      <DependentUpon>201411261526198_removeAuthorWhiteBoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411261556556_removeSayRegularVirtualUser.resx">
+      <DependentUpon>201411261556556_removeSayRegularVirtualUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

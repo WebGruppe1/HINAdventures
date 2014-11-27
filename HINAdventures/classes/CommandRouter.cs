@@ -104,11 +104,11 @@ namespace HINAdventures.classes
                     runCommandNoArgs = new Help();
                     returnStr = "-> " + command + "\n";
                     return returnStr += runCommandNoArgs.RunCommand();
-                case "chat with":
-                    runCommandTwoArgs = new Virtualuser();
-                    returnString += runCommandTwoArgs.RunCommand(argument, UserID);
+                case "chat":
+                    runCommand = new Virtualuser();
+                    returnString += runCommand.RunCommand(argument);
                     break;
-                case "white board":
+                case "whiteboard":
                     runCommandTwoArgs = new WhiteBoard();
                     returnString += runCommandTwoArgs.RunCommand(argument, UserID);
                     break;

@@ -14,6 +14,7 @@ namespace HINAdventures.classes
             repos = new Repository();
         }
 
+        //Used when running tests
         public Examine(IRepository _repo)
         {
             repos = _repo;
@@ -24,7 +25,7 @@ namespace HINAdventures.classes
             if (!argument.Equals(""))
                 return repos.Examine(argument, userId);
             else
-                return "Use of the commando, examine [item or person to be examined]";
+                return "Use of the commando, examine [item, room or person to be examined]";
         }
     }
 }

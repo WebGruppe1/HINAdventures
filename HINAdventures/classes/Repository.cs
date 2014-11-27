@@ -237,22 +237,13 @@ namespace HINAdventures.classes
             return users.ToList();
         }
 
-        public List<VirtualUserChatCommands> GetVirtualUserChatCommandsToUser(VirtualUser user)
+        public List<VirtualUserChatCommands> GetVirtualUserChatCommands(VirtualUser user)
         {
             var chatCommands = from c in db.VirtualUserChatCommans
-                               where c.VirtualUser == user && c.SayRegulary == true
+                               where c.VirtualUser.Id == user.Id
                                select c;
             return chatCommands.ToList();
         }
-
-        public List<VirtualUserChatCommands> GetVirtualUserChatCommandsNotRegularyToUser(VirtualUser user)
-        {
-            var chatCommands = from c in db.VirtualUserChatCommans
-                               where c.VirtualUser == user && c.SayRegulary == false
-                               select c;
-            return chatCommands.ToList();
-        }
-
 
         public VirtualUser GetVirtualUser(string name)
         {
@@ -265,6 +256,20 @@ namespace HINAdventures.classes
         {
             var list = db.WhiteBoardBlogs.ToList();
             return list;
+        }
+
+        public WhiteBoardBlog GetWhiteBordByUserId(string userId, string message)
+        {
+            try {
+                ApplicationUser user = this.GetUser(userId);
+                var item = db.WhiteBoardBlogs.Where(w => w.Room.Id == user.Room.Id).FirstOrDefault();
+                item.Description += "\n" + message;
+                db.Entry(item).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                return item;
+            } catch {
+                return null;
+            }
         }
     }
 }

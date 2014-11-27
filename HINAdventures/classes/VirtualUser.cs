@@ -6,7 +6,7 @@ using HINAdventures.Models;
 
 namespace HINAdventures.classes
 {
-    public class Virtualuser : ICommandTwoArgs
+    public class Virtualuser : ICommand
     {
         private IRepository myRepository;
 
@@ -14,15 +14,31 @@ namespace HINAdventures.classes
         {
             myRepository = new Repository();
         }
-        public string RunCommand(string message, string userid)
+
+        public string SayRegulary(string userId)
         {
-            //ApplicationUser user = myRepository
-            string newName = char.ToUpper(name[0]) + name.Substring(1);
+            List<VirtualUser> users = myRepository.GetVirtualUsers();
+            ApplicationUser user = myRepository.GetUser(userId);
+            string returnMessage = null;
+            foreach(VirtualUser vu in users)
+            {
+                if(vu.Room.Id == user.Room.Id)
+                {
+                    foreach(VirtualUserChatCommands vucc in vu.VirtualUserChatCommands)
+                    {
+                        returnMessage += vucc.ChatCommand;
+                    }
+                }
+            }
+            return null;
+        }
+
+        public string RunCommand(string message)
+        {
             try
             {
-                VirtualUser chattingWith = myRepository.GetVirtualUser("");
                 if (message.Contains("Hi") || message.Contains("Hello") || message.Contains("hey") || message.Contains("god day"))
-                    return "Hi i am " + chattingWith.Name + " :) how are you?";
+                    return "Hi :) how are you?";
                 else if (message.Contains("How are you?"))
                     return "Im good thank you very much. what are you doing?";
                 else if (message.Contains("What are you doing?"))
