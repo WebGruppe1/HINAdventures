@@ -9,8 +9,9 @@ namespace HINAdventures.classes
     /// <summary>
     /// Hit.cs
     /// 
-    /// Kommando for å slå en person eller et item. Sjekker om person og item er i samme rom som innlogget
-    /// bruker. Slår du en person returnerer det tilfeldig hvor du slå personen.
+    /// Command to hit a person or item. Checks if the person and item is 
+    /// in the same room as logged in User. If you hit a person, it returns random of what
+    /// vitals you hit.
     /// </summary>
     public class Hit : ICommandTwoArgs
     {

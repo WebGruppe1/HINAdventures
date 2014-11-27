@@ -9,8 +9,8 @@ namespace HINAdventures.classes
     /// <summary>
     /// Give.cs
     /// 
-    /// Kommando for å gi item til en bruker. henter ut item til innlogget bruker
-    /// og sjekker om personen du har løst til å gi et item til er i sammer rom.
+    /// Command to give a item to a user. retrieves item to a logged in user
+    /// And checks if the person you've want to give an item to is in the same room.
     /// </summary>
     public class Give : ICommandTwoArgs
     {

@@ -9,9 +9,9 @@ namespace HINAdventures.classes
     /// <summary>
     /// Kill.cs
     /// 
-    /// Kommando for å drepe en person. Sjekker om du er i samme rom som personen. 
-    /// Returnerer et tilfeldig svar om dreping(at det ikke er lov). 
-    /// Inneholder en sjekk om du dreper en zombie, da får du en nøkkel til et hemmelig
+    /// Command to kill a person. Checks if you are in the same room as the person.
+    /// Returns random answers about killing (that it is not allowed).
+    /// Contains a check if you kill a zombie, then you get a key to a secret
     /// rom.
     /// </summary>
     public class Kill : ICommandTwoArgs

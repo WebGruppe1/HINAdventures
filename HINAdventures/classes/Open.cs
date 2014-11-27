@@ -9,7 +9,7 @@ namespace HINAdventures.classes
     /// <summary>
     /// Open.cs
     /// 
-    /// Kommando for å åpne et hemmelig rom som trenger en nøkkel.
+    /// Commando to open a secret room, but you must have a key.
     /// </summary>
     public class Open : ICommandTwoArgs
     {

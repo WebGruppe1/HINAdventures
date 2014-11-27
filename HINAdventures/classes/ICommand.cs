@@ -9,8 +9,8 @@ namespace HINAdventures.classes
     /// <summary>
     /// ICommand.cs
     /// 
-    /// interface som blir arvet fra kommandoer. Siden det er flere kommandoer som gjør 
-    /// samme ting, men returnerer forskjellig. (Factory Pattern)
+    /// interface which is inherited from commands. Since there are several commands doing
+    /// the Same thing, but returns different answer. (Factory Pattern)
     /// </summary>
     public interface ICommand
     {

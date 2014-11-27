@@ -9,8 +9,8 @@ namespace HINAdventures.classes
     /// <summary>
     /// Eat.cs
     /// 
-    /// Kommando klasse for å spise noe. Henter ut en liste med items som kan
-    /// spises og sjekker om iteme og bruker er i samme rom.
+    /// Command class to eat something. Retrieves a list of items that can
+    /// be Eaten and checks if the user and item is in the same room.
     /// </summary>
     public class Eat : ICommandTwoArgs
     {

@@ -9,11 +9,11 @@ namespace HINAdventures.classes
     /// <summary>
     /// Drink.cs
     /// 
-    /// Kommando for å drikke noe. Henter en liste me items som kan drikkes og
-    /// sjekker om item og bruker er i samme rom.
+    /// Command to drink something. Retrieves a list of items that you can drink.
+    /// Checks if the user and item is in the same room.
     /// </summary>
     public class Drink : ICommandTwoArgs
-    {    
+    {
         private IRepository repos;
         private List<Item> items;
         public Drink()
@@ -40,6 +40,6 @@ namespace HINAdventures.classes
             }
             return "You can't drink this";
         }
-    
+
     }
 }

@@ -9,8 +9,8 @@ namespace HINAdventures.classes
     /// <summary>
     /// Throw.cs
     /// 
-    /// Kommando for å kaste. Sjekker om hvilke item innlogget bruker eier, som gir deg
-    /// mulighet til å kaste det. Da er du ikke lenger eier av iteme.
+    /// Command to throw. Checks for the logged in user items, which provides
+    /// Opportunity to throw it. If you throw it, you are no longer the owner of it.
     /// 
     /// </summary>
     public class Throw : ICommandTwoArgs
