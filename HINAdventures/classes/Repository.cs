@@ -142,30 +142,37 @@ namespace HINAdventures.classes
             */
             db.SaveChanges();
 
+            String returnMessage = string.Empty;
+/*
             //If a virtual user is present in the room entered, a few sentences will be added with the roomdescription from the virtual user
             List<VirtualUser> users = this.GetVirtualUsers();
-            Dictionary<VirtualUser, int> positionInList = new Dictionary<VirtualUser, int>();
-            string returnMessage = null;
-            bool isRunning = true;
-            while (isRunning)
+            if (users != null)
             {
-                foreach (VirtualUser vu in users)
+                Dictionary<VirtualUser, int> positionInList = new Dictionary<VirtualUser, int>();
+                returnMessage = null;
+                bool isRunning = true;
+                while (isRunning)
                 {
-                    if (!positionInList.ContainsKey(vu))
-                        positionInList[vu] = 0;
-                    if (vu.Room.Id == user.Room.Id)
+                    isRunning = false;
+                    foreach (VirtualUser vu in users)
                     {
-                        int pos = positionInList[vu];
-                        VirtualUserChatCommands vucc = vu.VirtualUserChatCommands[pos];
+                        if (!positionInList.ContainsKey(vu))
+                            positionInList[vu] = 0;
+                        if (vu.Room.Id == user.Room.Id)
+                        {
+                            int pos = positionInList[vu];
+                            VirtualUserChatCommands vucc = vu.VirtualUserChatCommands[pos];
 
-                        positionInList[vu] = pos;
-                        returnMessage += "Virtual user: " + vu.Name + " - " + vucc.ChatCommand + "\n";
-                        vu.VirtualUserChatCommands.Remove(vucc);
+                            positionInList[vu] = pos;
+                            returnMessage += "Virtual user: " + vu.Name + " - " + vucc.ChatCommand + "\n";
+                            vu.VirtualUserChatCommands.Remove(vucc);
+                        }
+                        if (vu.VirtualUserChatCommands.Count == 0)
+                            isRunning = false;
                     }
-                    if (vu.VirtualUserChatCommands.Count == 0)
-                        isRunning = false;
                 }
             }
+ * */
             return returnMessage;
         }
 
