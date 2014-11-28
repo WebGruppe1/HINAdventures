@@ -59,9 +59,6 @@ namespace HINAdventures.classes
 			availableCommands += "- Throw [Object]\n";
             availableCommands += "  Drops an object\n";
 
-			availableCommands += "- Turn [on / off] [Object]\n";
-            availableCommands += "  Turns object on or off\n";
-
             availableCommands += "- Whiteboard [message] [Object]\n";
             availableCommands += "  Write a message on a whiteboard\n";
 			return availableCommands; 

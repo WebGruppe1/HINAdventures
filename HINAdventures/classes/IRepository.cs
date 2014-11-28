@@ -56,7 +56,7 @@ namespace HINAdventures.classes
         /// Method that returns all virtual users in db
         /// </summary>
         /// <returns>List of virtualusers</returns>
-        System.Collections.Generic.List<HINAdventures.Models.VirtualUser> GetVirtualUsers();
+        System.Collections.Generic.List<HINAdventures.Models.VirtualUser> GetVirtualUsersInRoom(int roomId);
         /// <summary>
         /// GetAllWhiteBoardBlogs
         /// 

@@ -59,7 +59,7 @@ namespace HINAdventures.classes
                         }
                     }
                     
-                    return message + "\n\n"; //+ virtuelUserChat;
+                    return message + "\n\n" + virtuelUserChat;
                 }
             
             return "This room is out of reach";

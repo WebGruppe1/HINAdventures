@@ -28,8 +28,8 @@ namespace HINAdventures.classes
             List<Room> rooms =  repo.getAvailableRooms(userID);
             List<Item> items = repo.GetAllItems();
             List<ApplicationUser> users = repo.GetAllUsers();
-            List<VirtualUser> virtualUsers = repo.GetVirtualUsers();
             ApplicationUser user = repo.GetUser(userID);
+            List<VirtualUser> virtualUsers = repo.GetVirtualUsersInRoom(user.Room.Id);
 
             String returnString = "You look around and see doors labeled with the names ";
 

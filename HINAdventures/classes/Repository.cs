@@ -131,7 +131,7 @@ namespace HINAdventures.classes
             {
                 item.Room = user.Room;
             }
-            /*
+            
             List<Item> itemList = this.GetAllItems();
             foreach (Item item in itemList)
             {
@@ -139,40 +139,43 @@ namespace HINAdventures.classes
                     if(user.Equals(item.ApplicationUser))
                         item.Room = user.Room;
             }
-            */
+            
             db.SaveChanges();
 
             String returnMessage = string.Empty;
-/*
+
             //If a virtual user is present in the room entered, a few sentences will be added with the roomdescription from the virtual user
-            List<VirtualUser> users = this.GetVirtualUsers();
-            if (users != null)
+            List<VirtualUser> users = this.GetVirtualUsersInRoom(user.Room.Id);
+            List<VirtualUserChatCommands> chatcomments = new List<VirtualUserChatCommands>();
+            if (users.Count > 0)
             {
                 Dictionary<VirtualUser, int> positionInList = new Dictionary<VirtualUser, int>();
                 returnMessage = null;
                 bool isRunning = true;
                 while (isRunning)
                 {
-                    isRunning = false;
                     foreach (VirtualUser vu in users)
                     {
-                        if (!positionInList.ContainsKey(vu))
-                            positionInList[vu] = 0;
-                        if (vu.Room.Id == user.Room.Id)
+                        if (vu.VirtualUserChatCommands.Count > 0)
                         {
-                            int pos = positionInList[vu];
-                            VirtualUserChatCommands vucc = vu.VirtualUserChatCommands[pos];
+                            if (!positionInList.ContainsKey(vu))
+                                positionInList[vu] = 0;
+                            if (vu.Room.Id == user.Room.Id)
+                            {
+                                int pos = positionInList[vu];
+                                VirtualUserChatCommands vucc = vu.VirtualUserChatCommands[pos];
 
-                            positionInList[vu] = pos;
-                            returnMessage += "Virtual user: " + vu.Name + " - " + vucc.ChatCommand + "\n";
-                            vu.VirtualUserChatCommands.Remove(vucc);
+                                positionInList[vu] = pos;
+                                returnMessage += "Virtual user: " + vu.Name + " - " + vucc.ChatCommand + "\n";
+                                vu.VirtualUserChatCommands.Remove(vucc);
+                                isRunning = true;
+                            }
                         }
-                        if (vu.VirtualUserChatCommands.Count == 0)
+                        else
                             isRunning = false;
                     }
                 }
             }
- * */
             return returnMessage;
         }
 
@@ -205,7 +208,7 @@ namespace HINAdventures.classes
                     //Returns a result based on item found or not, and if its in the same room
                     if (itemFromDb != null)
                     {
-                        if (user.Room.Id == itemFromDb.Room.Id)
+                        if (currentUser.Room.Id == itemFromDb.Room.Id)
                             description = itemFromDb.Description.Text;
 
                         else
@@ -283,9 +286,9 @@ namespace HINAdventures.classes
         }
 
         //Returns a list of virtual users
-        public List<VirtualUser> GetVirtualUsers()
+        public List<VirtualUser> GetVirtualUsersInRoom(int roomId)
         {
-            var users = from u in db.VirtualUser select u;
+            var users = from u in db.VirtualUser where u.Room.Id == roomId select u;
             return users.ToList();
         }
 
