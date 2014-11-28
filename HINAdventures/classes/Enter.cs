@@ -31,6 +31,7 @@ namespace HINAdventures.classes
         /// <returns></returns>
         public String RunCommand(String _room, String userID)
         {
+            
             List<Room> rooms = repo.getAvailableRooms(userID);
 
             foreach(Room room in rooms)
@@ -56,11 +57,11 @@ namespace HINAdventures.classes
                         {
                             message += ", ";
                         }
-                    }    
-
-                    return message + "\n\n" + virtuelUserChat;
+                    }
+                    
+                    return message + "\n\n"; //+ virtuelUserChat;
                 }
-
+            
             return "This room is out of reach";
 
         }

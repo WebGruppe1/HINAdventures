@@ -127,6 +127,11 @@ namespace HINAdventures.classes
             ApplicationUser user = db.Users.Where(u => u.Id == userID).FirstOrDefault();
             user.Room = db.Rooms.Where(r => r.Name == argument).FirstOrDefault();
 
+            foreach (Item item in user.Items)
+            {
+                item.Room = user.Room;
+            }
+            /*
             List<Item> itemList = this.GetAllItems();
             foreach (Item item in itemList)
             {
@@ -134,7 +139,7 @@ namespace HINAdventures.classes
                     if(user.Equals(item.ApplicationUser))
                         item.Room = user.Room;
             }
-
+            */
             db.SaveChanges();
 
             //If a virtual user is present in the room entered, a few sentences will be added with the roomdescription from the virtual user
